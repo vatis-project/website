@@ -166,6 +166,21 @@ The following variables are available to use in the ATIS template. Variable name
 |`[TL]`|Inserts the transition level, based on the ranges configured in **Transition Level** configuration tab (non-US ATIS only).|
 |`[CLOSING]`|Inserts an FAA-styled closing statement to the text ATIS and voice ATIS.|
 
+If **Use external ATIS generator (e.g. UniATIS)** is checked, you can configure vATIS to use an external source to generate the ATIS text. Note: You must have a Preset selected before you can configure an external ATIS generator.
+
+* **URL** The URL of the external ATIS generator
+* **Arrival Runway** The arrival runway(s). The variable `$arrrwy` can be added to the `URL` to automatically append the Arrival Runway field value
+* **Departure Runway** The departure runway(s). The variable `$deprwy` can be added to the `URL` to automatically append the Departure Runway field value
+* **Approaches in Use** The approaches in use. The variable `$app` can be added to the `URL` to automatically append the Approaches in Use field value
+* **Remarks** Pertinent remarks. The variable `$remarks` can be added to the `URL` to automatically append the Remarks field value
+
+Additional variables include:
+
+* `$metar` The current METAR string
+* `$atiscode` The current ATIS letter
+
+![Contractions](media/TabPresetsExternalATIS.png ':size=602')
+
 #### Contractions
 
 The **Contractions** tab is where you can define custom contractions. If you specify a contraction that already exists in the [default contractions](client?id=default-contractions) list, then it will be overridden with your newly created definition.
