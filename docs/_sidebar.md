@@ -7,6 +7,8 @@
   - [Main Window](client?id=main-window)
   - [Settings](client?id=settings)
   - [Profile Configuration](client?id=profile-configuration)
+    - [General](client?id=general)
+    - [Formatting](client?id=formatting)
     - [Presets](client?id=presets)
     - [Contractions](client?id=contractions)
     - [Configuration](client?id=configuration)
