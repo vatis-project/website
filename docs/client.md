@@ -69,11 +69,11 @@ The **Suppress ATIS update notification sound** will disable the aural notificat
 
 The **Keep vATIS window visible** option will keep the vATIS window visible (on top) if checked.
 
-![Settings](media/SettingsWindow.png ':size=609')
+![Settings](media/SettingsWindow.png ':size=573')
 
 ## Profile Configuration
 
-![Profile Configuration](media/ProfileConfiguration.png ':size=602')
+![Profile Configuration](media/ProfileConfiguration.png ':size=493')
 
 The Profile Configuration window is where you can add, modify, or delete Composites. The left sidebar is a list of all Composites added to the current Profile. Select a Composite from the list to change its settings. Additionally, you can click the **Manage Composite** button to Copy, Rename or Delete the Composite. 
 
@@ -179,7 +179,7 @@ Additional variables include:
 * `$metar` The current METAR string
 * `$atiscode` The current ATIS letter
 
-![Contractions](media/TabPresetsExternalATIS.png ':size=602')
+![Contractions](media/TabPresetsExternalATIS.png ':size=493')
 
 #### Contractions
 
@@ -211,7 +211,7 @@ When a new ATIS update is available, the vATIS client icon will flash in the Win
 
 ## Airport Conditions
 
-![Airport Conditions](media/AirportConditionDefinitions.png ':size=369')
+![Airport Conditions](media/AirportConditionDefinitions.png ':size=333')
 
 In addition to the free-form Airport Conditions text, you can also define static messages that can be toggled on or off. This is useful for defining messages that you may frequently use but need to the ability to toggle them on or off. These messages are saved with the Composite, so they are available to use with any selected Preset.
 
@@ -221,7 +221,7 @@ The **Include before free-form ARPT CONDs** checkbox allows you to prioritize th
 
 ## NOTAMs
 
-![NOTAM Conditions](media/NotamDefinitions.png ':size=369')
+![NOTAM Conditions](media/NotamDefinitions.png ':size=333')
 
 In addition to the free-form NOTAMS text, you can also define static messages that can be toggled on or off. This is useful for defining messages that you may frequently use but need to the ability to toggle them on or off. These messages are saved with the Composite, so they are available to use with any selected Preset.
 
@@ -244,12 +244,6 @@ To manually record an ATIS, the Composite must be configured to be voice recorde
 5. Once you are satisfied, click the **Save** button. The ATIS will begin transmitting on the network.
 
 When a new METAR update is available, you will be notified by the client icon flashing in the taskbar and the ATIS letter blinking yellow. See [ATIS Composites](client?id=atis-composites) section for details on how to acknowledge the update. Follow steps 2-5 to record a new ATIS.
-
-## Software Updates
-
-Each time you launch vATIS, it will check if there is a newer version available. You will be prompted if a new update is available.
-
-If you choose to download the update, vATIS will download the updated installer. When the download is complete, vATIS will close and the installer will open to begin the installation of the new version.
 
 ## Text Parsing Rules
 
