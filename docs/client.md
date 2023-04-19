@@ -325,7 +325,7 @@ The altimeter element from the METAR.
 
 The ATIS closing statement message.
 
-`{letter}` ... The current ATIS letter (e.g. `A`)
+`{letter}` ... The current ATIS letter (e.g. `A`)<br/>
 `{letter|word}` ... The current ATIS letter in word form (e.g. `ALPHA`)
 
 **Automatically include closing statement at the end of the ATIS**<br/>
