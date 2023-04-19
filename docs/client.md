@@ -12,44 +12,44 @@ Before using vATIS, you should familiarize yourself with a few basic terms and c
 
 * **Profile:** A Profile is the container for one or more ATIS Composites.
 * **Composite:** Each ATIS station is defined as its own Composite. Within each Composite, you can specify the current airport conditions and other pertinent ATIS information.
-* **Preset:** A Preset is used to save the Airport Conditions, NOTAMS and other ATIS settings. A Composite can have one or more saved Presets. For example, you might create a Preset for "WEST OPS" and one for "EAST OPS".
+* **Preset:** A Preset is used to save the Airport Conditions, NOTAMS and other ATIS settings. A Composite can have one or more saved Presets. For example, you might create a Preset for "WEST OPS" one for "EAST OPS", etc.
 
 ## Profiles
 
-Each time you launch vATIS, a dialog with a list of Profiles. The first time you run vATIS, the list will be empty. Most users will download and import profiles created by the Facility Engineer of their ARTCC.
+Each time you launch vATIS, a dialog window with a list of Profiles will appear. The first time you run vATIS, the list will be empty. Most users will download and import Profiles created by the Facility Engineer of their ARTCC.
 
 To open a Profile, double-click the name of the Profile in the list. The Profile dialog will hide and the main vATIS window will appear.
 
 ![Settings](media/ProfileDialog.png ':size=345')
 
 **Import Profile**<br/>
-To import a vATIS Profile, click the **Import** button. A file browser dialog will show allowing you to browse to the location of the Profile file. Importing a Profile will import the associated Composites and their configured options and settings.
+To import a vATIS Profile, click the **Import** button. A file browser dialog will show allowing you to browse to the location of the Profile file. Importing a Profile will import the associated Composites and their associated options and settings.
 
 **Create a New Profile**<br/>
-To create a new Profile, click the **New** button at the top right of the Profile dialog window. You will be prompted to enter a name for the profile. A Profile can contain one more Composites. For example, you might create a Profile for Los Angeles Center and name it "Los Angeles (ZLA)".
+To create a new Profile, click the **New** button at the top right of the Profile dialog window. You will be prompted to enter a name for the Profile. A Profile can contain one more Composites. For example, you might create a Profile for Los Angeles Center and name it "Los Angeles (ZLA)".
 
 **Export Profile**<br/>
-You can export a Profile by highlighting the Profile name in the list and clicking the **Export** button. This function is useful if you (e.g. Facility Engineer) want to share the Profile with other users or if you want to export Profile to make a backup copy.
+You can export a Profile by highlighting the Profile name in the list and clicking the **Export** button. This function is useful if you want to share the Profile with others or if you want to export Profile to make a backup copy.
 
 ## Main Window
 
 ![Main Window](media/MainWindow_Annotated.png ':size=370')
 
-<span class="circle">1</span> Opens the vATIS [Settings](client?id=settings) window. Within this window, you can set your VATSIM credentials, make the vATIS window stay on top, and enable or disable the ATIS notification sound.
+<span class="circle">1</span> Opens the vATIS [Settings](client?id=settings) window. The Settings window is where you will save your VATSIM credentials, make the vATIS window stay on top, and toggle the ATIS notification sound.
 
-<span class="circle">2</span> Opens the [Profile Configuration](client?id=profile-configuration) window. Within this window, you can create, modify, or delete Composites.
+<span class="circle">2</span> Opens the [Profile Configuration](client?id=profile-configuration) window. This window is where you can create, modify, or delete Composites.
 
 <span class="circle">3</span> The current Zulu (UTC) time.
 
 <span class="circle">4</span> Hides the main vATIS window and opens the "Mini Display" window.
 
-<span class="circle">5</span> The Composites associated with the current Profile. If the ATIS is connected and actively transmitting, the ATIS letter will be displayed next to the station identifier in cyan colored letters. The ATIS letter will blink yellow if there is a new update. The ATIS letter will disappear if the ATIS is not connected to the network.
+<span class="circle">5</span> The Composites associated with the current Profile. If the ATIS is connected and actively transmitting, the ATIS letter will be displayed next to the station identifier (cyan-colored letter). The ATIS letter will blink yellow if there is a new update.
 
 <span class="circle">6</span> The current ATIS letter. Left-click the ATIS letter to increment to the next letter in sequence. Right-click to go back to the previous letter.
 
 <span class="circle">7</span> The current METAR report.
 
-<span class="circle">8</span> The current wind and pressure setting from the METAR report.
+<span class="circle">8</span> The current surface wind and altimeter from the METAR report.
 
 <span class="circle">9</span> A free-form text field used to define current [Airport Conditions](client?id=airport-conditions), such as active runways, approaches in use, etc.
 
@@ -61,112 +61,308 @@ You can export a Profile by highlighting the Profile name in the list and clicki
 
 <span class="circle">13</span> This button is used to Connect or Disconnect the ATIS from the network.
 
+## Mini-Display
+
+The Mini-Display window can be accessed by clicking the "double-headed arrow" icon in the main client window.
+
+![Settings](media/OpenMiniDisplay.png ':size=45')
+
+The Mini-Display window gives you a quick, distraction-free overview of the connected ATIS stations. The main vATIS window can be restored by clicking the "double-headed arrow" icon on the Mini-Display window.
+
+![Settings](media/MiniDisplayWindow.png ':size=225')
+
+You can acknowledge a new ATIS update by clicking the blinking ATIS letter.
+
+![Settings](media/MiniDisplayWindowAcknowledgeUpdate.gif ':size=90')
+
 ## Settings
 
-The Network Settings should be self-explanatory. Choose a Network Server that is geographically closest to your location.
+The Network Settings should be self-explanatory. The Network Server dropdown only contains one value ("AUTOMATIC"), which will automatically connect your vATIS session to the best network server based on your geographic location and server availability.
 
 The **Suppress ATIS update notification sound** will disable the aural notification sound when a new ATIS update is available.
 
 The **Keep vATIS window visible** option will keep the vATIS window visible (on top) if checked.
 
-![Settings](media/SettingsWindow.png ':size=573')
+![Settings](media/SettingsWindow.png ':size=607')
 
 ## Profile Configuration
 
-![Profile Configuration](media/ProfileConfiguration.png ':size=493')
+![Profile Configuration](media/ProfileConfiguration.png ':size=527')
 
 The Profile Configuration window is where you can add, modify, or delete Composites. The left sidebar is a list of all Composites added to the current Profile. Select a Composite from the list to change its settings. Additionally, you can click the **Manage Composite** button to Copy, Rename or Delete the Composite. 
 
 You can import a legacy vATIS profile (.gz file) by clicking the **Manage Composite** button and choosing the "Import" action. This will import the legacy profile as a new Composite.
 
-!>**A maximum of 15 Composites can be added to a single Profile.**
+## General
 
-#### General
+![General Configuration](media/TabGeneral.png ':size=390')
 
-![General Configuration](media/TabGeneral.png ':size=332')
+The General tab contains general configuration options. These options are global to the Composite and are shared with each Preset.
 
-The **General** tab contains general configuration options. These options are global to the Composite and are shared with each Preset.
+**Frequency**<br/>
+The VHF frequency for the ATIS connection.
 
-**Frequency** The VHF frequency of the ATIS station.
+**ATIS Type**<br/>
+The type of ATIS: Combined, Departure or Arrival. If you choose Departure or Arrival, the callsign will include `_D_` or `_A_` (e.g. `KATL_D_ATIS`).
 
-**ATIS Type** The type of connection for this ATIS. If you choose Departure or Arrival, the callsign will include \_D\_ or \_A\_ (e.g. KATL_D_ATIS).
+**Code Range**<br/>
+Allows you to specify the ATIS code range for Departure or Arrival ATIS (e.g. restrict Departure ATIS to `A..N` and Arrival ATIS to `M..Z`).
 
-**Code Range** Allows you to specify the ATIS code range for Departure or Arrival ATIS.
+**Magnetic Variation**<br/>
+If enabled, the wind direction will be adjusted according to the specified magnetic variation value in the text to speech output.
 
-**Official Observation Time** If enabled, if a METAR observation time does not match the specified observation time value, the word "SPECIAL" will be appended to the ATIS.
+**Use "decimal" terminology in spoken text**<br/>
+If enabled, any numbers with decimals will be spoken as "decimal" instead of "point" (e.g. <code>one three four **decimal** two five</code>).
 
-**Magnetic Variation** If enabled, the wind direction will be adjusted according to the specified magnetic variation value in the text to speech output.
+**Prefix spoken NOTAMs with "Notices to Air Missions"**<br/>
+If enabled, the NOTAMs will be prefixed with "Notices to Airmen" in the voice ATIS (e.g. `NOTICES TO AIRMEN, RUNWAY TWO FIVE LEFT CLOSED`). For non-FAA ATIS, the prefix will be "Notices to Airmen".
 
-**Text to Speech/Voice Recorded** Specify whether the Composite should digitalize the ATIS or allow it to be manually voice recorded. If Text to Speech is selected, selected the desired text to speech voice.
+**Text to Speech/Voice Recorded**<br/>
+Specify whether the ATIS should be digitalized (text to speech) or manual voice recorded. If "Text to Speech" is selected, you can choose the desired voice option. The "Default" option is the voice used by FAA D-ATIS.
 
-**IDS Endpoint** The URL endpoint of your facility's IDS system (if one exists). When a new ATIS is produced, vATIS will make a POST request with a JSON payload to this URL to update the ATIS information on the IDS. **Only change this if you know what you're doing.**
+**IDS Endpoint**<br/>
+If your facility has an Information Display System (and is compatible with vATIS), you can specify the URL that vATIS can use to automatically update the ATIS information. If a URL is specified, vATIS will make an HTTP POST request with a JSON payload similar to this:
 
-!>Breaking Change: The format of the JSON payload has changed from v3. Below is an example JSON payload request that vATIS would POST to the IDS endpoint.
-
-```
+```json
 {
-  "Facility": "KLAX",
-  "Preset": "NOISE",
-  "AtisLetter": "L",
-  "AtisType": "combined",
-  "AirportConditions": "ILS APP IN PROG RWY 6R OR VCTR FOR VIS APP WILL BE PROVIDED. OPPOSITE DRCTN TFC DEPTG RWY 25R.",
-  "Notams": "ASDE-X SYSTEM IN USE. ACTIVATE TRANSPONDER WITH MODE C ON ALL TWYS AND RWYS. READBACK ALL RWY HOLD SHORT INSTRUCTIONS.",
-  "Timestamp": "04/17/2022 15:39:59"
-  "Version": "4.0.0"
+  "facility": "KLAX",
+  "preset": "NOISE",
+  "atisLetter": "L",
+  "atisType": "combined",
+  "airportConditions": "ILS APP IN PROG RWY 6R OR VCTR FOR VIS APP WILL BE PROVIDED. OPPOSITE DRCTN TFC DEPTG RWY 25R.",
+  "notams": "ASDE-X SYSTEM IN USE. ACTIVATE TRANSPONDER WITH MODE C ON ALL TWYS AND RWYS. READBACK ALL RWY HOLD SHORT INSTRUCTIONS.",
+  "timestamp": "04/17/2022 15:39:59"
+  "version": "4.0.0"
 }
 ```
+`facility` ... the ATIS facility (airport) identifier<br/>
+`preset` ... the name of the active ATIS preset<br/>
+`atisLetter` ... the ATIS letter<br/>
+`atisType` ... the ATIS connection type; valid values are: `combined`, `arrival` or `departure`<br/>
+`airportConditions` ... the airport conditions text<br/>
+`notams` ... the NOTAMs text<br/>
+`timestamp` ... the timestamp of the ATIS update<br/>
+`version` ... the vATIS application version
 
-#### Formatting
+## Formatting
 
-![Formatting Configuration](media/TabFormatting.png ':size=332')
+The Formatting tab is where you customize the format of each component of the ATIS. The formatting options are saved to the Composite configuration and are shared with each Preset.
 
-The Formatting tab allows you to further customize the format of the ATIS. The formatting options are saved to the Composite configuration and are shared with each Preset.
+The following elements can be customized:
 
-* **Format ATIS using FAA format**: When this option is checked, the ATIS will be formatted using the FAA format. You can uncheck this option to format the ATIS using the standard international/ICAO formatting.
+* Observation Time
+* Surface Wind
+* Visibility
+* Present Weather
+* Clouds
+* Temperature
+* Dewpoint
+* Altimeter
+* Closing Statement
 
-* **Prepend "Notices to Airmen/Air Missions" to spoken NOTAMs**: If this option is checked, the words "Notices to Airmen" or "Notices to Air Missions" (for FAA formatting), will be appended to the NOTAMs text in the spoken voice ATIS.
+Within each element tab, you can customize the Text (what is displayed in the text ATIS) and Voice (what is spoken in the voice ATIS) templates. Each element has specific variables that can be used in both the Text and Voice templates. You can mouse hover over each variable to see a description of what the variable is used for.
 
-* **Prepend "flight level" to the spoken transition level altitude**: If this option is checked, the words "flight level" will be prepended to the transition level altitude in the spoken ATIS text (e.g. "transition level **flight level** seven zero").
+## Observation Time
+The observation time is the time the METAR report was generated. This element can be injected into the Preset ATIS template by using the `[OBS_TIME]` variable.
 
-* **Append "meters/kilometers" to spoken prevailing visibility**: If this option is checked, the word "meters" or "visibility" will be appended to the prevailing visibility in the spoken voice ATIS.
+`{time}` ... The time value from the METAR (e.g. `0153`)<br/>
+`{hour}` ... The hour portion of the time (e.g. `01`)<br/>
+`{minute}` ... The hour portion of the time (e.g. `53`)<br/>
+`{special}` ... Inserts the word "SPECIAL" (voice ATIS only) if the METAR observation time is different than the routine observation time
 
-* **Convert cloud layer height to metric**: If this option is checked, the cloud layer height and unit will be converted from feet to meters.
+![Formatting Configuration](media/TabObservationTime.png ':size=338')
 
-* **Use "decimal" terminology in spoken text**: If this option is checked, the word "decimal" will be used in place of "point" in spoken decimal numbers and frequencies.
+**Routine Observation Time**<br/>
+This option allows you to specify the time (minute interval) at which the METAR is normally generated. For example, if the METAR for KLAX is normally updated every hour at 53 minutes, you would enter a value of `53`. If a METAR update is received and the observation time (minute) does not equal this value, then the METAR is considered a "special" update. The `{special}` variable can be used in the Text and Voice template to insert the word "SPECIAL".
 
-* **Prefix temperature/dewpoint with "plus"**: If this option is checked, temperature and dewpoint values will be prefixed with the word "plus" when spoken.
+## Surface Wind
+The surface wind element from the METAR. This element can be injected into the Preset ATIS template by using the `[WIND]` variable.
 
-* **Append "zulu" to ATIS observation time**: If this option is checked, the world "zulu" will be appended to the ATIS observation time when spoken.
+You can customize the formatting for the following wind types:
 
-#### Presets
+* Standard (e.g. 25010KT)
+* Standard Gust (e.g. 18015G20KT)
+* Variable (e.g. VRB05KT)
+* Variable Gust (e.g. VRB05G15KT)
+* Variable Direction (e.g. 240V270)
+* Calm Wind
+
+`{wind}` ... The complete wind string &ndash; only available for text ATIS (e.g. `25010G15KT V250V280`)<br/>
+`{wind_dir}` ... The magnetic direction of the wind (e.g. `25010KT` would yield `250`)<br/>
+`{wind_spd}` ... The speed/velocity of the wind (e.g. `25010KT` would yield `10`)<br/>
+`{wind_gust}` ... The gust speed/velocity of the wind (e.g. `25010G18KT` would yield `18`)<br/>
+`{wind_vmin}` ... The first extreme wind direction (e.g. `250V280` would yield `250`)<br/>
+`{wind_vmax}` ... The last extreme wind direction (e.g. `250V280` would yield `280`)<br/>
+`{wind_unit}` ... The wind speed unit of measurement (e.g. `25010KT` would yield `KT` and the spoken value would be `KNOTS`)
+
+![Formatting Configuration](media/TabSurfaceWind.png ':size=338')
+
+**Speak leading zero on wind speed**<br/>
+If enabled, the leading zero on wind speeds less than 10 will be spoken (e.g. <code>WIND TWO THREE ZERO AT **ZERO** FIVE</code>).
+
+## Visibility
+
+The prevailing visibility element from the METAR. This element can be injected into the Preset ATIS template by using the `[VIS]` variable.
+
+`{visibility}` ... The visibility value (e.g. `10SM`)
+
+![Formatting Configuration](media/TabVisibility.png ':size=338')
+
+<hr/>
+
+**ICAO Formatting**<br/>
+The ICAO formatting tab allows you to further customize the prevailing visibility for international stations.
+
+![Formatting Configuration](media/TabVisibilityIcao.png ':size=338')
+
+**Include visibility unit suffix**<br/>
+If this option is checked, the unit type will be appended to the visibility value (e.g. <code>FIVE THOUSAND METERS</code>).<br/>
+The suffix will automatically transition to "kilometers" based on the `Meters Cutoff` value.
+
+**Meters Cutoff**<br/>
+The cutoff value for when to transition to using "kilometers" instead of "meters" suffix in the voice ATIS.
+
+**Visibility Direction**<br/>
+The spoken visibility direction for when the visibility is not the same in all directions, for example: `1200SE 6000N`. This table allows you to define how the cardinal directions should be spoken in the voice ATIS.
+
+**Unlimited Visibility**<br/>
+The spoken text for when the visibility is `9999`.
+
+## Present Weather
+
+The present weather element from the METAR.
+
+`{weather}` ... The present weather items (e.g. `SHRA BR`)
+
+![Formatting Configuration](media/TabPresentWeather.png ':size=338')
+
+<hr/>
+
+**Intensity/Proximity Descriptors**<br/>
+The spoken text for present weather intensity/proximity descriptors.
+
+![Formatting Configuration](media/TabPresentWeatherIntensity.png ':size=338')
+
+<hr/>
+
+**Weather Types**<br/>
+Define the METAR weather type codes and their respective spoken voice ATIS string.
+
+![Formatting Configuration](media/TabPresentWeatherTypes.png ':size=338')
+
+<hr/>
+
+**Weather Descriptors**<br/>
+Define the METAR weather descriptor codes and their respective spoken voice ATIS string.
+
+![Formatting Configuration](media/TabPresentWeatherDescriptors.png ':size=338')
+
+## Clouds
+
+The cloud layers element from the METAR.
+
+`{clouds}` ... The cloud layers (e.g. `FEW050 SCT100`)
+
+![Formatting Configuration](media/TabClouds.png ':size=338')
+
+**Identify ceiling layer in voice ATIS**<br/>
+If this option is checked, the lowest BKN (broken) or OVC (overcast) layer will be prefixed with "ceiling" in the voice ATIS (e.g. `"CEILING ONE THOUSAND FOUR HUNDRED OVERCAST, TWO THOUSAND BROKEN"`).
+
+**Convert cloud layer altitude to metric**<br/>
+If this option is checked, the cloud layer altitude (height) will be converted to metric unit in both the voice and text ATIS.
+
+<hr/>
+
+**Cloud Types**<br/>
+Define how the cloud types should be spoken in the voice ATIS.
+
+`{altitude}` ... The altitude/height of the cloud layer<br/>
+`{convective}` ... If the cloud layer is a convective layer, the convective layer spoken text will be appended (e.g. `SCT250CB`)
+
+![Formatting Configuration](media/TabCloudTypes.png ':size=338')
+
+<hr/>
+
+**Convective Cloud Types**<br/>
+Define how the convective cloud types should be spoken in the voice ATIS.
+
+![Formatting Configuration](media/TabConvectiveCloudTypes.png ':size=338')
+
+## Temperature
+
+The temperature element from the METAR.
+
+`{temp}` ... The temperature value (e.g. `05`)
+
+**Prefix positive temperature with "plus" in voice ATIS**<br/>
+If checked, positive temperatures will be prefixed with the word "plus" in the voice ATIS (e.g. `"TEMPERATURE PLUS TWO FIVE"`)
+
+**Speak leading zero in voice ATIS**<br/>
+If checked, the leading zero will be spoken (e.g. `"TEMPERATURE ZERO SIX"`)
+
+![Formatting Configuration](media/TabTemperature.png ':size=338')
+
+## Dewpoint
+
+The dewpoint element from the METAR.
+
+`{dewpoint}` ... The dewpoint temperature value (e.g. `05`)
+
+![Formatting Configuration](media/TabDewpoint.png ':size=338')
+
+## Altimeter
+
+The altimeter element from the METAR.
+
+`{altimeter}` ... The numeric altimeter value (e.g. `2998` or `1013`)<br/>
+`{altimeter|inhg}` ... The numeric altimeter value converted to inHg<br/>
+`{altimeter|hpa}` ... The numeric altimeter value converted to hPa<br/>
+`{altimeter|text}` ... The altimeter value translated to words (e.g. `TWO NINER NINER TWO`)
+
+![Formatting Configuration](media/TabAltimeter.png ':size=338')
+
+## Closing Statement
+
+The ATIS closing statement message.
+
+`{letter}` ... The current ATIS letter (e.g. `A`)
+`{letter|word}` ... The current ATIS letter in word form (e.g. `ALPHA`)
+
+**Automatically include closing statement at the end of the ATIS**<br/>
+If checked, the closing statement will be automatically appended to the end of the ATIS without requiring the `[CLOSING]` variable in the ATIS template.
+
+![Formatting Configuration](media/TabClosingStatement.png ':size=338')
+
+## Presets
 
 The **Presets** tab is where you can Add, Copy, Rename or Delete Presets. The textbox below the dropdown list is the ATIS template. When an ATIS is created, the variables will be replaced with actual data. If the Composite is configured to use Text to Speech, the template text will be synthesized and transmitted.
 
-The following variables are available to use in the ATIS template. Variable names can be suffixed with `:VOX`, for example `[WX:VOX]` which will force vATIS to print the voice translated text instead of the raw text value in the text ATIS.
+The following variables are available to use in the ATIS template. Variable names can be optionally suffixed with `:VOX` (e.g. `[WX:VOX]`), this will force vATIS to print the voice translated text instead of the raw text value in the text ATIS.
 
 |Variable|Definition|
 |---|---|
 |`[FACILITY]`|The ATIS facility name (i.e. airport name)|
-|`[ATIS_CODE]`, `[ATIS_LETTER]`, `[LETTER]`, `[ID]`|The current ATIS letter|
-|`[WX]` OR `[FULL_WX_STRING]`|Inserts the full parsed weather string |
-|`[TIME]` or `[OBS_TIME]`|The METAR observation time|
-|`[WIND]` or `[SURFACE_WIND]`|The reported surface wind|
+|`[ATIS_CODE]`<br/>`[ATIS_LETTER]`<br/>`[LETTER]`<br/>`[ID]`|The current ATIS letter|
+|`[WX]`<br/>`[FULL_WX_STRING]`|Inserts the weather in standard order:<br/>`Surface Wind`, `Visibility`, `RVR`, `Present Weather`, `Clouds`, `Temperature`, `Dew Point`, `Altimeter` |
+|`[OBS_TIME]`<br/>`[TIME]`|The METAR observation time|
+|`[WIND]`<br/>`[SURFACE_WIND]`|The reported surface wind|
 |`[RVR]`|The runway visibility range (if any)|
-|`[VIS]` or `[PREVAILING_VISIBILITY]`|The prevailing visibility|
-|`[PRESENT_WX]` or `[PRESENT_WEATHER]`|The present weather conditions (e.g. rain, snow, hail, etc.)|
+|`[VIS]`<br/>`[PREVAILING_VISIBILITY]`|The prevailing visibility|
+|`[PRESENT_WX]`<br/>`[PRESENT_WEATHER]`|The present weather conditions (e.g. rain, snow, hail, etc.)|
 |`[CLOUDS]`|The reported cloud conditions|
 |`[TEMP]`|The reported temperature|
 |`[DEW]`|The reported dew point temperature|
 |`[PRESSURE]`|The reported pressure value|
-|`[PRESSURE_INHG]`|The reported pressure value represented in inHg|
-|`[PRESSURE_HPA]`|The reported pressure value represented in hPa|
 |`[TREND]`|TREND forecast from METAR|
 |`[ARPT_COND]`|Inserts the text from the Airport Conditions free-form text field, followed by any selected static text options|
 |`[NOTAMS]`|Inserts the text from the NOTAMS free-form text field, followed by any selected static text options|
 |`[TL]`|Inserts the transition level, based on the ranges configured in **Transition Level** configuration tab (non-US ATIS only).|
-|`[CLOSING]`|Inserts an FAA-styled closing statement to the text ATIS and voice ATIS.|
+|`[CLOSING]`|Inserts the closing statement message|
 
-If **Use external ATIS generator (e.g. UniATIS)** is checked, you can configure vATIS to use an external source to generate the ATIS text. Note: You must have a Preset selected before you can configure an external ATIS generator.
+## External ATIS Generator
+
+**Use external ATIS generator (e.g. UniATIS)**<br/>
+If this option is checked, you can configure vATIS to use an external source to generate the ATIS text. Note: You must have a Preset selected before you can configure an external ATIS generator.
 
 * **URL** The URL of the external ATIS generator
 * **Arrival Runway** The arrival runway(s). The variable `$arrrwy` can be added to the `URL` to automatically append the Arrival Runway field value
@@ -179,23 +375,26 @@ Additional variables include:
 * `$metar` The current METAR string
 * `$atiscode` The current ATIS letter
 
-![Contractions](media/TabPresetsExternalATIS.png ':size=493')
+![Contractions](media/TabPresetsExternalATIS.png ':size=527')
 
-#### Contractions
+## Contractions
 
 The **Contractions** tab is where you can define custom contractions. If you specify a contraction that already exists in the [default contractions](client?id=default-contractions) list, then it will be overridden with your newly created definition.
 
 Contractions are useful for creating acronyms or for tricking the text to speech engine to pronounce words differently.
 
-![Contractions](media/TabContractions.png ':size=390 :class=img-border')
+![Contractions](media/TabContractions.png ':size=390')
 
-#### Transition Level
+## Transition Level
 
-![Transition Level](media/TabTransitionLevel.png ':size=390 :class=img-border')
+![Transition Level](media/TabTransitionLevel.png ':size=390')
 
-If the Composite is for a non-US airport (e.g. the airport identifier does not begin with a K or P), the Transition Level configuration tab will be shown. This table allows you to define a range of QNH values used to determine the transition level. 
+This configuration tab is only visible for non-FAA ATIS composites. This table allows you to define a range of QNH values used to determine the transition level.
 
-The ATIS template variable **`[TL]`** can be used to populate the transition level in the ATIS. The variable will be read as "transition level (flight level) XX" by the voice synthesizer (where XX is the transition level based on the ranges defined). If the transition level cannot be determined, it will be read as "transition level not determined".
+**Prepend "flight level" to the spoken transition level altitude**<br/>
+If this option is checked, the words "flight level" will be prepended to the transition level altitude in the spoken ATIS text (e.g. <code>transition level **flight level** seven zero</code>).
+
+The ATIS template variable `[TL]` can be used to populate the transition level in the ATIS layout template (see [Presets](client?id=presets) section). The variable will be spoken as `"transition level (flight level) XX"`, where `XX` is the transition level based on the ranges defined. If the transition level cannot be determined, it will be spoken as `transition level not determined`.
 
 A low and high QNH value is required for each transition level.
 
@@ -211,27 +410,29 @@ When a new ATIS update is available, the vATIS client icon will flash in the Win
 
 ## Airport Conditions
 
-![Airport Conditions](media/AirportConditionDefinitions.png ':size=333')
+![Airport Conditions](media/AirportConditionDefinitions.png ':size=367')
 
 In addition to the free-form Airport Conditions text, you can also define static messages that can be toggled on or off. This is useful for defining messages that you may frequently use but need to the ability to toggle them on or off. These messages are saved with the Composite, so they are available to use with any selected Preset.
 
 To create a new static message, click the ARPT COND text label above the free-form text box. A popup dialog (pictured above) will open allowing you to add, edit or delete existing messages. You can also reorder the messages by selected a message in the list and clicking the Up or Down button. The messages are presented in the ATIS in the order they appear (but only if the message is checked).
 
-The **Include before free-form ARPT CONDs** checkbox allows you to prioritize the static messages before the free form text in the text and voice ATIS.
+**Include before free-form ARPT CONDs**<br/>
+If checked, checked Airport Conditions will included <u>before</u> the free-form Airport Conditions text.
 
 ## NOTAMs
 
-![NOTAM Conditions](media/NotamDefinitions.png ':size=333')
+![NOTAM Conditions](media/NotamDefinitions.png ':size=367')
 
 In addition to the free-form NOTAMS text, you can also define static messages that can be toggled on or off. This is useful for defining messages that you may frequently use but need to the ability to toggle them on or off. These messages are saved with the Composite, so they are available to use with any selected Preset.
 
 To create a new static message, click the NOTAMS text label above the free-form text box. A popup dialog (pictured above) will open allowing you to add, edit or delete existing messages. You can also reorder the messages by selected a message in the list and clicking the Up or Down button. The messages are presented in the ATIS in the order they appear (but only if the message is checked).
 
-The **Include before free-form NOTAMs** checkbox allows you to prioritize the static messages before the free form text in the text and voice ATIS.
+**Include before free-form NOTAMs**<br/>
+If checked, checked NOTAMs will included <u>before</u> the free-form NOTAMs text.
 
 ## Manual Voice Recorded ATIS
 
-![Record ATIS](media/RecordATIS.png ':size=389')
+![Record ATIS](media/RecordATIS.png ':size=387')
 
 vATIS allows you to manually record an ATIS in the instance where the real-world ATIS isn't digitalized, and you wish to simulate this on VATSIM.
 

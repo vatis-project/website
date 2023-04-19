@@ -337,7 +337,7 @@ main.hidden {
 }
 
 .sidebar-toggle span {
-    background-color: var(--theme-color, #42b983);
+    background-color: #E65000;
     display: block;
     margin-bottom: 4px;
     width: 16px;
@@ -377,7 +377,7 @@ body.sticky .sidebar-toggle {
 
 .markdown-section hr {
     border: none;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px dotted #F3F3F3;
     margin: 2em 0
 }
 
@@ -837,11 +837,14 @@ body {
 }
 
 .markdown-section code {
-    border-radius: 2px;
+    border-radius: 0px;
     color: #0164AD;
-    margin: 0 2px;
     padding: 3px 5px;
-    white-space: pre-wrap
+    white-space: pre-wrap;
+}
+
+.markdown-section code strong {
+    color: #0164AD;
 }
 
 .markdown-section>:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) code {
