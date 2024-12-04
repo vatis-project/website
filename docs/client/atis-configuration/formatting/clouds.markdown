@@ -13,16 +13,19 @@ This element represents the cloud layers information obtained from the METAR rep
 
 ![Clouds](/assets/images/Formatting_Clouds.png)
 
-**Identify ceiling layer in voice ATIS**<br/>
+### Identify ceiling layer in voice ATIS
 When enabled, the lowest BKN (broken) or OVC (overcast) cloud layer will be referred to as the "ceiling" in the voice ATIS. For example, it will be spoken as "CEILING ONE THOUSAND FOUR HUNDRED OVERCAST, TWO THOUSAND BROKEN."
 
-**Convert cloud layer altitude to metric**<br/>
+### Convert cloud layer altitude to metric
 If this option is selected, the altitude (height) of the cloud layer will be converted to the metric unit in both the voice and text ATIS.
 
-**Undetermined (Voice)**<br/>
+### Display cloud height in hundreds of feet
+If enabled, the cloud height will be converted to hundreds of feet in the text ATIS. For example, FEW010 will be displayed as FEW1000.
+
+### Undetermined (Voice)
 The text spoken if the cloud altitude (height) is undetermined.
 
-**Undetermined (Text)**<br/>
+### Undetermined (Text)
 The text shown in the text ATIS if the cloud altitude (height) is undetermined.
 
 <hr/>

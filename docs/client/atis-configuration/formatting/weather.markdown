@@ -19,6 +19,6 @@ This setting defines the spoken text for intensity/proximity descriptors associa
 ![Intensity and Proximity Descriptors](/assets/images/Formatting_Weather_Proximity.png)
 
 ## Weather Descriptors
-This setting allows you to specify the METAR weather descriptor codes and their corresponding spoken voice ATIS strings. You can define how each weather condition, such as SHRA (rain showers) or BR (mist), should be spoken in the voice ATIS.
+This setting allows you to specify the METAR weather descriptor codes and their corresponding spoken voice ATIS strings. You can define how each weather condition, such as SHRA (rain showers) or BR (mist), should be displayed in the text ATIS and spoken in the voice ATIS.
 
 ![Weather Descriptors](/assets/images/Formatting_Weather_Descriptors.png)
