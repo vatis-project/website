@@ -86,6 +86,7 @@ body {
   height: auto;
   background: url('/assets/images/MainScreenShadow.png') no-repeat center center;
   background-size: contain;
+  height: 500px;
 }
 
 .cover .cover-main {
@@ -94,8 +95,4 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.actions {
-  margin-bottom: 20px;
 }

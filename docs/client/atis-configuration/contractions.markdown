@@ -7,29 +7,23 @@ nav_order: 4
 
 # Contractions
 
+The Contractions tab allows you to define personalized contractions. If you specify a contraction that already exists in the [Default Contractions](default-contractions) list, your new definition will overwrite it. Contractions serve various purposes, such as creating acronyms or modifying the pronunciation of words when using the text-to-speech engine.
+
 ![Contractions](/assets/images/Contractions.png)
 
-To configure an ATIS station, click on the station in the left sidebar.
+## Adding New Contraction
+* To add a new contraction, click the **New** button.
+* A dialog will open, prompting you to enter the following details:
+    * **Variable**: The name of the contraction variable. If you enter multiple words, it will be automatically converted to variable format (e.g., spaces will be replaced with underscores).
+    * **Text**: The written ATIS text that will be displayed.
+    * **Voice**: The text that will be spoken by the voice synthesizer.
+After filling in the required information, save the contraction to make it available for use in your ATIS messages.
 
-* **Frequency**: The VHF frequency assigned to the ATIS station.
-* **ATIS Type**: The type of ATIS station, which determines how the ATIS callsign will be displayed on the network.
-    * **Combined**: Displayed as `XXXX_ATIS`
-    * **Departure**: Displayed as `XXXX_D_ATIS`
-    * **Arrival**: Displayed as `XXXX_A_ATIS`
-* **Code Range**: Allows you to define the ATIS code range for the station. This feature is helpful for restricting the Departure ATIS to a specific range (e.g., `A..N`) and the Arrival ATIS to a different range (e.g., `M..Z`).
-* **Use "decimal" terminology in spoken text**: Enabling this option will cause numbers with decimals to be spoken as "decimal" rather than "point." For example, "one three four decimal two five" instead of "one three four point two five."
-* **Prefix spoken NOTAMs with "Notices to Air Missions"**: Enabling this option will add the prefix "Notices to Air Missions" when speaking the NOTAMs in the voice ATIS. For example, "Notices to Air Missions, RUNWAY TWO FIVE LEFT CLOSED." For non-FAA ATIS, the prefix will be "Notices to Airmen."
-* **Text to Speech/Voice Recorded**: This option lets you choose between digitalized (text-to-speech) or manually recorded voice for the ATIS. If "Text to Speech" is selected, you can further specify the desired voice option. The "Default" option uses the voice similar to that of FAA D-ATIS.
-* **IDS Endpoint**: If your facility is equipped with an Information Display System (IDS) that is compatible with vATIS, you can enter the URL for automatic ATIS information updates. When a URL is specified, vATIS will send an HTTP POST request with a JSON payload similar to the following:
-```json
-{
-    "facility": "KLAX",
-    "preset": "NOISE",
-    "atisLetter": "L",
-    "atisType": "combined",
-    "airportConditions": "ILS APP IN PROG RWY 6R OR VCTR FOR VIS APP WILL BE PROVIDED. OPPOSITE DRCTN TFC DEPTG RWY 25R.",
-    "notams": "ASDE-X SYSTEM IN USE. ACTIVATE TRANSPONDER WITH MODE C ON ALL TWYS AND RWYS. READBACK ALL RWY HOLD SHORT INSTRUCTIONS.",
-    "timestamp": "11/27/2024 15:39:59"
-    "version": "4.1.0-beta.1"
-}
-```
+## Editing Existing Contraction
+1. Double-click on the text you want to change.
+2. A textbox will appear where you can make your edits.
+3. Press the **Enter** key on your keyboard to commit the changes.
+
+## Deleting Contraction
+1. Select the contraction from the table.
+2. Click the **Delete** button to remove the contraction. This action is irreversable.

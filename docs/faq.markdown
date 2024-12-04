@@ -7,9 +7,9 @@ nav_order: 8
 # FAQ
 
 ## Where is the vATIS config file?
-* Windows: `C:/Users/<USER>/AppData/Local/org.vatsim.vatis/AppConfig.json`
-* macOS: `~/Library/Application Support/org.vatsim.vatis/AppConfig.json`
-* Linux: `~/.local/share/org.vatsim.vatis/AppConfig.json`
+* Windows: `C:/Users/<USER>/AppData/Local/vatis.app/AppConfig.json`
+* macOS: `~/Library/Application Support/vatis.app/AppConfig.json`
+* Linux: `~/.local/share/vatis.app/AppConfig.json`
 
 {: .note-title }
 > Linux Users
