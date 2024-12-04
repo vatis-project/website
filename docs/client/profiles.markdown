@@ -1,0 +1,34 @@
+---
+layout: home
+title: Profiles
+parent: vATIS
+nav_order: 2
+---
+
+# Profiles
+When you launch vATIS, a dialog window will appear displaying a list of Profiles. If this is your first time using vATIS, the list will initially be empty. Typically, users obtain and import Profiles provided by the Facility Engineer of their ATC facility.
+
+To open a Profile, double-click its name in the list. The Profile dialog will then close, and the main vATIS window will appear.
+
+![Profile Dialog](/assets/images/ProfileDialog.png)
+
+## Creating a Profile
+To create a Profile, click the **New** button on the Profiles window.<br/>
+Enter a name for the Profile and click **OK**.
+
+## Launching a Profile
+Profiles are launched by double-clicking the Profile's name in the Profiles window.
+
+## Importing and Exporting Profiles
+You can import a Profile by clicking the **Import** button in the Profiles window. Once imported, the Profile will appear in the list.
+
+To export a Profile, select the one you want to export and click the **Export** button.
+
+## Renaming a Profile
+To rename a Profile, select the one you want to rename and click the **Rename** button. A dialog window will open allowing you to specify the new profile name.
+
+## Deleting a Profile
+To delete a Profile, select the one you want to delete and click the **Delete** button.
+
+{: .warning }
+Deleting a Profile is irreversible.
