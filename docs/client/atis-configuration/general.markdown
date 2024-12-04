@@ -9,6 +9,11 @@ nav_order: 1
 
 ![Compact Window](/assets/images/AtisConfiguration.png)
 
+{: .note-title }
+> Note
+>
+> If you make any changes in the **General** tab and save them, the ATIS will automatically disconnect from the network (if it is currently connected).
+
 To configure an ATIS station, click on the station in the left sidebar.
 
 * **Frequency**: The VHF frequency assigned to the ATIS station.

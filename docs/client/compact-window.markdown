@@ -9,6 +9,6 @@ nav_order: 5
 
 The Compact Window provides a simplified view of the current ATIS letter, wind, and altimeter for connected ATIS stations. You can pin the window to stay on top by clicking the "pin" icon or restore the full vATIS window by clicking the "double-headed arrow" icon.
 
-![Compact Window](/assets/images/CompactWindow.png)
+![Compact Window](/assets/images/CompactWindow.png){:width="50%"}
 
 If a new ATIS update is available, the ATIS letter will blink. Click the blinking ATIS letter to acknowledge the update.

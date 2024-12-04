@@ -10,7 +10,7 @@ When you launch vATIS, a dialog window will appear displaying a list of Profiles
 
 To open a Profile, double-click its name in the list. The Profile dialog will then close, and the main vATIS window will appear.
 
-![Profile Dialog](/assets/images/ProfileDialog.png)
+![Profile Dialog](/assets/images/ProfileDialog.png){:width="50%"}
 
 ## Creating a Profile
 To create a Profile, click the **New** button on the Profiles window.<br/>
