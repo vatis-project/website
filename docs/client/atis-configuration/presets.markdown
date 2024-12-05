@@ -28,6 +28,7 @@ You can use the following variables in the ATIS template. If you want to use the
 |`[DEW]`|The reported dew point temperature|
 |`[PRESSURE]`|The reported pressure value|
 |`[TREND]`|The TREND forecast from the METAR|
+|`[RECENT_WX]`|The recent weather conditions|
 |`[ARPT_COND]`|Inserts the text from the free-form Airport Conditions field, followed by any selected static text options|
 |`[NOTAMS]`|Inserts the text from the free-form NOTAMS field, followed by any selected static text options|
 |`[TL]`|Inserts the transition level based on the configured ranges in the **Transition Level** formatting tab (non-US ATIS only)|
