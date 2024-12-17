@@ -5,4 +5,4 @@ nav_order: 7
 ---
 
 # Getting Help
-If you're having trouble configuring vATIS, please join the [vATIS Discord Server](https://discord.gg/MdD2AA26Rc).
+If you're having trouble configuring vATIS, please join the [vATIS Discord Server](https://discord.gg/ree6P525qu).

@@ -9,7 +9,12 @@ nav_order: 9
 
 vATIS offers the option to manually record an ATIS in cases where the real-world ATIS is not digitalized and you want to simulate it on VATSIM.
 
-![NOTAMs](/assets/images/VoiceRecordAtisDialog.png)
+![Voice Record ATIS](/assets/images/VoiceRecordAtisDialog.png)
+
+{: .important-title }
+> macOS Users
+>
+> When launching vATIS for the first time, you may be prompted to grant microphone access. This permission is required to record ATIS messages for stations configured with Voice Recorded ATIS.
 
 To manually record an ATIS, ensure that the ATIS Station is configured for voice recording. Refer to the [Configuration](atis-configuration/general) section for instructions on how to enable this option.
 

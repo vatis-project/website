@@ -9,10 +9,10 @@ nav_order: 3
 Download the latest installer from the [vATIS Release Page](https://github.com/vatis-project/vatis/releases/latest).
 
 **Windows**<br/>
-The setup executable will automatically install vATIS in `%localappdata%\vatis.app` folder. A desktop shortcut will be automatically created.
+The setup executable will automatically install vATIS in the `%localappdata%\org.vatsim.vatis` folder and create a desktop shortcut. Due to limitations in the installer wizard, the installation location cannot be changed at this time.
 
 **MacOS**<br/>
-The package setup will guide you through the process of installing the vATIS client.
+Install the vATIS.app in your preferred folder. The recommend location is Applications.
 
 **Linux**<br/>
 The client is packaged in AppImage format. You can download and move it to any location of your preference.
