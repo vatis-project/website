@@ -9,7 +9,12 @@ nav_order: 13
 
 Facilities can enable automatic profile updates for their users. To enable this functionality, you need to update the profile JSON before publishing it on your website.
 
-Add the following two properties to the profile JSON file:
+{: .note-title }
+> Important
+>
+> Any local changes made to the profile will be overwritten when the profile is updated.
+
+To enable the automatic update functionality, add the following two properties to the profile JSON file:
 
 ```json
 {
