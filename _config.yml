@@ -23,7 +23,7 @@ email: justin@clowd.io
 description: >- # this means to ignore newlines until "baseurl:"
   vATIS for VATSIM: The Simple and Intuitive ATIS Solution for VATSIM
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://vatis.app" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://beta.vatis.app" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: vatis-project
 
 color_scheme: light
@@ -35,7 +35,7 @@ plugins:
 
 aux_links:
   "Download vATIS":
-    - "https://vatis.app"
+    - "https://beta.vatis.app"
 
 gh_edit_link: false
 gh_edit_link_text: "Edit this page on GitHub."
