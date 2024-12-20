@@ -6,7 +6,7 @@ nav_order: 3
 
 # Installation
 
-Download the latest installer from the [vATIS Website](https://beta.vatis.app).
+Download the latest installer from the [vATIS Website](https://vatis.app).
 
 **Windows**<br/>
 The setup executable will automatically install vATIS in the `%localappdata%\org.vatsim.vatis` folder and create a desktop shortcut. Due to limitations in the installer wizard, the installation location cannot be changed at this time.
