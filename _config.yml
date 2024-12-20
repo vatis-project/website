@@ -35,16 +35,16 @@ plugins:
 
 aux_links:
   "Download vATIS":
-    - "https://github.com/vatis-project/vatis/releases/latest"
+    - "https://vatis.app"
 
-gh_edit_link: true
+gh_edit_link: false
 gh_edit_link_text: "Edit this page on GitHub."
 gh_edit_repository: "https://github.com/vatis-project/docs"
 gh_edit_branch: "main"
 gh_edit_view_mode: "tree"
 
-ga_tracking: G-ZYV3ZQ7XVB
-ga_tracking_anonymize_ip: true
+# ga_tracking: G-ZYV3ZQ7XVB
+# ga_tracking_anonymize_ip: true
 
 callouts:
   important:
