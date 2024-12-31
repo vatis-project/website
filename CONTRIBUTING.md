@@ -13,7 +13,7 @@ them is using [Visual Studio Code](http://code.visualstudio.com/).
 1. Fork the repo
 2. Clone it locally
 3. Open the repo in VSCode
-4. When prompted click `Reopen in devcontainer`
+4. When prompted click `Reopen in Container`
 5. Wait for the devcontainer to build
 
 ## Testing documentation changes
@@ -22,4 +22,4 @@ The repo is set up with `F5` deployment in VSCode. Simply press `F5` and the doc
 and launch in a browser. Once run, documentation changes will automatically get rebuilt.
 
 VSCode launch profiles for Chrome and Edge are provided, simply select the launch profile you want
-in the debug tab. 
+in the debug tab.
