@@ -16,7 +16,13 @@ jobs:
       # Checkout the repository
       - uses: actions/checkout@v4
       
-      # Install dependencies
+      # Set up Ruby environment and install Jekyll
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+
       - name: Install dependencies
         run: |
           gem install bundler
