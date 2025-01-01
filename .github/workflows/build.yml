@@ -42,5 +42,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy _site --project-name=vatis-website
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy _site --project-name vatis-website --branch ${{ github.ref_name }} --commit-hash ${{ github.sha }} --commit-dirty=true
