@@ -35,6 +35,11 @@ jobs:
       # Build website
       - name: Build website
         run: bundle exec jekyll build --destination _site
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+        id: extract_branch
       
       # Deploy to Cloudflare Pages
       - name: Deploy
@@ -42,4 +47,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy _site --project-name vatis-website --branch ${{ github.ref_name }} --commit-hash ${{ github.sha }} --commit-dirty=true
+          command: pages deploy _site --project-name vatis-website --branch "${{ steps.extract_branch.outputs.branch }}" --commit-hash ${{ github.sha }}
