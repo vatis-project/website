@@ -8,7 +8,7 @@ nav_order: 2
 # Profiles
 When you launch vATIS, a dialog window will appear displaying a list of Profiles. If this is your first time using vATIS, the list will initially be empty. Typically, users obtain and import Profiles provided by the Facility Engineer of their ATC facility.
 
-To open a Profile, double-click its name in the list. The Profile dialog will then close, and the main vATIS window will appear.
+To open a Profile, select it and click **Open** or double-click its name in the list. The Profile dialog will then close, and the main vATIS window will appear.
 
 ![Profile Dialog](/assets/images/ProfileDialog.png){:width="50%"}
 
@@ -17,7 +17,7 @@ To create a Profile, click the **New** button on the Profiles window.<br/>
 Enter a name for the Profile and click **OK**.
 
 ## Launching a Profile
-Profiles are launched by double-clicking the Profile's name in the Profiles window.
+Profiles are launched by selecting the Profile's name and clicking **Open** or by double-clicking the Profile's name.
 
 ## Importing and Exporting Profiles
 You can import a Profile by clicking the **Import** button in the Profiles window. Once imported, the Profile will appear in the list.
