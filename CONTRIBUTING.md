@@ -8,7 +8,18 @@ them is using [Visual Studio Code](http://code.visualstudio.com/).
 1. Install [Docker](https://www.docker.com/get-started/)
 2. Install [Visual Studio Code](https://code.visualstudio.com/Download) and the [devcontainer extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-## Using the devcontainer
+## Using the devcontainer (Mac and Windows)
+
+1. Fork the repo
+2. Run VSCode
+3. Select `Dev Containers: Clone Repository in Container Volume...`
+4. Follow the prompts to authenticate with GitHub and select the forked repo
+5. Select `master` as the branch
+6. Wait for the devcontainer to build
+
+Cloning the repository in a container volume greatly improves performance, and on Windows ensures live updating works.
+
+## Using the devcontainer (Linux)
 
 1. Fork the repo
 2. Clone it locally
