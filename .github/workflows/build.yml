@@ -2,6 +2,8 @@ name: Build
 
 on:
   push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -14,11 +16,24 @@ jobs:
       contents: read
       deployments: write
     steps:
+      # Checkout the repository
       - uses: actions/checkout@v4
+      
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+      
+      # Build website
+      - name: Build website
+        run: bundle exec jekyll build --destination _site
+      
+      # Deploy to Cloudflare Pages
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy docs --project-name=vatis-website
+          command: pages deploy _site --project-name=vatis-website
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
