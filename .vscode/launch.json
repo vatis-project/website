@@ -1,0 +1,20 @@
+{
+  "configurations": [
+    {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://127.0.0.1:4000",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Run Jekyll"
+    },
+    {
+      "name": "Launch Edge",
+      "request": "launch",
+      "type": "msedge",
+      "url": "http://127.0.0.1:4000/",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Run Jekyll"
+    }
+  ]
+}
