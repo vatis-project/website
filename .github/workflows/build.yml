@@ -20,13 +20,13 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: 3.4
           bundler-cache: true
 
       - name: Install dependencies
         run: |
-          sudo gem install jekyll
-          sudo gem install bundler
+          gem install jekyll
+          gem install bundler
           bundle install
       
       # Build website
