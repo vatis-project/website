@@ -18,3 +18,8 @@ After disconnecting an ATIS, the ATIS letter will remain synced with other users
 When a new ATIS update is ready, the ATIS letter for the corresponding ATIS Station will blink. If you have enabled notification sounds, you will also hear a notification sound. To acknowledge the ATIS update, select the respective ATIS Station tab and left-click the ATIS letter once.
 
 ![Acknowledge Update](/assets/images/AcknowledgeUpdate.gif)
+
+## Manually Enter ATIS Letter
+If you prefer not to cycle through each letter to find the one you want, you can manually enter the ATIS letter. To enter the ATIS letter edit mode, **Shift + Left Double-Click** on the ATIS letter box. The cursor will change to a blinking I-beam, indicating that you can start typing. Type the desired letter and press Enter to confirm it. Press ESC (Escape) to cancel the action.
+
+![Type ATIS Letter](/assets/images/TypeAtisLetter.gif)
