@@ -21,12 +21,15 @@ vATIS supports local development, allowing you to debug the application without 
 This setup provides a self-contained environment for testing and debugging vATIS.
 
 ## How to Use
-The vATIS solution file comes preconfigured with development profiles for Visual Studio, JetBrains Rider, and VSCode.
+To begin, clone the vATIS GitHub repository to your local machine. The vATIS solution file comes preconfigured with development profiles for Visual Studio, JetBrains Rider, and Visual Studio Code.
 
-### VisualStudio
+`git clone https://github.com/vatis-project/vatis.git`
 
-1. Select the "Local Dev" startup item.
-2. Click the Start button. This will launch vATIS in debug mode and start the localhost dev server in a separate console window.
+### Visual Studio
+
+1. Open the vATIS.sln
+2. Select the "Local Dev" startup item.
+3. Click the Start button. This will launch vATIS in debug mode and start the localhost dev server in a separate console window.
 
 ![VisualStudio](/assets/images/VisualStudio_LaunchProfile.png)
 
@@ -37,12 +40,21 @@ The vATIS solution file comes preconfigured with development profiles for Visual
 
 ### Rider
 
-1. From the **Run / Debug Configurations** dropdown, select "Local Dev".
-2. This will launch vATIS in debug mode and start the localhost dev server in a separate process.
+1. Open the vATIS.sln
+2. From the **Run / Debug Configurations** dropdown, select "Local Dev".
+3. This will launch vATIS in debug mode and start the localhost dev server in a separate process.
 
 ![Rider](/assets/images/Rider_DevProfile.png)
 
-### VSCode
+### Visual Studio Code
 
-### Manually Configure
-To manually configure vATIS to connect to the local dev server, simply set the environment variable `ENV=DEV` and launch both the vATIS and DevServer projects.
+1. Open the cloned repository folder in Visual Studio Code. The editor will attempt to automatically configure the project.
+2. Press **F5** to start vATIS and the development server.
+
+If the **C# Dev Kit** extension is not already installed, VSCode will prompt you to install it.
+
+![Install Extension](/assets/images/VSCode_InstallExtension.png)
+
+If you encounter the error shown below when starting the project, try restarting Visual Studio Code. If the error persists after restarting, it likely means the required C# extension was not installed correctly. To fix this, manually install the [C# Dev Kit extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and restart VSCode.
+
+![Task Error](/assets/images/VSCode_TaskError.png)
