@@ -7,7 +7,7 @@ nav_order: 14
 
 # WebSocket API
 
-vATIS provides a websocket interface at `ws://0.0.0.0:49082/` to receive ATIS updates and interact with vATIS.
+vATIS provides a websocket interface at `ws://127.0.0.1:49082/` to receive ATIS updates and interact with vATIS.
 For an example of using the WebSocket interface see the [Stream Deck actions for vATIS project](https://github.com/neilenns/streamdeck-vatis).
 TypeScript [type definitions for the messages](https://github.com/neilenns/streamdeck-vatis/blob/main/src/interfaces/messages.ts) are also available in that project.
 
