@@ -58,3 +58,25 @@ If the **C# Dev Kit** extension is not already installed, VSCode will prompt you
 If you encounter the error shown below when starting the project, try restarting Visual Studio Code. If the error persists after restarting, it likely means the required C# extension was not installed correctly. To fix this, manually install the [C# Dev Kit extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and restart VSCode.
 
 ![Task Error](/assets/images/VSCode_TaskError.png)
+
+
+## Development Server Web UI
+The Development Server Web UI provides tools to mock and force METAR updates for a connected vATIS client, making it easier to simulate and test ATIS generation.
+
+### Accessing the Web UI
+You can access the Development Server Web UI in any browser by navigating to: `http://127.0.0.1:5500`
+
+![Web UI](/assets/images/DevWebUI.png)
+
+### Fetching a METAR
+To fetch the latest METAR:
+1. Enter the station's identifier in the input field.
+2. Click the "Fetch METAR" button. This retrieves the most recent METAR from the VATSIM METAR feed.
+
+### Modifying a METAR
+To modify and update a METAR:
+1. Input a METAR manually or fetch the most recent METAR.
+2. Adjust the METAR text as needed.
+3. Click the "Update METAR" button.
+
+This action sends the modified METAR to the connected vATIS client, simulating a received METAR update and triggering an ATIS update.
