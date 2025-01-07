@@ -64,7 +64,7 @@ If you encounter the error shown below when starting the project, try restarting
 The Development Server Web UI provides tools to mock and force METAR updates for a connected vATIS client, making it easier to simulate and test ATIS generation.
 
 ### Accessing the Web UI
-You can access the Development Server Web UI in any browser by navigating to: `http://127.0.0.1:5500`
+You can access the Development Server Web UI in any browser by navigating to: [`http://127.0.0.1:5500`](http://127.0.0.1:5500).
 
 ![Web UI](/assets/images/DevWebUI.png)
 
