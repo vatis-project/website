@@ -22,16 +22,17 @@ ATIS changes. The following value properties are sent:
 
 | Property | Description | Type |
 | - | - | - |
-| altimeter | The formatted altimeter reading for the station. | string |
-| atisLetter | The current ATIS letter. | string |
+| altimeter | The formatted altimeter reading for the station. | `string` |
+| atisLetter | The current ATIS letter. | `string` |
 | atisType | The ATIS type. | [AtisType](#atistype) |
-| isNewAtis | True if the ATIS is new and has not been acknowledged by the user. | boolean |
-| metar | The unparsed METAR for the station. | string |
+| ceiling | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
+| isNewAtis | True if the ATIS is new and has not been acknowledged by the user. | `boolean` |
+| metar | The unparsed METAR for the station. | `string` |
 | networkConnectionStatus | The status of the station's network connection. | [NetworkConnectionStatus](#networkconnectionstatus) |
-| pressureUnit | The unit the pressure is in. | [PressureUnit](#pressureunit) |
-| pressureValue | The current pressure value as a whole number. | number |
-| station | The identifier for the station. | string |
-| textAtis | The text version of the ATIS, if available. | string |
+| pressure | The current pressure, as a whole number (e.g. `2990`). | [Value](#value) |
+| prevailingVisibility | The current visibility. | [Value](#value) |
+| station | The identifier for the station. | `string` |
+| textAtis | The text version of the ATIS, if available. | `string` |
 
 Example message:
 
@@ -40,15 +41,26 @@ Example message:
     "type": "atis",
     "value": {
         "networkConnectionStatus": "Connected",
+        "textAtis": "KPDX ATIS INFO A 1853Z. 24009G14KT 6SM LIGHT RA BKN030 BKN039 OVC046 08/04 A3061 (THREE ZERO SIX ONE). SIMUL VIS APCHS IN USE RWYS 10L AND 10R. JET ACFT EXPT THE COLUMBIA VIS APCH. DEPTG RWYS 10L AND 10R. NOTAMS... PUSHBACK ONTO TWYS T AND K REQS ATC CLNC.....ADVS YOU HAVE INFO A.",
         "station": "KPDX",
         "atisType": "Combined",
         "atisLetter": "A",
-        "metar": "METAR KPDX 310153Z 00000KT 10SM FEW027 BKN041 BKN065 07/04 A3038 RMK AO2 SLP285 T00720039",
-        "wind": "00000KT",
-        "altimeter": "A3038",
-        "pressureUnit": "MercuryInch",
-        "pressureValue": 3038,
-        "isNewAtis": false
+        "metar": "KPDX 111853Z 26009G14KT 6SM -RA BKN030 BKN039 OVC046 08/04 A3061 RMK AO2 RAB45 SLP363 P0000 T00830039",
+        "wind": "26009G14KT",
+        "altimeter": "A3061",
+        "pressure": {
+            "actualValue": 3061,
+            "actualUnit": "MercuryInch"
+        },
+        "isNewAtis": false,
+        "ceiling": {
+            "actualValue": 30,
+            "actualUnit": "Feet"
+        },
+        "prevailingVisibility": {
+            "actualValue": 6,
+            "actualUnit": "StatuteMile"
+        }
     }
 }
 ```
@@ -162,9 +174,27 @@ Indicates whether the ATIS is combined, arrival, or departure. Values are:
 * `Combined`
 * `Departure`
 
-### `PressureUnit`
+### `Value`
 
-Indicates the unit used for the pressure. Values are:
+Indicates a value and the value's unit.
 
-* `hPa`
-* `MercuryInch`
+| Property | Description | Type |
+| - | - | - | 
+| actualValue | The value. | `Number` | 
+| actualUnit | The unit. | [`Unit`](#unit) |
+
+### `Unit`
+
+Describes the unit for a given value. The possible values are:
+
+- `Degree`
+- `DegreeCelsius`
+- `Feet`
+- `HectoPascal`
+- `KilometerPerHour`
+- `Knot`
+- `MercuryInch`
+- `Meter`
+- `MeterPerSecond`
+- `StatuteMile`
+- `UnknownUnit`
