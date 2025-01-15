@@ -13,7 +13,7 @@ The altimeter element from the METAR.
 * `{altimeter|inhg}` ... The numeric altimeter value converted to inches of mercury (inHg)
 * `{altimeter|hpa}` ... The numeric altimeter value converted to hectopascals (hPa)
 * `{altimeter|text}` ... The altimeter value translated to words (e.g. TWO NINER NINER TWO)
-* `{qfe|ELEVATION}` ... Aerodrome atmospheric pressure. Replace `ELEVATION` with the field elvation in feet. Only available for non-FAA stations.
+* `{qfe|ELEVATION_FT}` ... Aerodrome atmospheric pressure. Replace `ELEVATION_FT` with the field elvation in feet. Only available for non-FAA stations.
 
 ![Altimeter](/assets/images/Formatting_Altimeter.png)
 
