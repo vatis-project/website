@@ -15,6 +15,9 @@ After disconnecting an ATIS, the ATIS letter will remain synced with other users
 
 ![ATIS Stations](/assets/images/AtisStations.png)
 
+The selected airport conditions and NOTAMs will be displayed in cyan-colored text within the free-form text boxes. This cyan-colored text is read-only and cannot be edited directly. The selected definitions will always appear before the free-form text, even if the "Include before free-form text" option is enabled. The rest of the text within the box can be edited as usual.
+
+## New ATIS Update
 When a new ATIS update is ready, the ATIS letter for the corresponding ATIS Station will blink. If you have enabled notification sounds, you will also hear a notification sound. To acknowledge the ATIS update, select the respective ATIS Station tab and left-click the ATIS letter once.
 
 ![Acknowledge Update](/assets/images/AcknowledgeUpdate.gif)
@@ -23,3 +26,6 @@ When a new ATIS update is ready, the ATIS letter for the corresponding ATIS Stat
 If you prefer not to cycle through each letter to find the one you want, you can manually enter the ATIS letter. To enter the ATIS letter edit mode, **Shift + Left Double-Click** on the ATIS letter box. The cursor will change to a blinking I-beam, indicating that you can start typing. Type the desired letter and press Enter to confirm it. Press ESC (Escape) to cancel the action.
 
 ![Type ATIS Letter](/assets/images/TypeAtisLetter.gif)
+
+## Fetch Real-World D-ATIS Letter
+You can optionally retrieve the real-world D-ATIS letter (for stations with an active FAA Digital ATIS) by using the keyboard shortcut `CTRL + D`. This action retrieves only the ATIS letter and does not fetch any associated ATIS messages, such as airport conditions or NOTAMs.

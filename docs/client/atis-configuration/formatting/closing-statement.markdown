@@ -2,7 +2,7 @@
 layout: home
 title: Closing Statement
 parent: Formatting
-nav_order: 10
+nav_order: 11
 ---
 
 # Closing Statement
