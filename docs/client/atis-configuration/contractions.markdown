@@ -27,3 +27,7 @@ After filling in the required information, save the contraction to make it avail
 ## Deleting Contraction
 1. Select the contraction from the table.
 2. Click the **Delete** button to remove the contraction. This action is irreversable.
+
+## Using Contractions
+
+To include a contraction, type the @ symbol, followed by the contraction variable name. As you type, an autocomplete popup menu will display the available contraction options, allowing you to quickly select the desired contraction.
