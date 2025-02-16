@@ -17,7 +17,7 @@ To create or manage static messages:
 2. A dialog window will appear, allowing you to add, edit, or delete messages.
 3. You can reorder messages by selecting one from the list and using the **Up** or **Down** buttons. Messages are displayed in the ATIS in the order they appear, but only if their checkboxes are selected.
 
-When adding or editing a message, you can include Contractions by typing the **@** symbol followed by the contraction variable name. As you type, an autocomplete popup menu will display the available contraction options, allowing you to quickly select the desired contraction.
+When composing or modifying a message, you can insert contractions by typing the **@** symbol followed by the contraction variable name. As you type, an autocomplete menu will appear, showing available contraction options for quick selection. Contraction variables may optionally include the **@** symbol as a prefix. Once you choose a contraction from the autocomplete dropdown, the **@** symbol will be automatically removed.
 
 ![NOTAMS contraction search](/assets/images/Notams_ContractionSearch.gif)
 
