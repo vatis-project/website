@@ -19,7 +19,10 @@ To create or manage static messages:
 
 When adding or editing a message, you can include Contractions by typing the **@** symbol followed by the contraction variable name. As you type, an autocomplete popup menu will display the available contraction options, allowing you to quickly select the desired contraction.
 
-![Airport Conditions](/assets/images/Notams_ContractionSearch.gif)
+![NOTAMS contraction search](/assets/images/Notams_ContractionSearch.gif)
 
 ### Include Before Free-form NOTAMs
 If enabled, the checked static messages will be included before the free-form NOTAMs text in the ATIS.
+
+{: .note }
+The main window always shows static messages in front of the free-form NOTAMs, regardless of this setting. Text and voice ATIS messages will include the static messages in the correct location.
