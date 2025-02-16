@@ -28,4 +28,4 @@ If you prefer not to cycle through each letter to find the one you want, you can
 ![Type ATIS Letter](/assets/images/TypeAtisLetter.gif)
 
 ## Fetch Real-World D-ATIS Letter
-You can optionally retrieve the real-world D-ATIS letter (for stations with an active FAA Digital ATIS) by using the keyboard shortcut `CTRL + D`. This action retrieves only the ATIS letter and does not fetch any associated ATIS messages, such as airport conditions or NOTAMs.
+If the **Automatically fetch ATIS letter** option is enabled in User Settings, vATIS will automatically retrieve the real-world D-ATIS letter for stations with an FAA digital ATIS when connecting to the network. This process loads only the ATIS letter and does not include any related messages, such as airport conditions or NOTAMs.
