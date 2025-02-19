@@ -23,6 +23,3 @@ When composing or modifying a message, you can insert contractions by typing the
 
 ### Include Before Free-form Airport Conditions
 If enabled, the checked static messages will be included before the free-form Airport Conditions text in the ATIS.
-
-{: .note }
-The main window always shows static messages in front of the free-form airport conditions, regardless of this setting. Text and voice ATIS messages will include the static messages in the correct location.
