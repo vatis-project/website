@@ -65,6 +65,81 @@ Example message:
 }
 ```
 
+### `profiles`
+
+Sent to a specific client in response to a [`getProfiles`](#getprofiles) message, or to all connected clients. The message includes a collection of profiles, with the following properties:
+
+| Property | Description | Type |
+| - | - | - |
+| id | The unique ID (UUID) for the profile | `string` |
+| name | The name of the profile | `string` |
+
+Example message:
+
+```javascript
+{
+    "type": "profiles",
+    "profiles": [
+        {
+            "id": "1410d902-7b75-4157-b6a7-a124e532fd95",
+            "name": "Los Angeles ARTCC (ZLA)"
+        },
+        {
+            "id": "7dc2457f-e14c-4d07-a736-b96a276666e1",
+            "name": "Miami ARTCC (ZMA)"
+        },
+        {
+            "id": "1310f8e5-89e7-4263-9d5d-b151cf443a95",
+            "name": "ZSE"
+        }
+    ]
+}
+```
+
+### `stations`
+
+Sent to a specific client in response to a [`getStations`](#getstations) message, or to all connected clients. The message includes a collection of stations, with the following properties:
+
+| Property | Description | Type |
+| - | - | - |
+| id | The unique ID (UUID) for the station | `string` |
+| name | The name of the profile | `string` |
+| atisType | The ATIS type | [AtisType](#atistype) |
+| presets | A collection of ATIS preset names | `string[]` (array of strings) |
+
+Example message:
+
+```javascript
+{
+    "type": "stations",
+    "stations": [
+        {
+            "id": "9d79f025-cb2e-485c-93a3-7d1b566d4afb",
+            "name": "KBUR",
+            "atisType": "Combined",
+            "presets": [
+                "33/26 (26/33)",
+                "NORMAL (8/15)",
+                "NORMAL IMC (8/15)",
+                "NORTH (8/33)",
+                "STRAIGHT 33 (33)"
+            ]
+        },
+        {
+            "id": "00cfd104-2bd1-45ec-b5be-731953e52526",
+            "name": "KLAS",
+            "atisType": "Combined",
+            "presets": [
+                "CONFIG 1 (19/26)",
+                "CONFIG 2 (1/8)",
+                "CONFIG 3 (1/26)",
+                "CONFIG 4 (8/19)"
+            ]
+        }
+    ]
+}
+```
+
 ## Incoming messages
 
 The following messages can be sent to vATIS to trigger state changes or to request state information.
@@ -150,6 +225,184 @@ Example message to acknowledge the ATIS update for a specific station that publi
         "atisType": "Departure"
         "station": "KPDX",
     }
+}
+```
+
+### `getProfiles`
+
+Requests a list of all installed profiles. The response returns a collection of [`profiles`](#profiles).
+
+```javascript
+{
+    "type": "getProfiles"
+}
+```
+
+### `getStations`
+
+Requests a list of stations in the currently loaded profile. The response returns a collection of [`stations`](#stations).
+
+```javascript
+{
+    "type": "getStations"
+}
+```
+
+### `loadProfile`
+
+Loads the specified profile by its unique ID. If no profile is found with the given `profileId`, the request is ignored, and no response is returned.
+
+You can retrieve available profile IDs by sending a [`getProfiles`](#getprofiles) request.
+
+```javascript
+{
+    "type": "loadProfile",
+    "value": {
+        "profileId": "1410d902-7b75-4157-b6a7-a124e532fd95"
+    }
+}
+```
+
+### `configureAtis`
+
+Configures the specified ATIS station in the currently loaded profile. If the station doesn't exist or the preset is invalid, the request is ignored, and no response is returned.
+
+You can retrieve available stations presets by sending a [`getStations`](#getstations) request.
+
+The following value properties are supported:
+
+| Property | Description | Type | |
+| - | - | - |
+| station | The station identifier (e.g. `KMIA`) | `string` |
+| id | The unique station ID (UUID) | `string` |
+| atisType | The ATIS type. | [AtisType](#atistype) |
+| preset | The ATIS preset to load | `string` | Required |
+| airportConditionsFreeText | The free-text airport conditions | `string` | Optional |
+| notamsFreeText | The free-text NOTAMs | `string` | Optional |
+
+**Notes:**  
+- You must provide **either** `station` **or** `id`, but **not both**.  
+- `atisType` is required only when using `station` (not needed with `id`).  
+- `airportConditionsFreeText` and `notamsFreeText` are optional. Any provided text will overwrite any previously saved content in the preset, but the changes will not be permanently saved.
+
+Example: Configure ATIS by station identifier and type
+
+```javascript
+{
+    "type": "configureAtis",
+    "value": {
+        "station": "KMIA",
+        "atisType": "Departure",
+        "preset": "D-ATIS",
+        "airportConditionsFreeText": "DEPG RWYS 8L, 8R, 9, 12. RWY 8L, RWY 8R FREQ 118.3 RWY 9, RWY 12 FREQ 123.9.",
+        "notamsFreeText": "ATTENTION NORTH DEPARTURES, NORTH DEPARTURE FREQUENCY IS 126.85."
+    }
+}
+```
+
+Example: Configure ATIS by unique station ID:
+
+```javascript
+{
+    "type": "configureAtis",
+    "value": {
+        "id": "478ad86d-edd0-47b1-972a-f68345fd3f3f",
+        "preset": "D-ATIS",
+        "airportConditionsFreeText": "CTC CD IF UNABLE. RWY 26R, RWY 26L FREQ 118.3 RWY 27, RWY 30 FREQ 123.9.",
+        "notamsFreeText": "BIRDS INVOF MIA. ALL ACFT READ BACK ALL HOLD SHRT INSTRUCTIONS AND ASSIGNED ALT."
+    }
+}
+```
+
+### `connectAtis`
+
+Connects the specified ATIS station to the network. If the station does not exist, the request is ignored, and no response is returned. 
+If the ATIS is successfully connected, an [`atis`](#atis) message response will be received.
+
+To retrieve available stations, send a [`getStations`](#getstations) request.
+
+The following value properties are supported:
+
+| Property | Description | Type |
+| - | - | - |
+| id | The unique station ID (UUID) | `string` |
+| station | The station identifier (e.g. `KMIA`) | `string` |
+| atisType | The ATIS type. | [AtisType](#atistype) |
+
+**Notes:**  
+- You must provide **either** `id` **or** `station` and `atisType`.  
+
+Example: Connect ATIS by station identifier and type
+
+```javascript
+{
+    "type": "connectAtis",
+    "value": {
+        "station": "KMIA",
+        "atisType": "Departure"
+    }
+}
+```
+
+Example: Connect ATIS by unique station ID:
+
+```javascript
+{
+    "type": "connectAtis",
+    "value": {
+        "id": "478ad86d-edd0-47b1-972a-f68345fd3f3f"
+    }
+}
+```
+
+### `disconnectAtis`
+
+Disconnects the specified ATIS station to the network. If the station does not exist, the request is ignored, and no response is returned. 
+If the ATIS is successfully disconnected, an [`atis`](#atis) message response will be received.
+
+To retrieve available stations, send a [`getStations`](#getstations) request.
+
+The following value properties are supported:
+
+| Property | Description | Type |
+| - | - | - |
+| id | The unique station ID (UUID) | `string` |
+| station | The station identifier (e.g. `KMIA`) | `string` |
+| atisType | The ATIS type. | [AtisType](#atistype) |
+
+**Notes:**  
+- You must provide **either** `id` **or** `station` and `atisType`.  
+
+Example: Disconnect ATIS by station identifier and type
+
+```javascript
+{
+    "type": "disconnectAtis",
+    "value": {
+        "station": "KMIA",
+        "atisType": "Departure"
+    }
+}
+```
+
+Example: Disconnect ATIS by unique station ID:
+
+```javascript
+{
+    "type": "disconnectAtis",
+    "value": {
+        "id": "478ad86d-edd0-47b1-972a-f68345fd3f3f"
+    }
+}
+```
+
+### `quit`
+
+Disconnects all active ATIS connections and gracefully shuts down the application process. No response is returned.
+
+```javascript
+{
+    "type": "quit"
 }
 ```
 
