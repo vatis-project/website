@@ -112,7 +112,7 @@ The following value properties are supported:
 }
 ````
 
-**Acknowledge the ATIS update for a specific station that publishes a combined ATIS:**
+**Acknowledge the ATIS update for a specific station that publishes a combined ATIS**
 
 ```json
 {
@@ -266,7 +266,7 @@ To retrieve available stations, send a [`getStations`](#getstations) request.
 }
 ```
 
-**Connect ATIS by unique station ID:**
+**Connect ATIS by unique station ID**
 
 ```json
 {
