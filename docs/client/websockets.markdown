@@ -8,8 +8,8 @@ nav_order: 14
 # WebSocket API
 
 vATIS provides a websocket interface at `ws://127.0.0.1:49082/` to receive ATIS updates and interact with vATIS.
-For an example of using the WebSocket interface see the [Stream Deck actions for vATIS project](https://github.com/neilenns/streamdeck-vatis).
-TypeScript [type definitions for the messages](https://github.com/neilenns/streamdeck-vatis/blob/main/src/interfaces/messages.ts) are also available in that project.
+
+For an example of using the WebSocket interface see the [Stream Deck actions for vATIS project](https://github.com/neilenns/streamdeck-vatis). TypeScript [type definitions for the messages](https://github.com/neilenns/streamdeck-vatis/blob/main/src/interfaces/messages.ts) are also available in that project.
 
 ## Outgoing messages
 
@@ -17,26 +17,26 @@ The following messages are sent by vATIS to connected clients.
 
 ### `atis`
 
-Sent to a specific client in response to a `getAtis` message, or to all connected clients whenever a property on an
+Sent to a specific client in response to a [`getAtis`](#getatis) message, or to all connected clients whenever a property on an
 ATIS changes. The following value properties are sent:
 
 | Property | Description | Type |
 | - | - | - |
-| altimeter | The formatted altimeter reading for the station. | `string` |
-| atisLetter | The current ATIS letter. | `string` |
-| atisType | The ATIS type. | [AtisType](#atistype) |
-| ceiling | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
-| isNewAtis | True if the ATIS is new and has not been acknowledged by the user. | `boolean` |
-| metar | The unparsed METAR for the station. | `string` |
-| networkConnectionStatus | The status of the station's network connection. | [NetworkConnectionStatus](#networkconnectionstatus) |
-| pressure | The current pressure, as a whole number (e.g. `2990`). | [Value](#value) |
-| prevailingVisibility | The current visibility. | [Value](#value) |
-| station | The identifier for the station. | `string` |
-| textAtis | The text version of the ATIS, if available. | `string` |
+| `altimeter` | The formatted altimeter reading for the station. | `string` |
+| `atisLetter` | The current ATIS letter. | `string` |
+| `atisType` | The ATIS type. | [AtisType](#atistype) |
+| `ceiling` | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
+| `isNewAtis` | True if the ATIS is new and has not been acknowledged by the user. | `boolean` |
+| `metar` | The unparsed METAR for the station. | `string` |
+| `networkConnectionStatus` | The status of the station's network connection. | [NetworkConnectionStatus](#networkconnectionstatus) |
+| `pressure` | The current pressure, as a whole number (e.g. `2990`). | [Value](#value) |
+| `prevailingVisibility` | The current visibility. | [Value](#value) |
+| `station` | The identifier for the station. | `string` |
+| `textAtis` | The text version of the ATIS, if available. | `string` |
 
 Example message:
 
-```javascript
+```json
 {
     "type": "atis",
     "value": {
@@ -65,18 +65,20 @@ Example message:
 }
 ```
 
+---
+
 ### `profiles`
 
 Sent to a specific client in response to a [`getProfiles`](#getprofiles) message, or to all connected clients. The message includes a collection of profiles, with the following properties:
 
 | Property | Description | Type |
 | - | - | - |
-| id | The unique ID (UUID) for the profile | `string` |
-| name | The name of the profile | `string` |
+| `id` | The unique ID for the profile | `string` |
+| `name` | The name of the profile | `string` |
 
-Example message:
+#### Example Message
 
-```javascript
+```json
 {
     "type": "profiles",
     "profiles": [
@@ -96,20 +98,22 @@ Example message:
 }
 ```
 
+---
+
 ### `stations`
 
 Sent to a specific client in response to a [`getStations`](#getstations) message, or to all connected clients. The message includes a collection of stations, with the following properties:
 
 | Property | Description | Type |
 | - | - | - |
-| id | The unique ID (UUID) for the station | `string` |
-| name | The name of the profile | `string` |
-| atisType | The ATIS type | [AtisType](#atistype) |
-| presets | A collection of ATIS preset names | `string[]` (array of strings) |
+| `id` | The unique ID for the station | `string` |
+| `name` | The name of the profile | `string` |
+| `atisType` | The ATIS type | [AtisType](#atistype) |
+| `presets` | A collection of ATIS preset names | `string[]` (array of strings) |
 
-Example message:
+#### Example Message
 
-```javascript
+```json
 {
     "type": "stations",
     "stations": [
@@ -149,23 +153,40 @@ The following messages can be sent to vATIS to trigger state changes or to reque
 Requests the current ATIS for a specific station or all stations in the loaded profile. The response is
 an [`atis`](#atis) message for each matching station.
 
-The following value properties are supported:
+#### Message Properties
 
-| Property | Description | Type |
-| atisType | The station type to return. Optional, if omitted defaults to `Combined`. Only supported when the `station` property is set. This enables requesting the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) |
-| station | The identifier of the station to get the ATIS for. Optional. If omitted the current ATIS for all stations in the loaded profile will be returned. | string |
+| Property | Description | Type | Notes |
+|-|-|-|-|
+| `id` | The unique ID of the station to get the ATIS for. | string |
+| `atisType` | The station type to return. This enables requesting the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) | Optional. Defaults to `Combined`. Only supported when the `station` property is set. |
+| `station` | The identifier of the station to get the ATIS for. | string |
 
-Example message to request the ATIS for all stations in the current profile:
+> Note: If `id` and `station` are omitted, the current ATIS for all stations in the loaded profile will be returned.
 
-```javascript
+#### Example Messages
+
+**Request the ATIS for all stations in the current profile**
+
+```json
 {
     "type": "getAtis"
 }
 ```
 
-Example message to request the ATIS for a specific station that publishes a combined ATIS:
+**Request the ATIS for a specific station using the unique station ID**
 
-```javascript
+```json
+{
+    "type": "getAtis",
+    "value": {
+        "id": "9d79f025-cb2e-485c-93a3-7d1b566d4afb"
+    }
+}
+```
+
+**Request the ATIS for a specific station that publishes a combined ATIS**
+
+```json
 {
     "type": "getAtis",
     "value": {
@@ -174,9 +195,9 @@ Example message to request the ATIS for a specific station that publishes a comb
 }
 ```
 
-Example message to request the departure ATIS for a specific station that publishes a split ATIS:
+**Request the departure ATIS for a specific station that publishes a split ATIS**
 
-```javascript
+```json
 {
     "type": "getAtis",
     "value": {
@@ -185,6 +206,8 @@ Example message to request the departure ATIS for a specific station that publis
     }
 }
 ```
+
+---
 
 ### `acknowledgeAtisUpdate`
 
@@ -193,21 +216,38 @@ and turning off the flashing new ATIS letter in vATIS for the station(s).
 
 The following value properties are supported:
 
-| Property | Description | Type |
-| atisType | The station type to acknowledge. Optional, if omitted defaults to `Combined`. Only supported when the `station` property is set. This enables acknowledging the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) |
-| station | The identifier of the station to acknowledge. Optional. If omitted all stations in the loaded profile will have the new ATIS acknowledged. | string |
+| Property | Description | Type | Notes |
+|-|-|-|-|
+| `id` | The unique ID of the station to acknowledge. | string |
+| `atisType` | The station type to acknowledge. This enables acknowledging the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) | Optional. Defaults to `Combined`. Only supported when the `station` property is set. |
+| `station` | The identifier of the station to acknowledge. | string |
 
-Example message to acknowledge the ATIS update for all stations in the current profile:
+> Note: If `id` and `station` are omitted, all new ATISes in the loaded profile will be acknowledged.
 
-```javascript
+### Example Messages
+
+**Acknowledge the ATIS update for all stations in the current profile**
+
+```json
 {
     "type": "acknowledgeAtisUpdate"
 }
 ```
 
-Example message to acknowledge the ATIS update for a specific station that publishes a combined ATIS:
+**Acknowledge the ATIS update for a specific station using the unique station ID**
 
-```javascript
+```json
+{
+    "type": "acknowledgeAtisUpdate",
+    "value": {
+        "id": "9d79f025-cb2e-485c-93a3-7d1b566d4afb"
+    }
+}
+````
+
+**Acknowledge the ATIS update for a specific station that publishes a combined ATIS:**
+
+```json
 {
     "type": "acknowledgeAtisUpdate",
     "value": {
@@ -216,9 +256,9 @@ Example message to acknowledge the ATIS update for a specific station that publi
 }
 ```
 
-Example message to acknowledge the ATIS update for a specific station that publishes a split ATIS:
+**Acknowledge the ATIS update for a specific station that publishes a split ATIS**
 
-```javascript
+```json
 {
     "type": "acknowledgeAtisUpdate",
     "value": {
@@ -228,40 +268,48 @@ Example message to acknowledge the ATIS update for a specific station that publi
 }
 ```
 
+---
+
 ### `getProfiles`
 
 Requests a list of all installed profiles. The response returns a collection of [`profiles`](#profiles).
 
-```javascript
+```json
 {
     "type": "getProfiles"
 }
 ```
 
+---
+
 ### `getStations`
 
 Requests a list of stations in the currently loaded profile. The response returns a collection of [`stations`](#stations).
 
-```javascript
+```json
 {
     "type": "getStations"
 }
 ```
 
+---
+
 ### `loadProfile`
 
-Loads the specified profile by its unique ID. If no profile is found with the given `profileId`, the request is ignored, and no response is returned.
+Loads the specified profile by its unique ID. If no profile is found with the given `id`, the request is ignored, and no response is returned.
 
 You can retrieve available profile IDs by sending a [`getProfiles`](#getprofiles) request.
 
-```javascript
+```json
 {
     "type": "loadProfile",
     "value": {
-        "profileId": "1410d902-7b75-4157-b6a7-a124e532fd95"
+        "id": "1410d902-7b75-4157-b6a7-a124e532fd95"
     }
 }
 ```
+
+---
 
 ### `configureAtis`
 
@@ -272,22 +320,25 @@ You can retrieve available stations presets by sending a [`getStations`](#getsta
 The following value properties are supported:
 
 | Property | Description | Type | |
-| - | - | - |
-| station | The station identifier (e.g. `KMIA`) | `string` |
-| id | The unique station ID (UUID) | `string` |
-| atisType | The ATIS type. | [AtisType](#atistype) |
-| preset | The ATIS preset to load | `string` | Required |
-| airportConditionsFreeText | The free-text airport conditions | `string` | Optional |
-| notamsFreeText | The free-text NOTAMs | `string` | Optional |
+| - | - | - | - |
+| `station` | The station identifier (e.g. `KMIA`) | `string` |
+| `id` | The unique station ID | `string` |
+| `atisType` | The ATIS type. | [AtisType](#atistype) |
+| `preset` | The ATIS preset to load | `string` | Required |
+| `airportConditionsFreeText` | The free-text airport conditions | `string` | Optional |
+| `notamsFreeText` | The free-text NOTAMs | `string` | Optional |
 
-**Notes:**  
-- You must provide **either** `station` **or** `id`, but **not both**.  
-- `atisType` is required only when using `station` (not needed with `id`).  
-- `airportConditionsFreeText` and `notamsFreeText` are optional. Any provided text will overwrite any previously saved content in the preset, but the changes will not be permanently saved.
 
-Example: Configure ATIS by station identifier and type
+> **Notes:**  
+> - You must provide **either** `station` **or** `id`, but **not both**.
+> - `atisType` is required only when using `station` (not needed with `id`).  
+> - `airportConditionsFreeText` and `notamsFreeText` are optional. Any provided text will overwrite any text in the preset, but the changes will not be permanently saved.
 
-```javascript
+#### Example Messages
+
+**Configure ATIS by station identifier and type**
+
+```json
 {
     "type": "configureAtis",
     "value": {
@@ -300,9 +351,9 @@ Example: Configure ATIS by station identifier and type
 }
 ```
 
-Example: Configure ATIS by unique station ID:
+**Configure ATIS by unique station ID**
 
-```javascript
+```json
 {
     "type": "configureAtis",
     "value": {
@@ -314,27 +365,31 @@ Example: Configure ATIS by unique station ID:
 }
 ```
 
+---
+
 ### `connectAtis`
 
 Connects the specified ATIS station to the network. If the station does not exist, the request is ignored, and no response is returned. 
+
 If the ATIS is successfully connected, an [`atis`](#atis) message response will be received.
 
 To retrieve available stations, send a [`getStations`](#getstations) request.
 
-The following value properties are supported:
+#### Message Properties
 
 | Property | Description | Type |
 | - | - | - |
-| id | The unique station ID (UUID) | `string` |
-| station | The station identifier (e.g. `KMIA`) | `string` |
-| atisType | The ATIS type. | [AtisType](#atistype) |
+| `id` | The unique station ID | `string` |
+| `station` | The station identifier (e.g. `KMIA`) | `string` |
+| `atisType` | The ATIS type. | [AtisType](#atistype) |
 
-**Notes:**  
-- You must provide **either** `id` **or** `station` and `atisType`.  
+> **Note:** You must provide **either** `id` **or** `station` and `atisType`.  
 
-Example: Connect ATIS by station identifier and type
+#### Example Messages
 
-```javascript
+**Connect ATIS by station identifier and type**
+
+```json
 {
     "type": "connectAtis",
     "value": {
@@ -344,9 +399,9 @@ Example: Connect ATIS by station identifier and type
 }
 ```
 
-Example: Connect ATIS by unique station ID:
+**Connect ATIS by unique station ID:**
 
-```javascript
+```json
 {
     "type": "connectAtis",
     "value": {
@@ -354,28 +409,32 @@ Example: Connect ATIS by unique station ID:
     }
 }
 ```
+
+---
 
 ### `disconnectAtis`
 
 Disconnects the specified ATIS station to the network. If the station does not exist, the request is ignored, and no response is returned. 
+
 If the ATIS is successfully disconnected, an [`atis`](#atis) message response will be received.
 
 To retrieve available stations, send a [`getStations`](#getstations) request.
 
-The following value properties are supported:
+#### Message Properties
 
 | Property | Description | Type |
 | - | - | - |
-| id | The unique station ID (UUID) | `string` |
-| station | The station identifier (e.g. `KMIA`) | `string` |
-| atisType | The ATIS type. | [AtisType](#atistype) |
+| `id` | The unique station ID | `string` |
+| `station` | The station identifier (e.g. `KMIA`) | `string` |
+| `atisType` | The ATIS type. | [AtisType](#atistype) |
 
-**Notes:**  
-- You must provide **either** `id` **or** `station` and `atisType`.  
+> **Note:**  You must provide **either** `id` **or** `station` and `atisType`.  
 
-Example: Disconnect ATIS by station identifier and type
+#### Example Messages
 
-```javascript
+**Disconnect ATIS by station identifier and type**
+
+```json
 {
     "type": "disconnectAtis",
     "value": {
@@ -385,9 +444,9 @@ Example: Disconnect ATIS by station identifier and type
 }
 ```
 
-Example: Disconnect ATIS by unique station ID:
+**Disconnect ATIS by unique station ID**
 
-```javascript
+```json
 {
     "type": "disconnectAtis",
     "value": {
@@ -395,12 +454,14 @@ Example: Disconnect ATIS by unique station ID:
     }
 }
 ```
+
+---
 
 ### `quit`
 
 Disconnects all active ATIS connections and gracefully shuts down the application process. No response is returned.
 
-```javascript
+```json
 {
     "type": "quit"
 }
