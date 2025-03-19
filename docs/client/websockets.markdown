@@ -68,8 +68,8 @@ an [`atis`](#atis) message for each matching station.
 {
     "type": "getAtis",
     "value": {
-        "atisType": "Departure"
-        "station": "KPDX",
+        "atisType": "Departure",
+        "station": "KPDX"
     }
 }
 ```
@@ -91,7 +91,7 @@ The following value properties are supported:
 
 > Note: If `id` and `station` are omitted, all new ATISes in the loaded profile will be acknowledged.
 
-### Example Messages
+#### Example Messages
 
 **Acknowledge the ATIS update for all stations in the current profile**
 
@@ -129,8 +129,8 @@ The following value properties are supported:
 {
     "type": "acknowledgeAtisUpdate",
     "value": {
-        "atisType": "Departure"
-        "station": "KPDX",
+        "atisType": "Departure",
+        "station": "KPDX"
     }
 }
 ```
