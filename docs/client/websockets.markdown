@@ -11,139 +11,6 @@ vATIS provides a websocket interface at `ws://127.0.0.1:49082/` to receive ATIS 
 
 For an example of using the WebSocket interface see the [Stream Deck actions for vATIS project](https://github.com/neilenns/streamdeck-vatis). TypeScript [type definitions for the messages](https://github.com/neilenns/streamdeck-vatis/blob/main/src/interfaces/messages.ts) are also available in that project.
 
-## Outgoing messages
-
-The following messages are sent by vATIS to connected clients.
-
-### `atis`
-
-Sent to a specific client in response to a [`getAtis`](#getatis) message, or to all connected clients whenever a property on an
-ATIS changes. The following value properties are sent:
-
-| Property | Description | Type |
-| - | - | - |
-| `altimeter` | The formatted altimeter reading for the station. | `string` |
-| `atisLetter` | The current ATIS letter. | `string` |
-| `atisType` | The ATIS type. | [AtisType](#atistype) |
-| `ceiling` | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
-| `isNewAtis` | True if the ATIS is new and has not been acknowledged by the user. | `boolean` |
-| `metar` | The unparsed METAR for the station. | `string` |
-| `networkConnectionStatus` | The status of the station's network connection. | [NetworkConnectionStatus](#networkconnectionstatus) |
-| `pressure` | The current pressure, as a whole number (e.g. `2990`). | [Value](#value) |
-| `prevailingVisibility` | The current visibility. | [Value](#value) |
-| `station` | The identifier for the station. | `string` |
-| `textAtis` | The text version of the ATIS, if available. | `string` |
-
-Example message:
-
-```json
-{
-    "type": "atis",
-    "value": {
-        "networkConnectionStatus": "Connected",
-        "textAtis": "KPDX ATIS INFO A 1853Z. 24009G14KT 6SM LIGHT RA BKN030 BKN039 OVC046 08/04 A3061 (THREE ZERO SIX ONE). SIMUL VIS APCHS IN USE RWYS 10L AND 10R. JET ACFT EXPT THE COLUMBIA VIS APCH. DEPTG RWYS 10L AND 10R. NOTAMS... PUSHBACK ONTO TWYS T AND K REQS ATC CLNC.....ADVS YOU HAVE INFO A.",
-        "station": "KPDX",
-        "atisType": "Combined",
-        "atisLetter": "A",
-        "metar": "KPDX 111853Z 26009G14KT 6SM -RA BKN030 BKN039 OVC046 08/04 A3061 RMK AO2 RAB45 SLP363 P0000 T00830039",
-        "wind": "26009G14KT",
-        "altimeter": "A3061",
-        "pressure": {
-            "actualValue": 3061,
-            "actualUnit": "MercuryInch"
-        },
-        "isNewAtis": false,
-        "ceiling": {
-            "actualValue": 30,
-            "actualUnit": "Feet"
-        },
-        "prevailingVisibility": {
-            "actualValue": 6,
-            "actualUnit": "StatuteMile"
-        }
-    }
-}
-```
-
----
-
-### `profiles`
-
-Sent to a specific client in response to a [`getProfiles`](#getprofiles) message, or to all connected clients. The message includes a collection of profiles, with the following properties:
-
-| Property | Description | Type |
-| - | - | - |
-| `id` | The unique ID for the profile | `string` |
-| `name` | The name of the profile | `string` |
-
-#### Example Message
-
-```json
-{
-    "type": "profiles",
-    "profiles": [
-        {
-            "id": "1410d902-7b75-4157-b6a7-a124e532fd95",
-            "name": "Los Angeles ARTCC (ZLA)"
-        },
-        {
-            "id": "7dc2457f-e14c-4d07-a736-b96a276666e1",
-            "name": "Miami ARTCC (ZMA)"
-        },
-        {
-            "id": "1310f8e5-89e7-4263-9d5d-b151cf443a95",
-            "name": "ZSE"
-        }
-    ]
-}
-```
-
----
-
-### `stations`
-
-Sent to a specific client in response to a [`getStations`](#getstations) message, or to all connected clients. The message includes a collection of stations, with the following properties:
-
-| Property | Description | Type |
-| - | - | - |
-| `id` | The unique ID for the station | `string` |
-| `name` | The name of the profile | `string` |
-| `atisType` | The ATIS type | [AtisType](#atistype) |
-| `presets` | A collection of ATIS preset names | `string[]` (array of strings) |
-
-#### Example Message
-
-```json
-{
-    "type": "stations",
-    "stations": [
-        {
-            "id": "9d79f025-cb2e-485c-93a3-7d1b566d4afb",
-            "name": "KBUR",
-            "atisType": "Combined",
-            "presets": [
-                "33/26 (26/33)",
-                "NORMAL (8/15)",
-                "NORMAL IMC (8/15)",
-                "NORTH (8/33)",
-                "STRAIGHT 33 (33)"
-            ]
-        },
-        {
-            "id": "00cfd104-2bd1-45ec-b5be-731953e52526",
-            "name": "KLAS",
-            "atisType": "Combined",
-            "presets": [
-                "CONFIG 1 (19/26)",
-                "CONFIG 2 (1/8)",
-                "CONFIG 3 (1/26)",
-                "CONFIG 4 (8/19)"
-            ]
-        }
-    ]
-}
-```
-
 ## Incoming messages
 
 The following messages can be sent to vATIS to trigger state changes or to request state information.
@@ -464,6 +331,139 @@ Disconnects all active ATIS connections and gracefully shuts down the applicatio
 ```json
 {
     "type": "quit"
+}
+```
+
+## Outgoing messages
+
+The following messages are sent by vATIS to connected clients.
+
+### `atis`
+
+Sent to a specific client in response to a [`getAtis`](#getatis) message, or to all connected clients whenever a property on an
+ATIS changes. The following value properties are sent:
+
+| Property | Description | Type |
+| - | - | - |
+| `altimeter` | The formatted altimeter reading for the station. | `string` |
+| `atisLetter` | The current ATIS letter. | `string` |
+| `atisType` | The ATIS type. | [AtisType](#atistype) |
+| `ceiling` | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
+| `isNewAtis` | True if the ATIS is new and has not been acknowledged by the user. | `boolean` |
+| `metar` | The unparsed METAR for the station. | `string` |
+| `networkConnectionStatus` | The status of the station's network connection. | [NetworkConnectionStatus](#networkconnectionstatus) |
+| `pressure` | The current pressure, as a whole number (e.g. `2990`). | [Value](#value) |
+| `prevailingVisibility` | The current visibility. | [Value](#value) |
+| `station` | The identifier for the station. | `string` |
+| `textAtis` | The text version of the ATIS, if available. | `string` |
+
+Example message:
+
+```json
+{
+    "type": "atis",
+    "value": {
+        "networkConnectionStatus": "Connected",
+        "textAtis": "KPDX ATIS INFO A 1853Z. 24009G14KT 6SM LIGHT RA BKN030 BKN039 OVC046 08/04 A3061 (THREE ZERO SIX ONE). SIMUL VIS APCHS IN USE RWYS 10L AND 10R. JET ACFT EXPT THE COLUMBIA VIS APCH. DEPTG RWYS 10L AND 10R. NOTAMS... PUSHBACK ONTO TWYS T AND K REQS ATC CLNC.....ADVS YOU HAVE INFO A.",
+        "station": "KPDX",
+        "atisType": "Combined",
+        "atisLetter": "A",
+        "metar": "KPDX 111853Z 26009G14KT 6SM -RA BKN030 BKN039 OVC046 08/04 A3061 RMK AO2 RAB45 SLP363 P0000 T00830039",
+        "wind": "26009G14KT",
+        "altimeter": "A3061",
+        "pressure": {
+            "actualValue": 3061,
+            "actualUnit": "MercuryInch"
+        },
+        "isNewAtis": false,
+        "ceiling": {
+            "actualValue": 30,
+            "actualUnit": "Feet"
+        },
+        "prevailingVisibility": {
+            "actualValue": 6,
+            "actualUnit": "StatuteMile"
+        }
+    }
+}
+```
+
+---
+
+### `profiles`
+
+Sent to a specific client in response to a [`getProfiles`](#getprofiles) message, or to all connected clients. The message includes a collection of profiles, with the following properties:
+
+| Property | Description | Type |
+| - | - | - |
+| `id` | The unique ID for the profile | `string` |
+| `name` | The name of the profile | `string` |
+
+#### Example Message
+
+```json
+{
+    "type": "profiles",
+    "profiles": [
+        {
+            "id": "1410d902-7b75-4157-b6a7-a124e532fd95",
+            "name": "Los Angeles ARTCC (ZLA)"
+        },
+        {
+            "id": "7dc2457f-e14c-4d07-a736-b96a276666e1",
+            "name": "Miami ARTCC (ZMA)"
+        },
+        {
+            "id": "1310f8e5-89e7-4263-9d5d-b151cf443a95",
+            "name": "ZSE"
+        }
+    ]
+}
+```
+
+---
+
+### `stations`
+
+Sent to a specific client in response to a [`getStations`](#getstations) message, or to all connected clients. The message includes a collection of stations, with the following properties:
+
+| Property | Description | Type |
+| - | - | - |
+| `id` | The unique ID for the station | `string` |
+| `name` | The name of the profile | `string` |
+| `atisType` | The ATIS type | [AtisType](#atistype) |
+| `presets` | A collection of ATIS preset names | `string[]` (array of strings) |
+
+#### Example Message
+
+```json
+{
+    "type": "stations",
+    "stations": [
+        {
+            "id": "9d79f025-cb2e-485c-93a3-7d1b566d4afb",
+            "name": "KBUR",
+            "atisType": "Combined",
+            "presets": [
+                "33/26 (26/33)",
+                "NORMAL (8/15)",
+                "NORMAL IMC (8/15)",
+                "NORTH (8/33)",
+                "STRAIGHT 33 (33)"
+            ]
+        },
+        {
+            "id": "00cfd104-2bd1-45ec-b5be-731953e52526",
+            "name": "KLAS",
+            "atisType": "Combined",
+            "presets": [
+                "CONFIG 1 (19/26)",
+                "CONFIG 2 (1/8)",
+                "CONFIG 3 (1/26)",
+                "CONFIG 4 (8/19)"
+            ]
+        }
+    ]
 }
 ```
 
