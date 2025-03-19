@@ -28,7 +28,7 @@ an [`atis`](#atis) message for each matching station.
 | `atisType` | The station type to return. This enables requesting the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) | Optional. Defaults to `Combined`. Only supported when the `station` property is set. |
 | `station` | The identifier of the station to get the ATIS for. | string |
 
-> Note: If `id` and `station` are omitted, the current ATIS for all stations in the loaded profile will be returned.
+> **Note:** If `id` and `station` are omitted, the current ATIS for all stations in the loaded profile will be returned.
 
 #### Example Messages
 
@@ -89,7 +89,7 @@ The following value properties are supported:
 | `atisType` | The station type to acknowledge. This enables acknowledging the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) | Optional. Defaults to `Combined`. Only supported when the `station` property is set. |
 | `station` | The identifier of the station to acknowledge. | string |
 
-> Note: If `id` and `station` are omitted, all new ATISes in the loaded profile will be acknowledged.
+> **Note:** If `id` and `station` are omitted, all new ATISes in the loaded profile will be acknowledged.
 
 #### Example Messages
 
@@ -110,7 +110,7 @@ The following value properties are supported:
         "id": "9d79f025-cb2e-485c-93a3-7d1b566d4afb"
     }
 }
-````
+```
 
 **Acknowledge the ATIS update for a specific station that publishes a combined ATIS**
 
