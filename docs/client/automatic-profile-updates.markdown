@@ -38,5 +38,12 @@ The updated profile will look something like this:
 ### Update URL
 The `updateUrl` property specifies the location where the profile file is hosted. If user's profile includes this URL, vATIS will compare the locally installed version with the version available at the specified URL. The file must be publicly accessible in order for vATIS to download it.
 
+{: .note-title }
+> Note
+>
+> The `updateUrl` is requested with a `ts` query parameter that includes a timestamp to ensure the file isn't cached. For example:
+>
+> `https://example.com/vatis/profiles/vATIS-Profile.json?ts=1742437799`
+
 ### Update Serial
 The `updateSerial` property is a version identifier based on a date stamp. Incrementing this version number forces vATIS to install the new profile version. The format of this value should be **YYYYMMDD##**, where **##** is a number between **00** and **99**. This format allows for multiple updates on the same day in case of corrections or additional changes.
