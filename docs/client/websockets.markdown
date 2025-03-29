@@ -345,17 +345,19 @@ ATIS changes. The following value properties are sent:
 
 | Property | Description | Type |
 | - | - | - |
-| `altimeter` | The formatted altimeter reading for the station. | `string` |
-| `atisLetter` | The current ATIS letter. | `string` |
+| `id` | The unique station ID | `string` |
+| `station` | The identifier for the station. | `string` |
 | `atisType` | The ATIS type. | [AtisType](#atistype) |
-| `ceiling` | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
+| `networkConnectionStatus` | The status of the station's network connection. | [NetworkConnectionStatus](#networkconnectionstatus) |
+| `atisLetter` | The current ATIS letter. | `string` |
+| `textAtis` | The text version of the ATIS, if available. | `string` |
 | `isNewAtis` | True if the ATIS is new and has not been acknowledged by the user. | `boolean` |
 | `metar` | The unparsed METAR for the station. | `string` |
-| `networkConnectionStatus` | The status of the station's network connection. | [NetworkConnectionStatus](#networkconnectionstatus) |
+| `wind` | The current surface wind | `string` |
+| `altimeter` | The formatted altimeter reading for the station. | `string` |
 | `pressure` | The current pressure, as a whole number (e.g. `2990`). | [Value](#value) |
+| `ceiling` | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
 | `prevailingVisibility` | The current visibility. | [Value](#value) |
-| `station` | The identifier for the station. | `string` |
-| `textAtis` | The text version of the ATIS, if available. | `string` |
 
 Example message:
 
@@ -363,11 +365,13 @@ Example message:
 {
     "type": "atis",
     "value": {
-        "networkConnectionStatus": "Connected",
-        "textAtis": "KPDX ATIS INFO A 1853Z. 24009G14KT 6SM LIGHT RA BKN030 BKN039 OVC046 08/04 A3061 (THREE ZERO SIX ONE). SIMUL VIS APCHS IN USE RWYS 10L AND 10R. JET ACFT EXPT THE COLUMBIA VIS APCH. DEPTG RWYS 10L AND 10R. NOTAMS... PUSHBACK ONTO TWYS T AND K REQS ATC CLNC.....ADVS YOU HAVE INFO A.",
+        "id": "6fc63107-c1c8-4b12-9957-15e5df9906cf",
         "station": "KPDX",
         "atisType": "Combined",
+        "networkConnectionStatus": "Connected",
         "atisLetter": "A",
+        "textAtis": "KPDX ATIS INFO A 1853Z. 24009G14KT 6SM LIGHT RA BKN030 BKN039 OVC046 08/04 A3061 (THREE ZERO SIX ONE). SIMUL VIS APCHS IN USE RWYS 10L AND 10R. JET ACFT EXPT THE COLUMBIA VIS APCH. DEPTG RWYS 10L AND 10R. NOTAMS... PUSHBACK ONTO TWYS T AND K REQS ATC CLNC.....ADVS YOU HAVE INFO A.",
+        "isNewAtis": false,
         "metar": "KPDX 111853Z 26009G14KT 6SM -RA BKN030 BKN039 OVC046 08/04 A3061 RMK AO2 RAB45 SLP363 P0000 T00830039",
         "wind": "26009G14KT",
         "altimeter": "A3061",
@@ -375,7 +379,6 @@ Example message:
             "actualValue": 3061,
             "actualUnit": "MercuryInch"
         },
-        "isNewAtis": false,
         "ceiling": {
             "actualValue": 30,
             "actualUnit": "Feet"
