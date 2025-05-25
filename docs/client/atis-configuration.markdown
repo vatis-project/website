@@ -9,7 +9,7 @@ nav_order: 11
 
 Open the ATIS Configuration window by clicking the **ATIS Configuration** button on the main vATIS display. This window allows you to add, modify, or delete ATIS stations. The left sidebar displays a list of all ATIS stations saved in the currently loaded profile.
 
-![Compact Window](/assets/images/AtisConfiguration.png)
+![ATIS Configuration](/assets/images/AtisConfiguration.png)
 
 ## Add New ATIS Station
 To add a new ATIS station, click the **New** button at the bottom-left corner of the ATIS Configuration window. A dialog will appear, prompting you to enter the airport identifier (ICAO) and the station name (typically the airport's name). Choose the ATIS station type: Combined, Departure, or Arrival. Click **OK** to save the station. Then, select the newly created ATIS station from the left sidebar to configure it.

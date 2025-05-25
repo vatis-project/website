@@ -11,7 +11,7 @@ nav_order: 3
 
 1. Opens the [User Settings](user-settings) window.
 2. Opens the [ATIS Configuration](atis-configuration) window.
-3. Window Controls: Pin Window, Toggle [Compact Window](compact-window), Minimize and Exit.
+3. Window Controls: Pin Window, Toggle [Mini-Window](mini-window), Minimize and Exit.
 4. The ATIS Stations saved to the current Profile. Connected ATIS Stations will display the ATIS letter next to the identifier.
 5. The current ATIS letter. Left mouse-click to increment and right-mouse click to go back to the previous letter.
 6. The METAR for the selected ATIS station.
