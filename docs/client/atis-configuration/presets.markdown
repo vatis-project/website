@@ -7,7 +7,7 @@ nav_order: 2
 
 # Presets
 
-![Compact Window](/assets/images/AtisConfiguration_Presets.png)
+![Presets](/assets/images/AtisConfiguration_Presets.png)
 
 The Presets tab allows you to manage your presets by adding, copying, renaming, or deleting them. The text box below the dropdown list is where you can customize the ATIS template. When an ATIS is generated, the variables will be replaced with actual data. If the Composite is configured to use Text to Speech, the template text will be synthesized and transmitted.
 

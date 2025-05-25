@@ -7,7 +7,7 @@ nav_order: 1
 
 # General Configuration
 
-![Compact Window](/assets/images/AtisConfiguration.png)
+![General Configuration](/assets/images/AtisConfiguration.png)
 
 {: .note-title }
 > Note
