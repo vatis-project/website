@@ -14,7 +14,16 @@ The Compact Window offers a streamlined display of the current ATIS letter, wind
 ## Window Controls
 ![Compact Window](/assets/images/CompactWindowTools.gif)
 
-Hovering over the window reveals the control buttons in the top right corner. If the right side of the window is off-screen, these controls will dynamically shift to the top left. Click the "pin" icon to keep the window on top or the "double-headed arrow" icon to restore the full vATIS window.
+Hold the CTRL key and hover over the window to reveal the control buttons in the top-right corner. If the right edge of the window is off-screen, the controls will automatically shift to the top-left.
+
+* Click the **three-dots** icon to hide detailed ATIS information for a more compact view.
+* Click the **pin** icon to keep the window on top.
+* Click the **double arrow** icon to restore the full vATIS window.
 
 ## Acknowledge ATIS Update
-If a new ATIS update is available, the ATIS letter will blink. Click the blinking ATIS letter to acknowledge the update.
+When a new ATIS update is available, the ATIS letter will blink. Click the blinking letter to acknowledge the update. To acknowledge all blinking ATIS letters at once, you can also middle-click on any blinking letter.
+
+## Filter ATIS Stations
+To view only specific online ATIS stations, right-click the window and check or uncheck the stations you want to show or hide.
+
+![Compact Window](/assets/images/MiniWindowFilterStations.gif)
