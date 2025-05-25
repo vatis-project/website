@@ -1,18 +1,18 @@
 ---
 layout: home
-title: Compact Window
+title: Mini-Window
 parent: vATIS
 nav_order: 5
 ---
 
-# Compact Window
+# Mini-Window
 
-The Compact Window offers a streamlined display of the current ATIS letter, wind, and altimeter for connected ATIS stations. Stations you are hosting will have a cyan ATIS letter, while other stations will be shown in red.
+The Mini-Window offers a streamlined display of the current ATIS letter, wind, and altimeter for connected ATIS stations. Stations you are hosting will have a cyan ATIS letter, while other stations will be shown in red.
 
-![Compact Window](/assets/images/CompactWindow.png)
+![Mini-Window](/assets/images/MiniWindow.png)
 
 ## Window Controls
-![Compact Window](/assets/images/CompactWindowTools.gif)
+![Mini-Window Controls](/assets/images/MiniWindowTools.gif)
 
 Hold the CTRL key and hover over the window to reveal the control buttons in the top-right corner. If the right edge of the window is off-screen, the controls will automatically shift to the top-left.
 
@@ -26,4 +26,4 @@ When a new ATIS update is available, the ATIS letter will blink. Click the blink
 ## Filter ATIS Stations
 To view only specific online ATIS stations, right-click the window and check or uncheck the stations you want to show or hide.
 
-![Compact Window](/assets/images/MiniWindowFilterStations.gif)
+![Mini-Window Filter](/assets/images/MiniWindowFilterStations.gif)
