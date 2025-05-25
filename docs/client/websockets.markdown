@@ -149,6 +149,18 @@ Requests a list of all installed profiles. The response returns a collection of 
 
 ---
 
+### `getActiveProfile`
+
+Requests the active profile. The response returns an [`activeProfile`](#activeprofile) message.
+
+```json
+{
+    "type": "getActiveProfile"
+}
+```
+
+---
+
 ### `getStations`
 
 Requests a list of stations in the currently loaded profile. The response returns a collection of [`stations`](#stations).
@@ -156,6 +168,56 @@ Requests a list of stations in the currently loaded profile. The response return
 ```json
 {
     "type": "getStations"
+}
+```
+
+---
+
+### `getContractions`
+
+Requests the contractions for a specific ATIS station, or all stations. The response returns a [`contractions`](#contractions) message.
+
+#### Example Messages
+
+**Get contractions for all stations in the loaded profile**
+
+```json
+{
+    "type": "getContractions"
+}
+```
+
+**Get contractions for a specific station using the unique station ID**
+
+```json
+{
+    "type": "getContractions",
+    "value": {
+        "id": "9d79f025-cb2e-485c-93a3-7d1b566d4afb"
+    }
+}
+```
+
+**Get contractions for a specific station that publishes a combined ATIS**
+
+```json
+{
+    "type": "getContractions",
+    "value": {
+        "station": "KLAX"
+    }
+}
+```
+
+**Get contractions for a specific station that publishes a split ATIS**
+
+```json
+{
+    "type": "getContractions",
+    "value": {
+        "station": "KLAX",
+        "atisType": "Departure"
+    }
 }
 ```
 
@@ -462,6 +524,71 @@ Sent to a specific client in response to a [`getStations`](#getstations) message
                 "CONFIG 3 (1/26)",
                 "CONFIG 4 (8/19)"
             ]
+        }
+    ]
+}
+```
+
+---
+
+### `activeProfile`
+
+Sent to a specific client in response to a [`getActiveProfile`](#getactiveprofile) message. The message includes information about the active profile with the following properties:
+
+| Property | Description | Type |
+| - | - | - |
+| `id` | The unique ID for the profile | `string` |
+| `name` | The name of the profile | `string` |
+
+#### Example Message
+
+```json
+{
+    "type": "activeProfile",
+    "id": "bf94118a-37c1-4573-99b0-66059f096663",
+    "name": "Los Angeles ARTCC (ZLA)"
+}
+```
+
+---
+
+### `contractions`
+
+Sent to a specific client in response to a [`getContractions`](#getcontractions) message. The message includes a collection of stations with the following properties:
+
+| Property | Description | Type |
+| - | - | - |
+| `id` | The unique ID for the station | `string` |
+| `name` | The name of the station | `string` |
+| `atisType` | The ATIS type | [AtisType](#atistype) |
+| `contractions` | A dictionary collection of contractions | `dictionary` |
+
+The contraction dictionary is composed of key/value pairs. Each key represents a contraction variable name, and each value includes the corresponding text and voice replacement definitions.
+
+#### Example Message
+
+```json
+{
+    "type": "contractions",
+    "stations": [
+        {
+            "id": "cefc39ea-6f17-418e-b2cb-f8bf03e0de7b",
+            "name": "Los Angeles",
+            "atisType": "Combined",
+            "contractions": {
+                "RNAV": {
+                    "text": "RNAV",
+                    "voice": "R NAV"
+                },
+                "SUMMR": {
+                    "text": "SUMMR",
+                    "voice": "SUMMER"
+                },
+                "LADYJ": {
+                    "text": "LADYJ",
+                    "voice": "LADY JAY"
+                }
+            }
         }
     ]
 }
