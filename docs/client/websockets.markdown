@@ -407,17 +407,21 @@ ATIS changes. The following value properties are sent:
 
 | Property | Description | Type |
 | - | - | - |
-| `altimeter` | The formatted altimeter reading for the station. | `string` |
-| `atisLetter` | The current ATIS letter. | `string` |
+| `id` | The unique ID for the station | `string` |
+| `station` | The identifier for the station. | `string` |
 | `atisType` | The ATIS type. | [AtisType](#atistype) |
-| `ceiling` | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
+| `networkConnectionStatus` | The status of the station's network connection. | [NetworkConnectionStatus](#networkconnectionstatus) |
+| `atisLetter` | The current ATIS letter. | `string` |
+| `textAtis` | The text version of the ATIS, if available. | `string` |
+| `airportConditions` | The airport conditions | `string` |
+| `notams` | The NOTAMs | `string` |
 | `isNewAtis` | True if the ATIS is new and has not been acknowledged by the user. | `boolean` |
 | `metar` | The unparsed METAR for the station. | `string` |
-| `networkConnectionStatus` | The status of the station's network connection. | [NetworkConnectionStatus](#networkconnectionstatus) |
+| `wind` | The current surface wind. | `string` |
+| `altimeter` | The formatted altimeter reading for the station. | `string` |
 | `pressure` | The current pressure, as a whole number (e.g. `2990`). | [Value](#value) |
+| `ceiling` | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
 | `prevailingVisibility` | The current visibility. | [Value](#value) |
-| `station` | The identifier for the station. | `string` |
-| `textAtis` | The text version of the ATIS, if available. | `string` |
 
 Example message:
 
@@ -425,25 +429,28 @@ Example message:
 {
     "type": "atis",
     "value": {
-        "networkConnectionStatus": "Connected",
-        "textAtis": "KPDX ATIS INFO A 1853Z. 24009G14KT 6SM LIGHT RA BKN030 BKN039 OVC046 08/04 A3061 (THREE ZERO SIX ONE). SIMUL VIS APCHS IN USE RWYS 10L AND 10R. JET ACFT EXPT THE COLUMBIA VIS APCH. DEPTG RWYS 10L AND 10R. NOTAMS... PUSHBACK ONTO TWYS T AND K REQS ATC CLNC.....ADVS YOU HAVE INFO A.",
-        "station": "KPDX",
+        "id": "668dd798-38ff-4111-87bf-88cdbe09aece",
+        "station": "KLAX",
         "atisType": "Combined",
-        "atisLetter": "A",
-        "metar": "KPDX 111853Z 26009G14KT 6SM -RA BKN030 BKN039 OVC046 08/04 A3061 RMK AO2 RAB45 SLP363 P0000 T00830039",
-        "wind": "26009G14KT",
-        "altimeter": "A3061",
+        "networkConnectionStatus": "Connected",
+        "atisLetter": "Q",
+        "textAtis": "KLAX ATIS INFO Q 1253Z. 00000KT 10SM FEW014 OVC016 17/13 A2998 (TWO NINER NINER EIGHT). INST APCHS AND RNAV RNP APCHS IN PROG RWY 24R AND RWY 25L, OR VCTR FOR VISUAL APCH WILL BE PROVIDED, SIMUL VISUAL APCHS TO ALL RWYS ARE IN PROG. SIMUL INSTR DEPARTURES IN PROG RWYS 24 AND 25. NOTAMS... CALL FOR PUSHBACK ONLY REQUIRED ONTO A TAXIWAY. ASDE-X SYSTEM IN USE. ACTIVATE TRANSPONDER WITH MODE C ON ALL TWYS AND RWYS. READBACK ALL RWY HOLD SHORT INSTRUCTIONS. ...ADVS YOU HAVE INFO Q",
+        "airportConditions": "INST APCHS AND @RNAV RNP APCHS IN PROG RWY 24R AND RWY 25L, OR VCTR FOR VISUAL APCH WILL BE PROVIDED, SIMUL VISUAL APCHS TO ALL RWYS ARE IN PROG. SIMUL INSTR DEPARTURES IN PROG RWYS 24 AND 25.",
+        "notams": "CALL FOR PUSHBACK ONLY REQUIRED ONTO A TAXIWAY. ASDE-X SYSTEM IN USE. ACTIVATE TRANSPONDER WITH MODE C ON ALL TWYS AND RWYS. READBACK ALL RWY HOLD SHORT INSTRUCTIONS.",
+        "isNewAtis": false,
+        "metar": "KLAX 261253Z 00000KT 10SM FEW014 OVC016 17/13 A2998 RMK AO2 SLP152 T01670128",
+        "wind": "00000KT",
+        "altimeter": "A2998",
         "pressure": {
-            "actualValue": 3061,
+            "actualValue": 2998,
             "actualUnit": "MercuryInch"
         },
-        "isNewAtis": false,
         "ceiling": {
-            "actualValue": 30,
+            "actualValue": 16,
             "actualUnit": "Feet"
         },
         "prevailingVisibility": {
-            "actualValue": 6,
+            "actualValue": 10,
             "actualUnit": "StatuteMile"
         }
     }
