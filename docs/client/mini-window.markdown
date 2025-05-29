@@ -12,9 +12,9 @@ The Mini-Window offers a streamlined display of the current ATIS letter, wind, a
 ![Mini-Window](/assets/images/MiniWindow.png)
 
 ## Window Controls
-![Mini-Window Controls](/assets/images/MiniWindowTools.gif)
+![Mini-Window Controls](/assets/images/MiniWindowControls.png)
 
-Hold the CTRL key and hover over the window to reveal the control buttons in the top-right corner. If the right edge of the window is off-screen, the controls will automatically shift to the top-left.
+Right-click on the window to open the window controls context menu.
 
 * Click the **three-dots** icon to hide detailed ATIS information for a more compact view.
 * Click the **pin** icon to keep the window on top.
