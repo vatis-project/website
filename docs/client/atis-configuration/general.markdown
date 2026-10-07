@@ -60,3 +60,29 @@ By default, vATIS downloads METAR reports from the VATSIM METAR service. Some ai
 * **Response format**: The URL must return plain text containing a METAR or SPECI report whose airport identifier matches the station. If the response contains multiple lines, the first matching report is used.
 * **Fallback**: If the custom source fails or returns no matching METAR, vATIS falls back to the default VATSIM METAR source.
 * **Removing the override**: Delete the `customMetarUrl` property, or set it to `null` or an empty string.
+
+## Alternating Voices
+
+You can have the ATIS alternate between several text-to-speech voices, changing the voice with each new ATIS letter. This is not exposed in the vATIS user interface, so it must be set by editing the Profile file manually.
+
+1. Close vATIS (or at least close the Profile).
+2. Open the Profile's JSON file in a text editor. Profiles are stored in the `Profiles` folder of the [vATIS App Data folder](/docs/faq/#where-is-the-vatis-app-data), and the file name is the profile ID. See [Finding the Profile ID](/docs/client/profiles/#finding-the-profile-id).
+3. Locate the station under `stations` and add the `alternatingVoices` property to its `atisVoice` object:
+
+```json
+{
+    "identifier": "EBBR",
+    "atisVoice": {
+        "useTextToSpeech": true,
+        "voice": "Default",
+        "alternatingVoices": ["Voice A", "Voice B"]
+    }
+}
+```
+
+4. Save the file and reopen the Profile.
+
+* **Voice names**: Each entry must exactly match a voice name from the voice list in the **Text to Speech** drop-down.
+* **Order**: Voices are used in the order listed, one per ATIS letter, starting with the first entry on the first letter of the station's code range. After the last entry, the list wraps back to the first.
+* **Overrides the selected voice**: When two or more voices are listed, `alternatingVoices` is used instead of the voice selected in the **Text to Speech** drop-down. If a name is not found, the default voice is used for that letter.
+* **Removing the override**: Delete the `alternatingVoices` property, or leave it empty or with a single entry.
