@@ -5,86 +5,140 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="vATIS for VATSIM: The Simple and Intuitive ATIS Solution for VATSIM">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>vATIS for VATSIM</title>
-  <link rel="stylesheet" href="/assets/css/landing.css?version=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  <link rel="icon" href="/assets/icon.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/landing.css?version=3">
 </head>
 
 <body>
   <main>
-    <div class="cover">
-      <div class="cover-main">
-        <div class="notification-top-bar">
-          <p>📢 Try the new vATIS Beta! Now available for Windows, macOS, and Linux. Download today!</p>
-        </div>
-        <div class="logo">
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="135px" height="135px">
-            <style type="text/css">
-              .st0 {
-                fill: none;
-                stroke: #ffffff;
-                stroke-width: 2;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-                stroke-miterlimit: 10;
-              }
-            </style>
-            <line class="st0" x1="5" y1="14" x2="3" y2="14"></line>
-            <line class="st0" x1="20.36" y1="7.64" x2="21.78" y2="6.22"></line>
-            <line class="st0" x1="14" y1="5" x2="14" y2="3"></line>
-            <line class="st0" x1="7.64" y1="7.64" x2="6.22" y2="6.22"></line>
-            <path class="st0" d="M25.04,24.42C27.37,23.4,29,21.13,29,18.5c0-3.59-3.02-6.5-6.75-6.5c-3.21,0-5.89,2.16-6.58,5.06h-0.55 c-2.27,0-4.12,1.79-4.12,3.97S12.86,25,15.12,25"></path>
-            <path class="st0" d="M11.3,19.36C9.34,18.37,8,16.34,8,14c0-3.31,2.69-6,6-6c2.78,0,5.11,1.89,5.8,4.45"></path>
-            <polyline class="st0" points="18.67,29 21.33,25 18.67,25 21.33,21"></polyline>
-          </svg>
-        </div>        
-        <div>
-          <h2 class="display-5 fw-bold">vATIS for VATSIM</h2>
-          <p class="lead">The Simple and Intuitive ATIS Solution for VATSIM</p>
-        </div>
-        <div class="d-flex flex-wrap flex-md-nowrap gap-2 justify-content-center">
-          <div class="btn-group">
-            <a href="#" type="button" class="btn btn-outline-secondary" id="os-download">Windows Download</a>
-            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="https://hub.vatis.app/download/windows">Windows</a></li>
-              <li><a class="dropdown-item" href="https://hub.vatis.app/download/macos">macOS</a></li>
-              <li><a class="dropdown-item" href="https://hub.vatis.app/download/linux">Linux</a></li>
-            </ul>
+    <section class="cover">
+      <div class="cover-shell">
+        <div class="hero-copy">
+          <div class="logo">
+            <img src="/assets/icon_beta.png" alt="vATIS for VATSIM"/>
           </div>
-          <a class="btn btn-outline-secondary" href="/docs">Documentation</a>
-          <a class="btn btn-outline-secondary" href="https://github.com/vatis-project/vatis">GitHub</a>
-          <a class="btn btn-outline-secondary" href="https://discord.gg/rTMZhjhu9Q">Discord</a>
+          <h1>vATIS for VATSIM</h1>
+          <p class="subtitle">The simple and intuitive ATIS solution for VATSIM</p>
+          <div class="hero-actions">
+            <div class="download-group">
+              <details class="download-menu">
+                <summary class="btn btn-primary download-toggle" aria-label="Choose platform download">
+                  <span class="download-summary-label">Download vATIS</span>
+                  <span class="download-summary-caret" aria-hidden="true">▾</span>
+                </summary>
+                <div class="download-options">
+                  <a href="https://hub.vatis.app/download/windows" data-platform="windows">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M6.555 1.375 0 2.237v5.45h6.555zM0 13.795l6.555.933V8.313H0zm7.278-5.4.026 6.378L16 16V8.395zM16 0 7.33 1.244v6.414H16z"/>
+                    </svg>
+                    <span class="download-option-copy">
+                      <span class="download-option-label">Windows</span>
+                      <span class="download-option-meta">x64</span>
+                    </span>
+                  </a>
+                  <a href="https://hub.vatis.app/download/macos" data-platform="macos">
+                    <span class="platform-option-icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/>
+                      </svg>
+                    </span>
+                    <span class="download-option-copy">
+                      <span class="download-option-label">macOS</span>
+                      <span class="download-option-meta">Intel / Apple Silicon</span>
+                    </span>
+                  </a>
+                  <a href="https://hub.vatis.app/download/linux" data-platform="linux">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9.5 5.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1m-6.354-.354a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708L4.793 6.5z"/>
+                    </svg>
+                    <span class="download-option-copy">
+                      <span class="download-option-label">Linux</span>
+                      <span class="download-option-meta">x64 AppImage</span>
+                    </span>
+                  </a>
+                </div>
+              </details>
+            </div>
+            <a class="btn btn-outline-secondary" href="/docs">Documentation</a>
+            <a class="btn btn-outline-secondary" href="https://github.com/vatis-project/vatis">GitHub</a>
+            <a class="btn btn-outline-secondary" href="https://discord.gg/rTMZhjhu9Q">Discord</a>
+          </div>
         </div>
-        <div class="screenshot d-none d-lg-block"></div>
+        <div class="hero-visual">
+          <img class="screenshot"
+            src="/assets/images/MainScreen.png"
+            alt="The vATIS main window showing an ATIS for KLAX"
+            width="900">
+        </div>
       </div>
-    </div>
+    </section>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-  <script type="text/javascript">
-    function getOS() {
-      const userAgent = window.navigator.userAgent;
-      if (userAgent.indexOf("Win") !== -1) return "Windows Download";
-      if (userAgent.indexOf("Mac") !== -1) return "macOS Download";
-      if (userAgent.indexOf("Linux") !== -1) return "Linux Download";
-      return "Windows Download";
-    }
-    function getOSDownloadLink() {
-      const userAgent = window.navigator.userAgent;
-      if (userAgent.indexOf("Win") !== -1) return "https://hub.vatis.app/download/windows";
-      if (userAgent.indexOf("Mac") !== -1) return "https://hub.vatis.app/download/macos";
-      if (userAgent.indexOf("Linux") !== -1) return "https://hub.vatis.app/download/linux";
-      return "https://hub.vatis.app/download/windows";
-    }
-    document.getElementById("os-download").innerText = getOS();
-    document.getElementById("os-download").setAttribute("href", getOSDownloadLink());
+  <script>
+    (function () {
+      var downloadMenu = document.querySelector('.download-menu');
+      var optionLinks = document.querySelectorAll('.download-options a');
+
+      if (!downloadMenu || !optionLinks.length) {
+        return;
+      }
+
+      function detectPlatform() {
+        var ua = navigator.userAgent.toLowerCase();
+        var platform = navigator.platform ? navigator.platform.toLowerCase() : '';
+
+        if (platform.indexOf('mac') >= 0 || ua.indexOf('mac os') >= 0) {
+          return 'macos';
+        }
+
+        if (platform.indexOf('win') >= 0 || ua.indexOf('windows') >= 0) {
+          return 'windows';
+        }
+
+        if (platform.indexOf('linux') >= 0 || ua.indexOf('linux') >= 0 || ua.indexOf('x11') >= 0) {
+          return 'linux';
+        }
+
+        return 'windows';
+      }
+
+      // Mark the visitor's platform as recommended and list it first.
+      var detected = detectPlatform();
+      optionLinks.forEach(function (link) {
+        if (link.getAttribute('data-platform') !== detected) {
+          return;
+        }
+
+        link.classList.add('is-recommended');
+        var badge = document.createElement('span');
+        badge.className = 'download-option-badge';
+        badge.textContent = 'Recommended';
+        link.appendChild(badge);
+        link.parentNode.insertBefore(link, link.parentNode.firstChild);
+      });
+
+      optionLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          downloadMenu.removeAttribute('open');
+        });
+      });
+
+      document.addEventListener('click', function (event) {
+        if (downloadMenu.hasAttribute('open') && !downloadMenu.contains(event.target)) {
+          downloadMenu.removeAttribute('open');
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && downloadMenu.hasAttribute('open')) {
+          downloadMenu.removeAttribute('open');
+        }
+      });
+    })();
   </script>
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "712a1eae70a74d2da632b91a7e4c9d4d"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
