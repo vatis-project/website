@@ -17,6 +17,7 @@ The Contractions tab allows you to define personalized contractions. If you spec
     * **Variable**: The name of the contraction variable. If you enter multiple words, it will be automatically converted to variable format (e.g., spaces will be replaced with underscores).
     * **Text**: The written ATIS text that will be displayed.
     * **Voice**: The text that will be spoken by the voice synthesizer.
+    * **Add to all ATIS stations in this profile**: When checked, the contraction is added to every ATIS station in the current profile instead of only the selected one.
 After filling in the required information, save the contraction to make it available for use in your ATIS messages.
 
 ## Editing Existing Contraction
@@ -29,5 +30,7 @@ After filling in the required information, save the contraction to make it avail
 2. Click the **Delete** button to remove the contraction. This action is irreversable.
 
 ## Using Contractions
+
+Contractions and speech tokens (such as numbers written in group format, e.g. `*5058`) are underlined in the ATIS template and Airport Conditions and NOTAMs editors. Hover over the underlined text to see how it will be spoken.
 
 To include a contraction, type the @ symbol, followed by the contraction variable name. As you type, an autocomplete popup menu will display the available contraction options, allowing you to quickly select the desired contraction.

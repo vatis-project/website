@@ -18,6 +18,7 @@ You can use the following variables in the ATIS template. If you want to use the
 |`[FACILITY]`|The name of the ATIS facility (airport name)|
 |`[ATIS_CODE]`<br/>`[ATIS_LETTER]`<br/>`[LETTER]`<br/>`[ID]`|The current ATIS letter code|
 |`[WX]`<br/>`[FULL_WX_STRING]`|Inserts the weather elements in the standard order:<br/>`Surface Wind`, `Visibility`, `RVR`, `Present Weather`, `Clouds`, `Temperature`, `Dew Point`, `Altimeter` |
+|`[METAR]`|The complete, raw METAR as received (e.g. `KSFO 031856Z 28012KT 10SM FEW015 18/11 A3002`), without a leading "METAR" keyword|
 |`[OBS_TIME]`<br/>`[TIME]`|	The observation time of the METAR|
 |`[WIND]`<br/>`[SURFACE_WIND]`|The reported surface wind|
 |`[RVR]`|The runway visibility range (if available)|
@@ -27,8 +28,13 @@ You can use the following variables in the ATIS template. If you want to use the
 |`[TEMP]`|The reported temperature|
 |`[DEW]`|The reported dew point temperature|
 |`[PRESSURE]`|The reported pressure value|
+|<code>[QFE&#124;ELEVATION_FT]</code>|The runway threshold QFE. Replace `ELEVATION_FT` with the runway threshold elevation in feet|
 |`[TREND]`|The TREND forecast from the METAR|
 |`[RECENT_WX]`|The recent weather conditions|
+|`[WS]`|The wind shear information from the METAR (see [Wind Shear](formatting/wind-shear))|
+|`[RWY_COND]`|The runway conditions (runway state) reported in the METAR (see [Runway Condition](formatting/runway-condition))|
+|`[RMK_WIND]`|The wind reported in the METAR remarks (see [Remark Wind](formatting/remark-wind))|
+|`[AUTO]`|Inserts the Automatic Observation text, only when the METAR is flagged AUTO (see [Automatic Observation](formatting/automatic-observation))|
 |`[ARPT_COND]`|Inserts the text from the free-form Airport Conditions field, followed by any selected static text options|
 |`[NOTAMS]`|Inserts the text from the free-form NOTAMS field, followed by any selected static text options|
 |`[TL]`|Inserts the transition level based on the configured ranges in the **Transition Level** formatting tab (non-US ATIS only)|

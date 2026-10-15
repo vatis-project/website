@@ -24,3 +24,4 @@ When enabled, the leading zero will be spoken in the voice ATIS. For example, "T
 You can customize how the temperature is displayed in your text ATIS with the following options:
 - **Digit Formatting**: Use `#` to control the number of digits shown. For example, `{temp:#}` will display only the significant digits, removing the leading zero for values less than 10 (e.g., 8 instead of 08). By default, the temperature will display with two digits.
 - **Removing the "M" Prefix**: To remove the "M" prefix from negative temperatures, use `{temp:M}` or `{temp:##M}`. For example, **M05** will display as **05**.
+- **Replacing the "M" Prefix**: To replace the "M" prefix with a dash, add `-` after the digits, for example `{temp:##-}`, which displays **M05** as **-05**. To replace it with your own text, put the text in single quotes, for example `{temp:##'MS'}`, which displays **M05** as **MS05**.

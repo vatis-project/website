@@ -20,6 +20,11 @@ Right-click on the window to open the window controls context menu.
 * Click the **pin** icon to keep the window on top.
 * Click the **double arrow** icon to restore the full vATIS window.
 
+* Click the **compass** icon to show the wind with magnetic variation applied. This only changes stations that have a magnetic variation configured on the [Wind](atis-configuration/formatting/wind) formatting tab.
+
+## Voice ATIS Recording Indicator
+For stations configured for [Voice Recorded ATIS](voice-record-atis), a small red dot is shown at the left of the station's row when the voice ATIS needs to be recorded again. Hover over it to see "Voice ATIS needs recording".
+
 ## Acknowledge ATIS Update
 When a new ATIS update is available, the ATIS letter will blink. Click the blinking letter to acknowledge the update. To acknowledge all blinking ATIS letters at once, you can also middle-click on any blinking letter.
 

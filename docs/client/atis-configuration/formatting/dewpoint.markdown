@@ -24,3 +24,4 @@ When enabled, the leading zero will be spoken in the voice ATIS. For example, "D
 You can customize how the dewpoint temperature is displayed in your text ATIS with the following options:
 - **Digit Formatting**: Use `#` to control the number of digits shown. For example, `{dewpoint:#}` will display only the significant digits, removing the leading zero for values less than 10 (e.g., 8 instead of 08). By default, the dewpoint will display with two digits.
 - **Removing the "M" Prefix**: To remove the "M" prefix from negative dewpoint, use `{dewpoint:M}` or `{dewpoint:##M}`. For example, **M05** will display as **05**.
+- **Replacing the "M" Prefix**: To replace the "M" prefix with a dash, add `-` after the digits, for example `{dewpoint:##-}`, which displays **M05** as **-05**. To replace it with your own text, put the text in single quotes, for example `{dewpoint:##'MS'}`, which displays **M05** as **MS05**.

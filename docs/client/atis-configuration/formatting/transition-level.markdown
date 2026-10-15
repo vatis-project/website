@@ -9,7 +9,7 @@ nav_order: 9
 
 This tab is specifically visible for non-FAA ATIS composites and allows you to set a range of QNH values to determine the transition level. You can use the ATIS template variable `[TL]` to populate the transition level in the ATIS Preset template.
 
-* `{trl}` ... The numerical value of the transition level altitude, for example, 65
+* `{trl}` ... The numerical value of the transition level altitude, for example, 65. Add `:` followed by `#` characters to zero-pad it to a number of digits in the text ATIS, for example `{trl:###}` yields 065.
 * `{trl|text}` ... The transition level altitude expressed in word form, such as "SIX FIVE"
 
 ![Transition Level](/assets/images/Formatting_TransitionLevel.png)

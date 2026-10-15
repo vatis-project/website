@@ -22,11 +22,11 @@ If this option is selected, the altitude (height) of the cloud layer will be con
 ### Display cloud height in hundreds of feet
 If enabled, the cloud height will be converted to hundreds of feet in the text ATIS. For example, FEW010 will be displayed as FEW1000.
 
-### Undetermined (Voice)
-The text spoken if the cloud altitude (height) is undetermined.
+### Undetermined height (///)
+The text used when the height of a cloud layer or the vertical visibility is not reported (`///`). Set the voice and text values separately for a **cloud layer** and for **vertical visibility**. The text replaces `{altitude}` in the Cloud Types.
 
-### Undetermined (Text)
-The text shown in the text ATIS if the cloud altitude (height) is undetermined.
+### Undetermined cloud type
+A layer whose height is not reported (for example `FEW///` or `BKN///CB`) uses the **UND** row in Cloud Types. In that row, `{amount}` is replaced with the layer amount (e.g. FEW or BKN), so you can word these layers differently from layers with a known height.
 
 <hr/>
 
@@ -37,6 +37,12 @@ Specify how the cloud types should be articulated in the voice ATIS.
 
 * `{altitude}`: Represents the altitude or height of the cloud layer. This variable can be used to insert the specific altitude of the cloud layer in the voice or text ATIS, ensuring accurate reporting of cloud heights. You can optionally include a format parameter to specify the number of digits to display in the text ATIS. For example, to display the altitude with five digits, use the variable `{altitude:5}`.
 * `{convective}`: If the cloud layer is identified as a convective layer (e.g., cumulonimbus clouds), this variable will include the spoken text for the convective layer. For example, if the layer is scattered cumulonimbus clouds at 25,000 feet, the spoken ATIS would say "SCATTERED TWO FIVE ZERO CUMULONIMBUS".
+
+The following variables are also available in the Cloud Types:
+
+* `{altitude:N}` ... Text ATIS only. The height zero-padded to *N* digits, for example `{altitude:2}` gives 03 for 300 feet.
+* `{amount}` ... The **UND** row only. The layer amount, such as FEW or BKN.
+* `{feet}` ... The word "feet" when the height is known, and empty when the height is `///`, so the unit is dropped together with the height.
 
 ## Convective Cloud Types
 Specify how the convective cloud types should be articulated in the voice ATIS.
