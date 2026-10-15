@@ -82,13 +82,6 @@ a {
   line-height: 1.05;
 }
 
-.subtitle {
-  margin: 0;
-  color: var(--muted);
-  font-size: clamp(1.2rem, 2vw, 1.55rem);
-  line-height: 1.4;
-}
-
 .hero-actions {
   margin-top: 32px;
   display: flex;
@@ -97,7 +90,7 @@ a {
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -117,6 +110,19 @@ a {
   transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
+.hero-actions > a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.btn-icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex: 0 0 auto;
+}
+
 .btn:hover {
   transform: translateY(-1px);
 }
@@ -128,119 +134,64 @@ a {
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
 
-.platform-option-icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+.download-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-.download-menu {
-  position: relative;
-}
-
-.download-menu summary {
-  list-style: none;
-}
-
-.download-menu summary::-webkit-details-marker {
-  display: none;
-}
-
-.download-toggle {
+.download-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 260px;
-  gap: 12px;
+  gap: 0.6rem;
+  min-width: 240px;
   font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-}
-
-.download-summary-label {
-  flex: 1 1 auto;
-  white-space: nowrap;
   font-size: 1.2rem;
-  line-height: 1;
-}
-
-.download-summary-caret {
-  font-size: 0.9em;
-  flex: 0 0 auto;
-}
-
-.download-options {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  min-width: 260px;
-  padding: 8px;
-  border-radius: 16px;
-  background: var(--bg-soft);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.35);
-  text-align: left;
-  z-index: 10;
-}
-
-.download-options a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  color: #ffffff;
-}
-
-.platform-option-icon {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
-}
-
-.download-option-copy {
-  display: flex;
-  flex: 1 1 auto;
-  min-width: 0;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
-}
-
-.download-option-label {
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-.download-option-meta {
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 0.82rem;
-  line-height: 1.25;
-}
-
-.download-option-badge {
-  flex: 0 0 auto;
-  align-self: center;
-  margin-left: auto;
-  padding: 2px 7px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.16);
-  color: rgba(255, 255, 255, 0.84);
-  font-size: 0.68rem;
-  font-weight: 700;
   line-height: 1.2;
-  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.download-options a:hover,
-.download-options a:focus {
-  background: rgba(255, 255, 255, 0.08);
+.download-primary .btn-icon {
+  width: 1.1em;
+  height: 1.1em;
 }
 
-.download-options a.is-recommended {
-  border-color: rgba(255, 255, 255, 0.15);
-  border-style: dashed;
+.download-others {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+
+.download-others a {
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+  text-underline-offset: 3px;
+}
+
+.download-others a:hover,
+.download-others a:focus {
+  color: #ffffff;
+  text-decoration-color: rgba(255, 255, 255, 0.7);
+}
+
+.download-others a[hidden] {
+  display: none;
+}
+
+.download-others a:not([hidden]) {
+  margin-left: 0.35em;
+}
+
+.download-others a:not([hidden]) ~ a:not([hidden])::before {
+  content: "·";
+  display: inline-block;
+  margin-right: 0.35em;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
 }
 
 .btn-primary {
@@ -285,7 +236,7 @@ a {
 
 .hero-visual {
   margin: 56px auto 0;
-  max-width: 900px;
+  max-width: 850px; /* half of the 2x screenshot, so high-density displays show it 1:1 */
 }
 
 /* The screenshot has rounded, transparent corners, so use a drop shadow that follows its shape. */
@@ -318,16 +269,6 @@ a {
 
   .download-group {
     width: 100%;
-  }
-
-  .download-menu,
-  .download-toggle {
-    width: 100%;
-  }
-
-  .download-options {
-    width: 100%;
-    min-width: 0;
   }
 
   .hero-visual {

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="vATIS for VATSIM: The Simple and Intuitive ATIS Solution for VATSIM">
+  <meta name="description" content="vATIS is an ATIS client for VATSIM controllers.">
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>vATIS for VATSIM</title>
@@ -23,67 +23,60 @@
             <img src="/assets/icon_beta.png" alt="vATIS for VATSIM"/>
           </div>
           <h1>vATIS for VATSIM</h1>
-          <p class="subtitle">The simple and intuitive ATIS solution for VATSIM</p>
           <div class="hero-actions">
             <div class="download-group">
-              <details class="download-menu">
-                <summary class="btn btn-primary download-toggle" aria-label="Choose platform download">
-                  <span class="download-summary-label">Download vATIS</span>
-                  <span class="download-summary-caret" aria-hidden="true">▾</span>
-                </summary>
-                <div class="download-options">
-                  <a href="https://hub.vatis.app/download/windows" data-platform="windows">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M6.555 1.375 0 2.237v5.45h6.555zM0 13.795l6.555.933V8.313H0zm7.278-5.4.026 6.378L16 16V8.395zM16 0 7.33 1.244v6.414H16z"/>
-                    </svg>
-                    <span class="download-option-copy">
-                      <span class="download-option-label">Windows</span>
-                      <span class="download-option-meta">x64</span>
-                    </span>
-                  </a>
-                  <a href="https://hub.vatis.app/download/macos" data-platform="macos">
-                    <span class="platform-option-icon" aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/>
-                      </svg>
-                    </span>
-                    <span class="download-option-copy">
-                      <span class="download-option-label">macOS</span>
-                      <span class="download-option-meta">Intel / Apple Silicon</span>
-                    </span>
-                  </a>
-                  <a href="https://hub.vatis.app/download/linux" data-platform="linux">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9.5 5.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1m-6.354-.354a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708L4.793 6.5z"/>
-                    </svg>
-                    <span class="download-option-copy">
-                      <span class="download-option-label">Linux</span>
-                      <span class="download-option-meta">x64 AppImage</span>
-                    </span>
-                  </a>
-                </div>
-              </details>
+              <a class="btn btn-primary download-primary" id="download-primary" href="https://hub.vatis.app/download/windows">
+                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                </svg>
+                <span id="download-primary-label">Download vATIS</span>
+              </a>
+              <p class="download-others" id="download-others">
+                Also available for
+                <a href="https://hub.vatis.app/download/windows" data-platform="windows">Windows</a>
+                <a href="https://hub.vatis.app/download/macos" data-platform="macos">macOS</a>
+                <a href="https://hub.vatis.app/download/linux" data-platform="linux">Linux</a>
+              </p>
             </div>
-            <a class="btn btn-outline-secondary" href="/docs">Documentation</a>
-            <a class="btn btn-outline-secondary" href="https://github.com/vatis-project/vatis">GitHub</a>
-            <a class="btn btn-outline-secondary" href="https://discord.gg/rTMZhjhu9Q">Discord</a>
+            <a class="btn btn-outline-secondary" href="/docs">
+              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+              </svg>
+              Documentation
+            </a>
+            <a class="btn btn-outline-secondary" href="https://github.com/vatis-project/vatis">
+              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+              </svg>
+              GitHub
+            </a>
+            <a class="btn btn-outline-secondary" href="https://discord.gg/rTMZhjhu9Q">
+              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
+              </svg>
+              Discord
+            </a>
           </div>
         </div>
         <div class="hero-visual">
           <img class="screenshot"
-            src="/assets/images/MainScreen.png"
+            src="/assets/images/MainScreen@1x.png"
+            srcset="/assets/images/MainScreen@1x.png 1x, /assets/images/MainScreen.png 2x"
             alt="The vATIS main window showing an ATIS for KLAX"
-            width="900">
+            width="850"
+            height="380">
         </div>
       </div>
     </section>
   </main>
   <script>
     (function () {
-      var downloadMenu = document.querySelector('.download-menu');
-      var optionLinks = document.querySelectorAll('.download-options a');
+      var others = document.querySelectorAll('.download-others a');
+      var primary = document.getElementById('download-primary');
+      var primaryLabel = document.getElementById('download-primary-label');
 
-      if (!downloadMenu || !optionLinks.length) {
+      if (!others.length || !primary || !primaryLabel) {
         return;
       }
 
@@ -106,37 +99,19 @@
         return 'windows';
       }
 
-      // Mark the visitor's platform as recommended and list it first.
+      // The main button downloads for the visitor's platform. The links below it list the other platforms.
+      var names = { windows: 'Windows', macos: 'macOS', linux: 'Linux' };
       var detected = detectPlatform();
-      optionLinks.forEach(function (link) {
+
+      others.forEach(function (link) {
         if (link.getAttribute('data-platform') !== detected) {
           return;
         }
 
-        link.classList.add('is-recommended');
-        var badge = document.createElement('span');
-        badge.className = 'download-option-badge';
-        badge.textContent = 'Recommended';
-        link.appendChild(badge);
-        link.parentNode.insertBefore(link, link.parentNode.firstChild);
-      });
-
-      optionLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-          downloadMenu.removeAttribute('open');
-        });
-      });
-
-      document.addEventListener('click', function (event) {
-        if (downloadMenu.hasAttribute('open') && !downloadMenu.contains(event.target)) {
-          downloadMenu.removeAttribute('open');
-        }
-      });
-
-      document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && downloadMenu.hasAttribute('open')) {
-          downloadMenu.removeAttribute('open');
-        }
+        primary.setAttribute('href', link.getAttribute('href'));
+        primary.setAttribute('data-platform', detected);
+        primaryLabel.textContent = 'Download for ' + names[detected];
+        link.hidden = true;
       });
     })();
   </script>

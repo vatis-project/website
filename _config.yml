@@ -21,7 +21,7 @@
 title: vATIS for VATSIM
 email: justin@clowd.io
 description: >- # this means to ignore newlines until "baseurl:"
-  vATIS for VATSIM: The Simple and Intuitive ATIS Solution for VATSIM
+  vATIS is an ATIS client for VATSIM controllers.
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://vatis.app" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: vatis-project
