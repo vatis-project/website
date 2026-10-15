@@ -121,6 +121,13 @@ a {
   transform: translateY(-1px);
 }
 
+.btn:focus,
+.btn:focus-visible,
+.btn:active {
+  outline: 0;
+  box-shadow: var(--bs-btn-focus-box-shadow);
+}
+
 .platform-option-icon svg {
   width: 100%;
   height: 100%;
@@ -237,6 +244,15 @@ a {
 }
 
 .btn-primary {
+  /* Bootstrap applies these variables on :hover/:active/:focus/.show, so override its blue defaults. */
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent-border);
+  --bs-btn-hover-bg: var(--accent-hover);
+  --bs-btn-hover-border-color: var(--accent-border-hover);
+  --bs-btn-active-bg: var(--accent-hover);
+  --bs-btn-active-border-color: var(--accent-border-hover);
+  --bs-btn-focus-shadow-rgb: 15, 143, 133;
+  --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(15, 143, 133, 0.5);
   background: var(--accent);
   border-color: var(--accent-border);
   color: #ffffff;
@@ -250,6 +266,11 @@ a {
 }
 
 .btn-outline-secondary {
+  --bs-btn-bg: var(--button-secondary);
+  --bs-btn-hover-bg: var(--button-secondary-hover);
+  --bs-btn-active-bg: var(--button-secondary-hover);
+  --bs-btn-focus-shadow-rgb: 108, 117, 125;
+  --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(108, 117, 125, 0.5);
   background: var(--button-secondary);
   border-color: var(--button-secondary-border);
   color: #ffffff;
