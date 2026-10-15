@@ -29,3 +29,19 @@ If you prefer not to cycle through each letter to find the one you want, you can
 
 ## Fetch Real-World D-ATIS Letter
 If the **Automatically fetch ATIS letter** option is enabled in User Settings, vATIS will automatically retrieve the real-world D-ATIS letter for stations with an FAA digital ATIS when connecting to the network. This process loads only the ATIS letter and does not include any related messages, such as airport conditions or NOTAMs.
+
+## Fetch Real-World D-ATIS
+
+If the **Automatically fetch D-ATIS** option is enabled in [User Settings](user-settings), vATIS can fill in the Airport Conditions and NOTAMs from the real-world digital ATIS, replacing the need for external tools such as vATISLoad.
+
+1. Create a preset named **D-ATIS** for the station (the name is not case-sensitive) and select it in the preset list on the ATIS Station.
+2. vATIS fetches the real-world D-ATIS right away, then every 5 minutes while the preset remains selected. The ATIS letter, Airport Conditions, and NOTAMs are updated each time.
+3. Selecting a different preset stops the automatic updates.
+
+Things to know:
+
+* The real-world ATIS is matched to the station type: a Combined station uses the combined ATIS (or the departure ATIS if there is no combined one), while Arrival and Departure stations use the matching arrival or departure ATIS.
+* If no D-ATIS is available for the station, the Airport Conditions show **D-ATIS NOT AVBL.**
+* Text fetched automatically is not saved to the preset. Only your own edits to a D-ATIS preset are saved.
+* The opening sentences of the real-world ATIS (station, letter, and weather) are removed, as is the trailing "ADVS YOU HAVE..." text. Only the airport conditions and NOTAMs are kept, and your [contractions](atis-configuration/contractions) are applied to the text.
+* To change how the real-world text is processed, see [D-ATIS](atis-configuration/presets#d-atis).
