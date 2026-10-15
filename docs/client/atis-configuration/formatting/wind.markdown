@@ -52,3 +52,19 @@ By default, wind speeds in the text ATIS are shown with two digits (e.g. 09). Ad
 | `{wind_spd:###}` | 009 |
 
 This works for `{wind_spd}`, `{wind_gust}` and their unit variants, for example `{wind_spd|kt:#}` or `{wind_gust:#}`. The digit count applies to the text ATIS only and is ignored in the voice ATIS.
+
+<hr/>
+
+## Variable Format
+
+
+![Wind Variable Format](/assets/images/Formatting_SurfaceWind_VariableFormat.png)
+
+The Variable Format tab lets you set the number style and a suffix for each wind variable (`{wind_dir}`, `{wind_spd}`, `{wind_gust}`, `{wind_vmin}` and `{wind_vmax}`) independently for the text and voice ATIS. Unit variants such as `{wind_spd|kt}` and `{wind_spd|mps}` share the setting of the base variable.
+
+**Style**<br/>
+* **Default** ... The built-in rendering (digits in the text ATIS, digit-by-digit words in the voice ATIS).
+* **Digits**, **Serial**, **Group** ... Plain digits, digit-by-digit words, or words in groups.
+
+**Suffix**<br/>
+Text appended to the value exactly as typed, so include a leading space if needed (e.g. ` knots`).

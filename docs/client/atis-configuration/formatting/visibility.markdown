@@ -40,3 +40,22 @@ This setting defines the text displayed in the text ATIS when the METAR reports 
 
 **Visibility Direction**<br/>
 This setting defines how visibility directions should be spoken in the voice ATIS when visibility differs across various directions (e.g., 1200SE 6000N). Use the provided table to specify the spoken text for cardinal directions.
+
+## Direction (Text)
+This tab (non-FAA stations) sets how visibility directions are shown in the text ATIS, independent of the spoken text on the ICAO Formatting tab. By default the text ATIS shows the METAR direction abbreviation.
+
+## Unit Words (Voice)
+
+
+![Visibility Unit Words](/assets/images/Formatting_Visibility_UnitWords.png)
+
+This tab (non-FAA stations) sets the words spoken after the visibility value when the unit suffix is included: **Meters** (default "meters") and **Kilometers** (default "kilometers").
+
+## Fractions (Voice)
+
+
+![Visibility Fractions](/assets/images/Formatting_Visibility_Fractions.png)
+
+This tab (FAA stations) sets the spoken text for fractional visibility values such as `1/2SM` or `1 1/2SM`. Each row is the METAR value and the text spoken in the voice ATIS. The defaults match the previous wording.
+
+The text ATIS continues to show the METAR value as received.
