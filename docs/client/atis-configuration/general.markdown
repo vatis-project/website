@@ -23,6 +23,7 @@ To configure an ATIS station, click on the station in the left sidebar.
     * **Arrival**: Displayed as `XXXX_A_ATIS`
 * **Code Range**: Allows you to define the ATIS code range for the station. This feature is helpful for restricting the Departure ATIS to a specific range (e.g., `A..N`) and the Arrival ATIS to a different range (e.g., `M..Z`).
 * **Text to Speech/Voice Recorded**: This option lets you choose between digitalized (text-to-speech) or manually recorded voice for the ATIS. If "Text to Speech" is selected, you can further specify the desired voice option. The "Default" option uses the voice similar to that of FAA D-ATIS.
+* **WAV Voice Pack**: Builds the voice ATIS from pre-recorded WAV clips instead of text-to-speech. Choose a pack from the drop-down list, or use **Manage Voice Packs** to import one. See [Voice Packs](voice-packs).
 * **Use "decimal" terminology in spoken text**: Enabling this option will cause numbers with decimals to be spoken as "decimal" rather than "point." For example, "one three four decimal two five" instead of "one three four point two five."
 * **IDS Endpoint**: If your facility is equipped with an Information Display System (IDS) that is compatible with vATIS, you can enter the URL for automatic ATIS information updates. When a URL is specified, vATIS will send an HTTP POST request with a JSON payload similar to the following:
 ```json

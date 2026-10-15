@@ -22,7 +22,7 @@ Profiles are launched by selecting the Profile's name and clicking **Open** or b
 ## Importing and Exporting Profiles
 You can import a Profile by clicking the **Import** button in the Profiles window. Once imported, the Profile will appear in the list.
 
-To export a Profile, select the one you want to export and click the **Export** button.
+To export a Profile, select the one you want to export and click the **Export** button. If any of the profile's stations use a [WAV voice pack](atis-configuration/voice-packs#sharing-profiles-that-use-voice-packs), the export is a `.zip` file that also contains the clips the profile uses.
 
 ## Renaming a Profile
 To rename a Profile, select the one you want to rename and click the **Rename** button. A dialog window will open allowing you to specify the new profile name.
