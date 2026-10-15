@@ -386,6 +386,55 @@ To retrieve available stations, send a [`getStations`](#getstations) request.
 
 ---
 
+### `setAtisLetter`
+
+Sets the ATIS letter of the specified station, either to a specific letter or by stepping to the next or previous letter in the station's code range. If the station does not exist, the request is ignored.
+
+Stepping past the end of the code range wraps around, the same as the letter button in vATIS. If the requested letter is outside the station's code range, or the station is an observed ATIS published by another controller, an [`error`](#error) message is returned.
+
+#### Message Properties
+
+| Property | Description | Type | Notes |
+| - | - | - | - |
+| `id` | The unique station ID | `string` |
+| `station` | The station identifier (e.g. `KMIA`) | `string` |
+| `atisType` | The ATIS type. | [AtisType](#atistype) | Optional. Defaults to `Combined`. Only used with `station`. |
+| `letter` | The letter to set (e.g. `C`). | `string` | A single letter within the station's code range. |
+| `step` | The direction to move the letter. | [AtisLetterStep](#atisletterstep) | |
+
+> **Notes:**
+> - You must provide **either** `id` **or** `station`, but not both.
+> - You must provide **either** `letter` **or** `step`, but not both.
+
+#### Example Messages
+
+**Set a specific letter by station identifier**
+
+```json
+{
+    "type": "setAtisLetter",
+    "value": {
+        "station": "KMIA",
+        "atisType": "Departure",
+        "letter": "C"
+    }
+}
+```
+
+**Move to the next letter by unique station ID**
+
+```json
+{
+    "type": "setAtisLetter",
+    "value": {
+        "id": "478ad86d-edd0-47b1-972a-f68345fd3f3f",
+        "step": "Next"
+    }
+}
+```
+
+---
+
 ### `quit`
 
 Disconnects all active ATIS connections and gracefully shuts down the application process. No response is returned.
@@ -453,6 +502,56 @@ Example message:
             "actualValue": 10,
             "actualUnit": "StatuteMile"
         }
+    }
+}
+```
+
+---
+
+### `error`
+
+Sent to the client that sent a request vATIS could not process, for example a malformed message or an invalid `setAtisLetter` request.
+
+| Property | Description | Type |
+| - | - | - |
+| `message` | A description of the error. | `string` |
+
+#### Example Message
+
+```json
+{
+    "type": "error",
+    "value": {
+        "message": "Letter Z is outside the code range A-M."
+    }
+}
+```
+
+---
+
+### `connectionError`
+
+Sent to all connected clients when a station fails to connect to the network, or the network refuses or ends its connection. These errors are otherwise shown only as notifications in the vATIS window. The following value properties are sent:
+
+| Property | Description | Type |
+| - | - | - |
+| `id` | The unique ID for the station | `string` |
+| `station` | The identifier for the station. | `string` |
+| `atisType` | The ATIS type. | [AtisType](#atistype) |
+| `reason` | Why the connection failed. | [ConnectionErrorReason](#connectionerrorreason) |
+| `message` | The error as shown to the user. | `string` |
+
+#### Example Message
+
+```json
+{
+    "type": "connectionError",
+    "value": {
+        "id": "478ad86d-edd0-47b1-972a-f68345fd3f3f",
+        "station": "KMIA",
+        "atisType": "Departure",
+        "reason": "TooManyConnections",
+        "message": "You've exceeded the maximum number of allowed ATIS connections."
     }
 }
 ```
@@ -621,6 +720,23 @@ Indicates whether the ATIS is combined, arrival, or departure. Values are:
 * `Arrival`
 * `Combined`
 * `Departure`
+
+### `AtisLetterStep`
+
+The direction to move the ATIS letter in. Values are:
+
+* `Next`
+* `Previous`
+
+### `ConnectionErrorReason`
+
+Why a station failed to connect to the network, or lost its connection. Values are:
+
+* `TooManyConnections` - The maximum number of ATIS connections is already in use.
+* `ConfigurationRequired` - The VATSIM user ID, password, or real name has not been set.
+* `ConnectionFailed` - The connection to the network could not be made.
+* `NetworkError` - The network reported an error, such as the callsign being in use or invalid credentials.
+* `Killed` - The network disconnected the station.
 
 ### `Value`
 
