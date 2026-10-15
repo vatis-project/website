@@ -7,4 +7,4 @@ has_children: true
 
 # vATIS
 
-![xPilot Client](/assets/images/MainScreen.png)
+![The vATIS main window](/assets/images/MainScreen.png)
