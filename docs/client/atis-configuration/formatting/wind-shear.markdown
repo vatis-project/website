@@ -17,3 +17,6 @@ You can set separate text and voice values for wind shear that is reported for a
 | **All Runways** | `WS ALL RWY` | `Wind Shear All Runways` |
 
 * `{Runway}` ... The runway identifier (e.g. 04R). Only available in the Runway Specific template.
+
+
+![Wind Shear](/assets/images/Formatting_WindShear.png)

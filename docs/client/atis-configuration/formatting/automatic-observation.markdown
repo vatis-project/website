@@ -15,3 +15,6 @@ Set the text and voice values. The defaults are:
 * **Voice**: `Automatic Observation`
 
 Add the `[AUTO]` variable to your Preset template where the automatic observation notice should appear, for example next to the observation time.
+
+
+![Automatic Observation](/assets/images/Formatting_AutomaticObservation.png)

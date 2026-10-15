@@ -23,8 +23,12 @@ The following variables are available:
 * `{friction}` ... The estimated surface friction (e.g. good, medium to poor). Empty if not reported.
 * `{raw}` ... The raw runway state group as it appears in the METAR (e.g. `R25/290150`). Text template only.
 
+![Runway Condition](/assets/images/Formatting_RunwayCondition.png)
+
 ## Wording
 The Wording tab lets you change the text and spoken wording for each deposit, depth and friction term. Use `{value}` in the depth wording to insert the depth (for example `{value} millimeters`).
+
+![Runway Condition Wording](/assets/images/Formatting_RunwayCondition_Wording.png)
 
 | Term | Default text | Default spoken |
 |-|-|-|

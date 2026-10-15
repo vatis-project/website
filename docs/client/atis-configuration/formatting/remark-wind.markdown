@@ -19,3 +19,6 @@ The following variables are available:
 * `{height}` ... The height of the wind observation in feet.
 * `{dir}` ... The wind direction in degrees, or VRB if variable.
 * `{speed}` ... The wind speed in knots, including any gust (e.g. 03G10).
+
+
+![Remark Wind](/assets/images/Formatting_RemarkWind.png)

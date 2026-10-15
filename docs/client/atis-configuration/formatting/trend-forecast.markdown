@@ -18,3 +18,6 @@ Under **Change Indicator**, set the text and voice values used for each trend ch
 | **TEMPO** | `TEMPO` | Temporary |
 
 **Not Available** is the text to print and/or say when the TREND is not available in the METAR. It is empty by default.
+
+
+![Trend Forecast](/assets/images/Formatting_TrendForecast.png)
