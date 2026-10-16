@@ -23,6 +23,7 @@ body.lightbox-open {
     max-height: 100%;
     width: auto;
     height: auto;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    /* drop-shadow follows the image's shape, so transparent areas don't get a shadowed frame like box-shadow does */
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
   }
 }
