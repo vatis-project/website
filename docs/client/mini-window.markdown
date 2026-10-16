@@ -32,4 +32,4 @@ When a new ATIS update is available, the ATIS letter will blink. Click the blink
 ## Filter ATIS Stations
 To view only specific online ATIS stations, right-click the window and check or uncheck the stations you want to show or hide.
 
-![Mini-Window Filter](/assets/images/MiniWindowFilterStations.gif)
+![Mini-Window Filter](/assets/images/MiniWindowFilterStations.webp)
