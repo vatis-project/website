@@ -17,6 +17,17 @@ After disconnecting an ATIS, the ATIS letter will remain synced with other users
 
 The selected airport conditions and NOTAMs will be displayed in cyan-colored text within the free-form text boxes. This cyan-colored text is read-only and cannot be edited directly.
 
+### Underlined text
+Some words in the Airport Conditions and NOTAMs boxes have a dotted underline. The underline marks text that the voice ATIS will speak differently from how it is written. Hover over underlined text to see how it will be spoken. In the screenshot above, hovering over the underlined **RWY 23** shows that it will be spoken as "RUNWAY TWO THREE".
+
+Underlined text includes:
+
+- Contractions, both your own and the built-in ones. See [Contractions](atis-configuration/contractions).
+- Runway and taxiway names, such as `RWY 25R` or `TWY E16`, and numbers in group format, such as `*5058`.
+- Airport and navaid identifiers written with a plus sign, such as `+KLAX`.
+
+See [Text Parsing](text-parsing) for all of the rules. Text that is not underlined is spoken as it is written. The underline is only a preview in the text box; it is not part of the ATIS. The same underline appears in the preset template and in the Sandbox.
+
 ## New ATIS Update
 
 When a new ATIS update is ready, the ATIS letter for the corresponding ATIS Station will blink. If you have enabled notification sounds, you will also hear a notification sound. To acknowledge the ATIS update, select the respective ATIS Station tab and left-click the ATIS letter once.
