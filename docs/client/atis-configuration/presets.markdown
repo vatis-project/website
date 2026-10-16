@@ -9,17 +9,17 @@ nav_order: 2
 
 ![Presets](/assets/images/AtisConfiguration_Presets.png)
 
-The Presets tab allows you to manage your presets by adding, copying, renaming, or deleting them. The text box below the dropdown list is where you can customize the ATIS template. When an ATIS is generated, the variables will be replaced with actual data. If the Composite is configured to use Text to Speech, the template text will be synthesized and transmitted.
+The Presets tab allows you to manage your presets by adding, copying, renaming, or deleting them. The text box below the dropdown list is where you can customize the ATIS template. When an ATIS is generated, the variables will be replaced with actual data. If the ATIS station is configured to use Text to Speech, the template text will be synthesized and transmitted.
 
-You can use the following variables in the ATIS template. If you want to use the voice translated text instead of the raw text value in the text ATIS, you can optionally suffix the variable name with `:VOX` (e.g., `[WX:VOX]`).
+You can use the following variables in the ATIS template. If you want to use the voice translated text instead of the raw text value in the text ATIS, you can optionally suffix the variable name with `:VOX` (e.g., `[WX:VOX]`). A variable can also be written with a dollar sign instead of square brackets (e.g., `$WX` or `$WX:VOX`).
 
 |Variable|Definition|
 |---|---|
-|`[FACILITY]`|The name of the ATIS facility (airport name)|
+|`[FACILITY]`|The airport identifier (e.g. KLAX) in the text ATIS, and the airport name in the voice ATIS|
 |`[ATIS_CODE]`<br/>`[ATIS_LETTER]`<br/>`[LETTER]`<br/>`[ID]`|The current ATIS letter code|
-|`[WX]`<br/>`[FULL_WX_STRING]`|Inserts the weather elements in the standard order:<br/>`Surface Wind`, `Visibility`, `RVR`, `Present Weather`, `Clouds`, `Temperature`, `Dew Point`, `Altimeter` |
+|`[WX]`<br/>`[FULL_WX_STRING]`|Inserts the weather elements in the standard order:<br/>`Surface Wind`, `Visibility`, `RVR`, `Present Weather`, `Clouds`, `Temperature` and `Dew Point` (joined as `TT/DD` in the text ATIS), `Altimeter`, `Recent Weather`, `Wind Shear`, `Runway Condition`, `Trend` |
 |`[METAR]`|The complete, raw METAR as received (e.g. `KSFO 031856Z 28012KT 10SM FEW015 18/11 A3002`), without a leading "METAR" keyword|
-|`[OBS_TIME]`<br/>`[TIME]`|	The observation time of the METAR|
+|`[OBS_TIME]`<br/>`[OBSTIME]`<br/>`[TIME]`|The observation time of the METAR|
 |`[WIND]`<br/>`[SURFACE_WIND]`|The reported surface wind|
 |`[RVR]`|The runway visibility range (if available)|
 |`[VIS]`<br/>`[PREVAILING_VISIBILITY]`|The prevailing visibility|
@@ -27,16 +27,17 @@ You can use the following variables in the ATIS template. If you want to use the
 |`[CLOUDS]`|The reported cloud conditions|
 |`[TEMP]`|The reported temperature|
 |`[DEW]`|The reported dew point temperature|
-|`[PRESSURE]`|The reported pressure value|
+|`[PRESSURE]`<br/>`[QNH]`|The reported pressure value|
+|`[PRESSURE_XXXX]`|The altimeter setting from the METAR of another airport. Replace `XXXX` with its ICAO identifier (e.g. `[PRESSURE_KSFO]`)|
 |<code>[QFE&#124;ELEVATION_FT]</code>|The runway threshold QFE. Replace `ELEVATION_FT` with the runway threshold elevation in feet|
 |`[TREND]`|The TREND forecast from the METAR|
 |`[RECENT_WX]`|The recent weather conditions|
 |`[WS]`|The wind shear information from the METAR (see [Wind Shear](formatting/wind-shear))|
-|`[RWY_COND]`|The runway conditions (runway state) reported in the METAR (see [Runway Condition](formatting/runway-condition))|
+|`[RWY_COND]`<br/>`[RUNWAY_CONDITION]`|The runway conditions (runway state) reported in the METAR (see [Runway Condition](formatting/runway-condition))|
 |`[RMK_WIND]`|The wind reported in the METAR remarks (see [Remark Wind](formatting/remark-wind))|
 |`[AUTO]`|Inserts the Automatic Observation text, only when the METAR is flagged AUTO (see [Automatic Observation](formatting/automatic-observation))|
-|`[ARPT_COND]`|Inserts the text from the free-form Airport Conditions field, followed by any selected static text options|
-|`[NOTAMS]`|Inserts the text from the free-form NOTAMS field, followed by any selected static text options|
+|`[ARPT_COND]`<br/>`[ARRDEP]`|Inserts the Airport Conditions: the free-form text and the selected static messages. The static messages come first when **Include before free-form** is checked, and the two parts are joined with a space.|
+|`[NOTAMS]`|Inserts the NOTAMs: the free-form text and the selected static messages, in the same way, with the two parts joined with a period. The result is placed in the NOTAMs template on the Formatting tab.|
 |`[TL]`|Inserts the transition level based on the configured ranges in the **Transition Level** formatting tab (non-US ATIS only)|
 |`[CLOSING]`|Inserts the closing statement message|
 

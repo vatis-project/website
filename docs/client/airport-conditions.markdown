@@ -30,7 +30,7 @@ When more than one message is checked, vATIS puts a separator between them in th
 * **Default separator**: The field at the bottom of the dialog. It goes between every two checked messages, unless a message has its own separator.
 * **Separator after**: Set in the message editor, this replaces the default separator that follows the message you are editing. Leave it blank to use the default separator. It has no effect on the last checked message, since nothing follows it.
 
-A separator is used exactly as typed, including spaces, so include any space you need (for example `... ` with a space after the dots). Separators apply only between the checked messages; they are not placed between the messages and the free-form Airport Conditions text.
+A separator is used exactly as typed, including spaces, so include any space you need (for example `... ` with a space after the dots). Separators apply only between the checked messages. The checked messages are joined to the free-form Airport Conditions text with a space, whichever comes first.
 
 For example, with these checked messages and a separator of `... ` after the first one:
 
