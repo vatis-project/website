@@ -44,21 +44,36 @@ You can use the following variables in the ATIS template. If you want to use the
 
 ## External ATIS Generator
 
-**Use external ATIS generator (e.g. UniATIS)**<br/>
-When this option is enabled, you can configure vATIS to utilize an external source for generating the ATIS text. Please note that you need to have a Preset selected before configuring an external ATIS generator.
+A preset can get its ATIS from a web service such as UniATIS instead of building it from the template. Select a preset, then check **Use external ATIS generator (e.g. UniATIS)**. The checkbox is only available while a preset is selected, and the setting belongs to that preset, so each preset can use a different generator or none.
 
-* **URL** The URL of the external ATIS generator.
-* **Arrival Runway** The arrival runway(s). You can include the variable `$arrrwy` in the URL to automatically append the value of the Arrival Runway field.
-* **Departure Runway** The departure runway(s). You can include the variable `$deprwy` in the URL to automatically append the value of the Departure Runway field.
-* **Approaches in Use** The approaches currently in use. You can include the variable `$app` in the URL to automatically append the value of the Approaches in Use field.
-* **Remarks** Pertinent remarks. You can include the variable `$remarks` in the URL to automatically append the value of the Remarks field.
+When the checkbox is checked, the template editor is replaced by the External ATIS Generator settings, and the ATIS is whatever the generator returns. The preset template and the [Formatting](formatting) settings are not used.
 
-Additional variables include:
+* **Text ATIS URL**: The URL that returns the text ATIS.
+* **Voice ATIS URL**: The URL that returns the ATIS to be spoken. If the generator has no separate voice output, use the same URL as the text ATIS.
+* **Arrival Runways**, **Departure Runways**, **Approaches In Use** and **Remarks**: Values to pass to the generator. They are converted to uppercase as you type.
 
-* `$metar` The current METAR string
-* `$atiscode` The current ATIS letter
+If a URL is left empty, that ATIS can't be generated and vATIS shows an error.
+
+### URL variables
+Put these variables in either URL, and vATIS replaces them each time it generates the ATIS. The variables are case-sensitive.
+
+|Variable|Replaced with|
+|-|-|
+|`$metar`|The current METAR|
+|`$atiscode`|The current ATIS letter|
+|`$arrrwy`|The Arrival Runways field|
+|`$deprwy`|The Departure Runways field|
+|`$app`|The Approaches In Use field|
+|`$remarks`|The Remarks field|
+
+The METAR and the field values are URL-encoded for you. If a URL does not start with `http://` or `https://`, vATIS adds `http://`.
 
 ![External ATIS Generator](/assets/images/Formatting_ExternalGenerator.png)
+
+### The response
+The generator should return plain text. Before using it, vATIS removes the square brackets around any text (keeping the text), replaces `<br>` with a line break, and collapses repeated spaces. Line breaks in the response itself are ignored, so use `<br>` where you want a new line.
+
+The voice ATIS then goes through the same preparation as other voice text: your contractions (`@name`) and `+` airport and navaid identifiers in the response are replaced before it is spoken. See [Text Parsing](../text-parsing) and [Contractions](contractions).
 
 Click **Test in Sandbox** to apply your changes and open this preset in the [Sandbox](sandbox), where you can enter or fetch a METAR and generate the ATIS.
 

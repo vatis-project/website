@@ -10,7 +10,7 @@
       overlay = null;
     }
 
-    function open(src, alt) {
+    function open(src, alt, shownWidth) {
       close();
       overlay = document.createElement('div');
       overlay.className = 'lightbox-overlay';
@@ -22,6 +22,17 @@
       img.alt = alt || '';
       overlay.appendChild(img);
 
+      /* Show the image at its real pixel size on this display (width / devicePixelRatio) so a 2x image is not */
+      /* upscaled and stays sharp, but never smaller than it was on the page. It still shrinks to fit the window. */
+      function fit() {
+        var dpr = window.devicePixelRatio || 1;
+        var width = Math.max(img.naturalWidth / dpr, shownWidth || 0);
+        img.style.maxWidth = 'min(100%, ' + width + 'px)';
+        img.style.maxHeight = 'min(100%, ' + (width * img.naturalHeight / img.naturalWidth) + 'px)';
+      }
+      img.addEventListener('load', fit);
+      if (img.complete && img.naturalWidth) fit();
+
       overlay.addEventListener('click', close);
       document.body.appendChild(overlay);
       document.body.classList.add('lightbox-open');
@@ -32,7 +43,7 @@
       if (!img || img.tagName !== 'IMG' || !img.closest('.main-content')) return;
       if (img.closest('a')) return; /* leave linked images alone */
       e.preventDefault();
-      open(img.currentSrc || img.src, img.alt);
+      open(img.src, img.alt, img.getBoundingClientRect().width); /* src is the 2x file; currentSrc may be the 1x one */
     });
 
     document.addEventListener('keydown', function (e) {
