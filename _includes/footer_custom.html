@@ -32,7 +32,7 @@
       if (!img || img.tagName !== 'IMG' || !img.closest('.main-content')) return;
       if (img.closest('a')) return; /* leave linked images alone */
       e.preventDefault();
-      open(img.currentSrc || img.src, img.alt);
+      open(img.src, img.alt); /* src is the 2x file; currentSrc may be the smaller 1x one */
     });
 
     document.addEventListener('keydown', function (e) {
