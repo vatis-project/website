@@ -30,5 +30,5 @@ The text placed between the selected messages is called the separator. It is use
 * **Default separator**: Shown at the bottom of the dialog and applied between every selected message. The default is a period followed by a space.
 * **Separator after**: To use a different separator after one message, edit that message and enter the text in **Separator after**. Leave it blank to use the default separator. The separator after the last message is not used.
 
-![Separator after](/assets/images/StaticDefinitionEditorDialog.png)
+![Separator after](/assets/images/StaticDefinitionEditorDialog_Notam.png)
 
