@@ -4,8 +4,6 @@ title: FAQ
 nav_order: 8
 ---
 
-# Facility Engineer
-
 ## Where is the vATIS App Data?
 
 Press `Ctrl+Shift+O` (`Cmd+Shift+O` on macOS) in the vATIS Main Window or the Profile List window to open the App Data folder in your file manager.
