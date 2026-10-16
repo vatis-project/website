@@ -8,6 +8,10 @@ nav_order: 8
 
 ## Where is the vATIS App Data?
 
+Press `Ctrl+Shift+O` (`Cmd+Shift+O` on macOS) in the vATIS Main Window or the Profile List window to open the App Data folder in your file manager.
+
+Otherwise, the folder is located at:
+
 #### Windows:
 `C:\Users\<USER>\AppData\Local\org.vatsim.vatis` or `%localappdata%\org.vatsim.vatis`
 
