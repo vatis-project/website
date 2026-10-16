@@ -54,6 +54,8 @@ Additional variables include:
 
 ![External ATIS Generator](/assets/images/Formatting_ExternalGenerator.png)
 
+Click **Test in Sandbox** to apply your changes and open this preset in the [Sandbox](sandbox), where you can enter or fetch a METAR and generate the ATIS.
+
 ## D-ATIS
 
 ![D-ATIS](/assets/images/AtisConfiguration_Presets_Datis.png)
