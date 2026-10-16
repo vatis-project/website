@@ -25,10 +25,27 @@ When composing or modifying a message, you can insert contractions by typing the
 If enabled, the checked static messages will be included before the free-form Airport Conditions text in the ATIS.
 
 ### Separators
-The text placed between the selected messages is called the separator. It is used exactly as typed, including any spaces.
+When more than one message is checked, vATIS puts a separator between them in the ATIS. The separator is a period followed by a space unless you change it, so the checked messages read as separate sentences. Messages are used in the order they appear in the list.
 
-* **Default separator**: Shown at the bottom of the dialog and applied between every selected message. The default is a period followed by a space.
-* **Separator after**: To use a different separator after one message, edit that message and enter the text in **Separator after**. Leave it blank to use the default separator. The separator after the last message is not used.
+* **Default separator**: The field at the bottom of the dialog. It goes between every two checked messages, unless a message has its own separator.
+* **Separator after**: Set in the message editor, this replaces the default separator that follows the message you are editing. Leave it blank to use the default separator. It has no effect on the last checked message, since nothing follows it.
+
+A separator is used exactly as typed, including spaces, so include any space you need (for example `... ` with a space after the dots). Separators apply only between the checked messages; they are not placed between the messages and the free-form Airport Conditions text.
+
+For example, with these checked messages and a separator of `... ` after the first one:
+
+1. SIMUL ILS APPS IN PROG RWYS 24R AND 25L
+2. SIMUL VIS APPS TO ALL RWYS ARE IN PROG
+3. RWY 6L/24R CLSD
+
+the ATIS reads:
+
+`SIMUL ILS APPS IN PROG RWYS 24R AND 25L... SIMUL VIS APPS TO ALL RWYS ARE IN PROG. RWY 6L/24R CLSD`
+
+{: .note-title }
+> Note
+>
+> While every separator is the default, vATIS tidies up repeated punctuation, so a message that already ends with a period does not produce two. As soon as any separator is customized, vATIS stops tidying and uses exactly what you typed. In that case leave the final period off your messages and let the separators supply the punctuation.
 
 ![Separator after](/assets/images/StaticDefinitionEditorDialog.png)
 
