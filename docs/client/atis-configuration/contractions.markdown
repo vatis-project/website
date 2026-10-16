@@ -18,6 +18,9 @@ The Contractions tab allows you to define personalized contractions. If you spec
     * **Text**: The written ATIS text that will be displayed.
     * **Voice**: The text that will be spoken by the voice synthesizer.
     * **Add to all ATIS stations in this profile**: When checked, the contraction is added to every ATIS station in the current profile instead of only the selected one.
+
+![New Contraction](/assets/images/NewContractionDialog.png)
+
 After filling in the required information, save the contraction to make it available for use in your ATIS messages.
 
 ## Editing Existing Contraction

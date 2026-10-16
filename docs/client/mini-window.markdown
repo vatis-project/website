@@ -17,10 +17,11 @@ The Mini-Window offers a streamlined display of the current ATIS letter, wind, a
 Right-click on the window to open the window controls context menu.
 
 * Click the **three-dots** icon to hide detailed ATIS information for a more compact view.
+* Click the **compass** icon to show the wind with magnetic variation applied. This only changes stations that have a magnetic variation configured on the [Wind](atis-configuration/formatting/wind) formatting tab.
 * Click the **pin** icon to keep the window on top.
 * Click the **double arrow** icon to restore the full vATIS window.
 
-* Click the **compass** icon to show the wind with magnetic variation applied. This only changes stations that have a magnetic variation configured on the [Wind](atis-configuration/formatting/wind) formatting tab.
+The menu also lists your online stations. Check or uncheck a station to show or hide it in the Mini-Window.
 
 ## Voice ATIS Recording Indicator
 For stations configured for [Voice Recorded ATIS](voice-record-atis), a small red dot is shown at the left of the station's row when the voice ATIS needs to be recorded again. Hover over it to see "Voice ATIS needs recording".
