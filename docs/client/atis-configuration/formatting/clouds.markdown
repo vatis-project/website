@@ -13,8 +13,12 @@ This element represents the cloud layers information obtained from the METAR rep
 
 ![Clouds](/assets/images/Formatting_Clouds.png)
 
-### Identify ceiling layer in voice ATIS
-When enabled, the lowest BKN (broken) or OVC (overcast) cloud layer will be referred to as the "ceiling" in the voice ATIS. For example, it will be spoken as "CEILING ONE THOUSAND FOUR HUNDRED OVERCAST, TWO THOUSAND BROKEN."
+### Ceiling
+The ceiling is the lowest cloud layer of the selected types that has a reported height.
+
+* **Ceiling cloud types**: The cloud types that count as a ceiling: SCT, BKN and OVC. The default is BKN and OVC.
+* **Prefix ceiling layer in voice ATIS with "ceiling"**: When enabled (the default), the ceiling layer is spoken with the word "ceiling" in front of it. For example, it will be spoken as "CEILING ONE THOUSAND FOUR HUNDRED OVERCAST, TWO THOUSAND BROKEN."
+* **Prefix the ceiling layer in the text ATIS with**: When enabled (off by default), the ceiling layer is shown with this prefix in the text ATIS. The default prefix is `CIG`, so the layer reads, for example, `CIG BKN014`.
 
 ### Convert cloud layer altitude to metric
 If this option is selected, the altitude (height) of the cloud layer will be converted to the metric unit in both the voice and text ATIS.
@@ -40,14 +44,17 @@ Specify how the cloud types should be articulated in the voice ATIS.
 
 The following variables are also available in the Cloud Types:
 
-* `{altitude:N}` ... Text ATIS only. The height zero-padded to *N* digits, for example `{altitude:2}` gives 03 for 300 feet.
+* `{altitude:N}` ... Text ATIS only. The height zero-padded to *N* digits, for example `{altitude:2}` gives 03 for 300 feet. Without *N*, the height is padded to 3 digits.
 * `{amount}` ... The **UND** row only. The layer amount, such as FEW or BKN.
-* `{feet}` ... The word "feet" when the height is known, and empty when the height is `///`, so the unit is dropped together with the height.
+* `{feet}` ... The word "feet" when the height is known, and empty when the height is `///` or when cloud heights are converted to metric, so the unit is dropped together with the height.
 
 ## Convective Cloud Types
 Specify how the convective cloud types should be articulated in the voice ATIS.
 
 ![Clouds](/assets/images/Formatting_Clouds_ConvectiveTypes.png)
+
+## Automatic CB Detection
+Available for non-FAA stations. When the METAR reports `//////CB`, a cumulonimbus cloud detected by weather radar with no reported amount or height, the ATIS uses the values set under **Automatic CB Detection** on the Convective Cloud Types tab. The default text is `//////CB` and the default voice is `RADAR DETECTED C-B CLOUDS`.
 
 ## Convective Cloud Types (Text)
 The Convective Cloud Types table also has a **Text** column. It sets how each convective type (CB, TCU) is shown in the text ATIS, independent of the spoken text. By default the text ATIS shows the METAR acronym.

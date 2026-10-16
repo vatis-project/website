@@ -12,7 +12,9 @@ The observation time refers to the time when the METAR report was generated. To 
 * `{time}` ... Represents the time value from the METAR (e.g. 0153)
 * `{hour}` ... Indicates the hour portion of the time (e.g. 01)
 * `{minute}` ... Indicates the minute portion of the time (e.g. 53)
-* `{special}` ... Inserts the word "SPECIAL" (voice ATIS only) if the METAR observation time differs from the routine observation time.
+* `{day}` ... The day of the month from the METAR (e.g. 16)
+* `{special}` ... Inserts the word "SPECIAL" if the METAR is a special report (SPECI), or if its observation minute does not match the Routine Observation Time. Available in both the Text and Voice templates.
+* `{type}` ... The type of METAR report: "SPECI" for a special report, otherwise "METAR". Available in the Text template only.
 
 ![Observation Time](/assets/images/Formatting_ObservationTime.png)
 

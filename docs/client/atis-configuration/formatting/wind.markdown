@@ -18,7 +18,10 @@ When this option is enabled, the leading zero on wind speeds less than 10 will b
 When this option is enabled, the wind speed is spoken in group form. For example, a wind speed of 25 is pronounced as "TWENTY-FIVE" instead of "TWO FIVE". The leading zero option is disabled while this option is enabled.
 
 **Magnetic Variation**<br/>
-When enabled, the wind direction in the text-to-speech output will be adjusted based on the specified magnetic variation value. This ensures that accurate wind direction information is provided.
+When enabled, the wind direction is adjusted by the specified magnetic variation value in both the text and voice ATIS. This applies to `{wind_dir}` and to the variable direction values `{wind_vmin}` and `{wind_vmax}`. The complete wind string `{wind}` is shown as reported in the METAR and is not adjusted.
+
+**Calm Wind Speed**<br/>
+Set on the **Calm** tab. Wind is treated as calm, and the Calm template is used, when the wind speed is at or below this value (in the unit the METAR reports) or when both the direction and speed are zero. The default is 2.
 
 <hr/>
 
