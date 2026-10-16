@@ -48,3 +48,21 @@ The following variables are also available in the Cloud Types:
 Specify how the convective cloud types should be articulated in the voice ATIS.
 
 ![Clouds](/assets/images/Formatting_Clouds_ConvectiveTypes.png)
+
+## Convective Cloud Types (Text)
+The Convective Cloud Types table also has a **Text** column. It sets how each convective type (CB, TCU) is shown in the text ATIS, independent of the spoken text. By default the text ATIS shows the METAR acronym.
+
+<hr/>
+
+## Variable Format
+
+
+![Clouds Variable Format](/assets/images/Formatting_Clouds_VariableFormat.png)
+
+The Variable Format tab sets the number style and suffix for the `{altitude}` variable, independently for the text and voice ATIS. For example, the text ATIS can append `FT` while the voice ATIS speaks digit-by-digit words. When cloud heights are converted to metric, the spoken "meters" word is still added after the formatted number.
+
+**Style**<br/>
+* **Default**, **Digits**, **Serial**, **Group** ... Built-in rendering, plain digits, digit-by-digit words, or words in groups.
+
+**Suffix**<br/>
+Text appended to the value exactly as typed.

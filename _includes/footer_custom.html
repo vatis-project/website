@@ -1,0 +1,49 @@
+<script>
+  /* Click an image in the page content to view it full size; click anywhere or press Esc to close. */
+  (function () {
+    var overlay = null;
+
+    function close() {
+      if (!overlay) return;
+      document.body.removeChild(overlay);
+      document.body.classList.remove('lightbox-open');
+      overlay = null;
+    }
+
+    function open(src, alt) {
+      close();
+      overlay = document.createElement('div');
+      overlay.className = 'lightbox-overlay';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-label', alt || 'Image preview');
+
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = alt || '';
+      overlay.appendChild(img);
+
+      overlay.addEventListener('click', close);
+      document.body.appendChild(overlay);
+      document.body.classList.add('lightbox-open');
+    }
+
+    document.addEventListener('click', function (e) {
+      var img = e.target;
+      if (!img || img.tagName !== 'IMG' || !img.closest('.main-content')) return;
+      if (img.closest('a')) return; /* leave linked images alone */
+      e.preventDefault();
+      open(img.currentSrc || img.src, img.alt);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var images = document.querySelectorAll('.main-content img');
+      for (var i = 0; i < images.length; i++) {
+        if (!images[i].closest('a')) images[i].classList.add('zoomable');
+      }
+    });
+  })();
+</script>
