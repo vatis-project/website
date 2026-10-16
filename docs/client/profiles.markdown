@@ -46,3 +46,8 @@ To identify which profile corresponds to a specific profile name:
 1. Open the Profiles folder.
 2. Use a text editor to open a profile file.
 3. Check the contents to match the profile name to its ID.
+
+## Import and Launch a Profile File via Command Line
+Use the `--import-profile` argument to import a profile from a file and launch it right away. Provide the path to the profile JSON file.
+
+For example: `vATIS.exe --import-profile C:\Profiles\ZLA.json`

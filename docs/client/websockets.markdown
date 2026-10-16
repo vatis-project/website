@@ -256,6 +256,7 @@ The following value properties are supported:
 | `preset` | The ATIS preset to load | `string` | Required |
 | `airportConditionsFreeText` | The free-text airport conditions | `string` | Optional |
 | `notamsFreeText` | The free-text NOTAMs | `string` | Optional |
+| `syncAtisLetter` | Whether to sync the ATIS letter to the real-world ATIS letter | `boolean` | Optional |
 
 
 > **Notes:**  

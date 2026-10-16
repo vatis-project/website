@@ -32,5 +32,11 @@ This setting defines the text spoken in the voice ATIS when the visibility is re
 **9999 (Text)**<br/>
 This setting defines the text displayed in the text ATIS when the visibility is reported as 9999.
 
+**CAVOK (Voice)**<br/>
+This setting defines the text spoken in the voice ATIS when the METAR reports CAVOK. The default is "CAVOK".
+
+**CAVOK (Text)**<br/>
+This setting defines the text displayed in the text ATIS when the METAR reports CAVOK. The default is "CAVOK".
+
 **Visibility Direction**<br/>
 This setting defines how visibility directions should be spoken in the voice ATIS when visibility differs across various directions (e.g., 1200SE 6000N). Use the provided table to specify the spoken text for cardinal directions.

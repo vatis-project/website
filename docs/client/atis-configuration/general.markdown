@@ -25,6 +25,7 @@ To configure an ATIS station, click on the station in the left sidebar.
 * **Text to Speech/Voice Recorded**: This option lets you choose between digitalized (text-to-speech) or manually recorded voice for the ATIS. If "Text to Speech" is selected, you can further specify the desired voice option. The "Default" option uses the voice similar to that of FAA D-ATIS.
 * **WAV Voice Pack**: Builds the voice ATIS from pre-recorded WAV clips instead of text-to-speech. Choose a pack from the drop-down list, or use **Manage Voice Packs** to import one. See [Voice Packs](voice-packs).
 * **Use "decimal" terminology in spoken text**: Enabling this option will cause numbers with decimals to be spoken as "decimal" rather than "point." For example, "one three four decimal two five" instead of "one three four point two five."
+* **Randomize ATIS letter on connect**: Starts with a random letter within the code range each time this ATIS connects. This is ignored when the letter is synced from the real-world ATIS.
 * **IDS Endpoint**: If your facility is equipped with an Information Display System (IDS) that is compatible with vATIS, you can enter the URL for automatic ATIS information updates. When a URL is specified, vATIS will send an HTTP POST request with a JSON payload similar to the following:
 ```json
 {
@@ -34,10 +35,12 @@ To configure an ATIS station, click on the station in the left sidebar.
     "atisType": "combined",
     "airportConditions": "ILS APP IN PROG RWY 6R OR VCTR FOR VIS APP WILL BE PROVIDED. OPPOSITE DRCTN TFC DEPTG RWY 25R.",
     "notams": "ASDE-X SYSTEM IN USE. ACTIVATE TRANSPONDER WITH MODE C ON ALL TWYS AND RWYS. READBACK ALL RWY HOLD SHORT INSTRUCTIONS.",
-    "timestamp": "11/27/2024 15:39:59"
+    "textAtis": "KLAX ATIS INFO L 1953Z. 25008KT 10SM FEW015 SCT250 17/09 A3002. ILS APP IN PROG RWY 6R OR VCTR FOR VIS APP WILL BE PROVIDED. ...ADVS YOU HAVE INFO L.",
+    "timestamp": "11/27/2024 15:39:59",
     "version": "4.1.0-beta.1"
 }
 ```
+`textAtis` contains the complete text ATIS. When the ATIS station disconnects from the network, vATIS posts one more update with an empty `atisLetter` and an empty `textAtis`, so the IDS can clear the display.
 vATIS includes a signed JWT (JSON Web Token) in the HTTP header of the POST request as an Authorization Bearer token. You can optionally validate requests to your IDS endpoint by verifying the JWT token using the public [JWKS token](https://hub.vatis.app/.well-known/jwks.json).
 
 ## Custom METAR Source

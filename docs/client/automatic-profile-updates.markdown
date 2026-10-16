@@ -12,7 +12,7 @@ Facilities can enable automatic profile updates for their users. To enable this 
 {: .note-title }
 > Important
 >
-> Any local changes made to the profile will be overwritten when the profile is updated.
+> Any local changes made to the profile will be overwritten when the profile is updated. The exception is the profile name: if a user renames the profile, the name they chose is kept when the profile is updated.
 
 To enable the automatic update functionality, add the following two properties to the profile JSON file:
 

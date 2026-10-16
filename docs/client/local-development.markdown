@@ -27,7 +27,7 @@ To begin, clone the vATIS GitHub repository to your local machine. The vATIS sol
 
 ### Visual Studio
 
-1. Open the vATIS.sln
+1. Open the vATIS.slnx
 2. Select the "Local Dev" startup item.
 3. Click the Start button. This will launch vATIS in debug mode and start the localhost dev server in a separate console window.
 
@@ -40,7 +40,7 @@ To begin, clone the vATIS GitHub repository to your local machine. The vATIS sol
 
 ### Rider
 
-1. Open the vATIS.sln
+1. Open the vATIS.slnx
 2. From the **Run / Debug Configurations** dropdown, select "Local Dev".
 3. This will launch vATIS in debug mode and start the localhost dev server in a separate process.
 

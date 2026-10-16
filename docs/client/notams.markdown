@@ -23,3 +23,12 @@ When composing or modifying a message, you can insert contractions by typing the
 
 ### Include Before Free-form NOTAMs
 If enabled, the checked static messages will be included before the free-form NOTAMs text in the ATIS.
+
+### Separators
+The text placed between the selected messages is called the separator. It is used exactly as typed, including any spaces.
+
+* **Default separator**: Shown at the bottom of the dialog and applied between every selected message. The default is a period followed by a space.
+* **Separator after**: To use a different separator after one message, edit that message and enter the text in **Separator after**. Leave it blank to use the default separator. The separator after the last message is not used.
+
+![Separator after](/assets/images/StaticDefinitionEditorDialog.png)
+

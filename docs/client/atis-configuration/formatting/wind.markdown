@@ -14,6 +14,9 @@ The Wind element represents the wind information obtained from the METAR report.
 **Speak wind speed leading zero**<br/>
 When this option is enabled, the leading zero on wind speeds less than 10 will be spoken. For example, if the wind speed is 05, it will be pronounced as "ZERO FIVE" instead of just "FIVE".
 
+**Speak wind speed in group format**<br/>
+When this option is enabled, the wind speed is spoken in group form. For example, a wind speed of 25 is pronounced as "TWENTY-FIVE" instead of "TWO FIVE". The leading zero option is disabled while this option is enabled.
+
 **Magnetic Variation**<br/>
 When enabled, the wind direction in the text-to-speech output will be adjusted based on the specified magnetic variation value. This ensures that accurate wind direction information is provided.
 
@@ -32,8 +35,20 @@ The following variables are available to further customize the display of wind d
 
 * `{wind}` ... The complete wind string (only available for text ATIS, e.g., 25010G15KT V250V280)
 * `{wind_dir}` ... The magnetic direction of the wind (e.g., 25010KT would yield 250)
-* `{wind_spd}` ... The speed/velocity of the wind (e.g., 25010KT would yield 10)
-* `{wind_gust}` ... The gust speed/velocity of the wind (e.g., 25010G18KT would yield 18)
+* `{wind_spd}` ... The speed/velocity of the wind (e.g., 25010KT would yield 10). The speed can be converted to another unit with `{wind_spd|kt}` or `{wind_spd|mps}`.
+* `{wind_gust}` ... The gust speed/velocity of the wind (e.g., 25010G18KT would yield 18). The speed can be converted to another unit with `{wind_gust|kt}` or `{wind_gust|mps}`.
 * `{wind_vmin}` ... The first extreme wind direction (e.g., 250V280 would yield 250)
 * `{wind_vmax}` ... The last extreme wind direction (e.g., 250V280 would yield 280)
 * `{wind_unit}` ... The wind speed unit of measurement (e.g., 25010KT would yield KT, and the spoken value would be KNOTS)
+
+### Wind speed digits in the text ATIS
+By default, wind speeds in the text ATIS are shown with two digits (e.g. 09). Add `:` followed by one or more `#` characters to set the minimum number of digits:
+
+| Template | Wind speed 9 |
+|-|-|
+| `{wind_spd}` | 09 |
+| `{wind_spd:#}` | 9 |
+| `{wind_spd:##}` | 09 |
+| `{wind_spd:###}` | 009 |
+
+This works for `{wind_spd}`, `{wind_gust}` and their unit variants, for example `{wind_spd|kt:#}` or `{wind_gust:#}`. The digit count applies to the text ATIS only and is ignored in the voice ATIS.
