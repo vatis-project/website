@@ -24,13 +24,13 @@ The recording dialog shows the ATIS script to read. The airport identifier in th
     * Click the **CONNECT** button to connect the ATIS.
     * Choose an ATIS letter.
 2. **Start Recording**
-    * Click the **RECORD ATIS** button to open the recording dialog.
+    * Click the **RECORD ATIS** button to open the recording dialog. The button is available only while the ATIS is connected and a METAR has been received.
     * Select your preferred microphone and playback devices in the dialog. These will be used for recording and previewing the ATIS.
     * Click **Start Recording** to begin. When finished, click **Stop Recording**.
 3. **Preview the Recording**
     You can listen to your recording by clicking the **Listen** button. If necessary, re-record by repeating the previous step.
 4. **Save and Transmit**
-    Once satisfied, click the Save button. The ATIS will immediately begin transmitting on the network.
+    Once satisfied, click the Save button. The ATIS will immediately begin transmitting on the network. A recording must be at least 5 seconds long to be saved. Click **Cancel** to close the dialog without saving.
 
 ## Updating the ATIS
 

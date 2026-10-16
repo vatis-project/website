@@ -40,7 +40,7 @@ For example: `vATIS.exe --profile 3068994d-f5a0-46db-a5d1-9b0fb8e67cc5`
 
 ### Finding the Profile ID
 
-The profile ID can be located in the application data folder (refer to the section above for folder paths). Profiles are stored in the Profiles folder, and the file names represent the profile IDs.
+The profile ID can be located in the application data folder (see the [FAQ](/docs/faq/#where-is-the-vatis-app-data) for the folder path, or press **Ctrl+Shift+O**, **Cmd+Shift+O** on macOS, in the main window or the Profiles window to open it). Profiles are stored in the Profiles folder, and the file names represent the profile IDs.
 
 To identify which profile corresponds to a specific profile name:
 1. Open the Profiles folder.
@@ -51,3 +51,9 @@ To identify which profile corresponds to a specific profile name:
 Use the `--import-profile` argument to import a profile from a file and launch it right away. Provide the path to the profile JSON file.
 
 For example: `vATIS.exe --import-profile C:\Profiles\ZLA.json`
+
+This works differently from the **Import** button:
+
+* The profile keeps the ID stored in the file, so it replaces an installed profile that has the same ID. The **Import** button always creates a new profile with a new ID.
+* Only a profile JSON file is accepted. The **Import** button also accepts the `.zip` file exported for a profile that uses voice packs.
+* If the import fails, vATIS shows the Profiles window instead.
