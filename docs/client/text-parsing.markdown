@@ -18,7 +18,7 @@ To parse runway names, include the acronym `RWY`, `RWYS`, `RUNWAY`, or `RUNWAYS`
 Alternatively, you can prefix the runway identifier with a caret symbol (`^`) and the voice synthesizer will pronounce the runway correctly. For example, `^25R` would be read as "TWO FIVE RIGHT."
 
 ### Numbers
-To pronounce numbers in group format, prepend an asterisk (`*`), followed by the number, or enclose the number in braces (`{}`). For example, `*5058` (or `{5058}`) will be pronounced as "five thousand, fifty-eight."
+To pronounce numbers in group format, prepend an asterisk (`*`), followed by the number, or enclose the number in braces (`{}`). For example, `*5058` (or `{5058}`) will be pronounced as "five thousand and fifty-eight."
 
 If the number should be pronounced as negative, add a dash after the asterisk. For example, `*-8` will be pronounced as "minus eight."
 

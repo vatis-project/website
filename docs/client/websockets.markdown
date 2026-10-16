@@ -28,7 +28,7 @@ an [`atis`](#atis) message for each matching station.
 | `atisType` | The station type to return. This enables requesting the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) | Optional. Defaults to `Combined`. Only supported when the `station` property is set. |
 | `station` | The identifier of the station to get the ATIS for. | string |
 
-> **Note:** If `id` and `station` are omitted, the current ATIS for all stations in the loaded profile will be returned.
+> **Note:** If `id` and `station` are omitted, the current ATIS for all stations in the loaded profile will be returned. If both `id` and `station` are provided, an [`error`](#error) message is returned.
 
 #### Example Messages
 
@@ -89,7 +89,7 @@ The following value properties are supported:
 | `atisType` | The station type to acknowledge. This enables acknowledging the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) | Optional. Defaults to `Combined`. Only supported when the `station` property is set. |
 | `station` | The identifier of the station to acknowledge. | string |
 
-> **Note:** If `id` and `station` are omitted, all new ATISes in the loaded profile will be acknowledged.
+> **Note:** If `id` and `station` are omitted, all new ATISes in the loaded profile will be acknowledged. If both `id` and `station` are provided, an [`error`](#error) message is returned.
 
 #### Example Messages
 
@@ -177,6 +177,8 @@ Requests a list of stations in the currently loaded profile. The response return
 
 Requests the contractions for a specific ATIS station, or all stations. The response returns a [`contractions`](#contractions) message.
 
+Specify the station with either `id`, or `station` and `atisType`. If both `id` and `station` are provided, an [`error`](#error) message is returned. If neither is provided, the contractions for all stations are returned. If the station does not exist, the request is ignored.
+
 #### Example Messages
 
 **Get contractions for all stations in the loaded profile**
@@ -242,7 +244,7 @@ You can retrieve available profile IDs by sending a [`getProfiles`](#getprofiles
 
 ### `configureAtis`
 
-Configures the specified ATIS station in the currently loaded profile. If the station doesn't exist or the preset is invalid, the request is ignored, and no response is returned.
+Configures the specified ATIS station in the currently loaded profile. If the station doesn't exist, the request is ignored, and no response is returned. If the preset doesn't exist, or both `id` and `station` are provided, an [`error`](#error) message is returned.
 
 You can retrieve available stations presets by sending a [`getStations`](#getstations) request.
 
@@ -256,13 +258,14 @@ The following value properties are supported:
 | `preset` | The ATIS preset to load | `string` | Required |
 | `airportConditionsFreeText` | The free-text airport conditions | `string` | Optional |
 | `notamsFreeText` | The free-text NOTAMs | `string` | Optional |
-| `syncAtisLetter` | Whether to sync the ATIS letter to the real-world ATIS letter | `boolean` | Optional |
+| `syncAtisLetter` | Whether to keep syncing the ATIS letter to the real-world ATIS letter. See the notes below. | `boolean` | Optional. Defaults to `false`. |
 
 
 > **Notes:**  
 > - You must provide **either** `station` **or** `id`, but **not both**.
 > - `atisType` is required only when using `station` (not needed with `id`).  
 > - `airportConditionsFreeText` and `notamsFreeText` are optional. Any provided text will overwrite any text in the preset, but the changes will not be permanently saved.
+> - The ATIS letter is always fetched from the real-world ATIS once when the station is configured, whatever `syncAtisLetter` is. When `syncAtisLetter` is `true`, the letter is also synced again each time the station connects and each time a new METAR is received. Leaving it out sets it back to `false`.
 
 #### Example Messages
 
@@ -299,7 +302,7 @@ The following value properties are supported:
 
 ### `connectAtis`
 
-Connects the specified ATIS station to the network. If the station does not exist, the request is ignored, and no response is returned. 
+Connects the specified ATIS station to the network. If the station does not exist, the request is ignored, and no response is returned. The request is also ignored if the station is already connected or has no preset selected. If both `id` and `station` are provided, an [`error`](#error) message is returned.
 
 If the ATIS is successfully connected, an [`atis`](#atis) message response will be received.
 
@@ -344,7 +347,7 @@ To retrieve available stations, send a [`getStations`](#getstations) request.
 
 ### `disconnectAtis`
 
-Disconnects the specified ATIS station to the network. If the station does not exist, the request is ignored, and no response is returned. 
+Disconnects the specified ATIS station to the network. If the station does not exist, the request is ignored, and no response is returned. The request is also ignored unless the station is connected; a station that is still connecting is not cancelled. If both `id` and `station` are provided, an [`error`](#error) message is returned.
 
 If the ATIS is successfully disconnected, an [`atis`](#atis) message response will be received.
 
@@ -400,12 +403,13 @@ Stepping past the end of the code range wraps around, the same as the letter but
 | `id` | The unique station ID | `string` |
 | `station` | The station identifier (e.g. `KMIA`) | `string` |
 | `atisType` | The ATIS type. | [AtisType](#atistype) | Optional. Defaults to `Combined`. Only used with `station`. |
-| `letter` | The letter to set (e.g. `C`). | `string` | A single letter within the station's code range. |
+| `letter` | The letter to set (e.g. `C`). | `string` | A single letter within the station's code range. Lowercase is accepted and converted to uppercase. |
 | `step` | The direction to move the letter. | [AtisLetterStep](#atisletterstep) | |
 
 > **Notes:**
 > - You must provide **either** `id` **or** `station`, but not both.
 > - You must provide **either** `letter` **or** `step`, but not both.
+> - If the request breaks either of these rules, or `letter` is not a single letter, an [`error`](#error) message is returned.
 
 #### Example Messages
 
@@ -453,7 +457,7 @@ The following messages are sent by vATIS to connected clients.
 ### `atis`
 
 Sent to a specific client in response to a [`getAtis`](#getatis) message, or to all connected clients whenever a property on an
-ATIS changes. The following value properties are sent:
+ATIS changes, including when the ATIS letter changes and when the network connection status changes. The following value properties are sent. Every property except `id` is left out of the message when it has no value:
 
 | Property | Description | Type |
 | - | - | - |
@@ -472,6 +476,10 @@ ATIS changes. The following value properties are sent:
 | `pressure` | The current pressure, as a whole number (e.g. `2990`). | [Value](#value) |
 | `ceiling` | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
 | `prevailingVisibility` | The current visibility. | [Value](#value) |
+
+> **Notes:**
+> - When a station disconnects, the `atis` message has a `networkConnectionStatus` of `Disconnected`, `isNewAtis` is `false`, and `metar`, `wind` and `altimeter` are left out. `atisLetter`, `textAtis`, `pressure`, `ceiling` and `prevailingVisibility` can still hold the values from before the disconnect, so use `networkConnectionStatus` to tell whether the station is online.
+> - For a station that another controller is publishing, `networkConnectionStatus` is `Observer`, and the letter, METAR, wind, altimeter and text ATIS come from that controller's ATIS.
 
 Example message:
 
@@ -561,7 +569,7 @@ Sent to all connected clients when a station fails to connect to the network, or
 
 ### `profiles`
 
-Sent to a specific client in response to a [`getProfiles`](#getprofiles) message, or to all connected clients. The message includes a collection of profiles, with the following properties:
+Sent to the client that sent a [`getProfiles`](#getprofiles) message. The message includes a collection of profiles, with the following properties:
 
 | Property | Description | Type |
 | - | - | - |
@@ -594,7 +602,7 @@ Sent to a specific client in response to a [`getProfiles`](#getprofiles) message
 
 ### `stations`
 
-Sent to a specific client in response to a [`getStations`](#getstations) message, or to all connected clients. The message includes a collection of stations, with the following properties:
+Sent to the client that sent a [`getStations`](#getstations) message. The message includes a collection of stations, with the following properties:
 
 | Property | Description | Type |
 | - | - | - |
@@ -752,6 +760,7 @@ Indicates a value and the value's unit.
 
 Describes the unit for a given value. The possible values are:
 
+- `None`
 - `Degree`
 - `DegreeCelsius`
 - `Feet`

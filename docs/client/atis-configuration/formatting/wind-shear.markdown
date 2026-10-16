@@ -16,7 +16,7 @@ You can set separate text and voice values for wind shear that is reported for a
 | **Runway Specific** | `WS R{Runway}` | `Wind Shear Runway {Runway}` |
 | **All Runways** | `WS ALL RWY` | `Wind Shear All Runways` |
 
-* `{Runway}` ... The runway identifier (e.g. 04R). Only available in the Runway Specific template.
+* `{Runway}` ... The runway identifier. Only available in the Runway Specific template. In the text ATIS it is the runway as reported (e.g. 04R). In the voice ATIS it is spoken digit by digit, followed by LEFT, RIGHT or CENTER (e.g. "ZERO FOUR RIGHT").
 
 
 ![Wind Shear](/assets/images/Formatting_WindShear.png)

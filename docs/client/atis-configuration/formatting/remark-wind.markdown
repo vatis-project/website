@@ -16,9 +16,9 @@ Set the text and voice templates for the remark wind. The defaults are:
 
 The following variables are available:
 
-* `{height}` ... The height of the wind observation in feet.
-* `{dir}` ... The wind direction in degrees, or VRB if variable.
-* `{speed}` ... The wind speed in knots, including any gust (e.g. 03G10).
+* `{height}` ... The height of the wind observation in feet. In the voice ATIS it is spoken digit by digit.
+* `{dir}` ... The wind direction in degrees, or VRB if variable. In the voice ATIS it is spoken digit by digit, or as "variable".
+* `{speed}` ... The wind speed in knots, including any gust (e.g. 03G10). In the voice ATIS a gust is spoken as "gusting" followed by the gust speed.
 
 
 ![Remark Wind](/assets/images/Formatting_RemarkWind.png)

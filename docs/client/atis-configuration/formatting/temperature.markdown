@@ -33,15 +33,15 @@ You can customize how the temperature is displayed in your text ATIS with the fo
 
 ![Temperature Variable Format](/assets/images/Formatting_Temperature_VariableFormat.png)
 
-The Variable Format tab controls how each numeric variable is written, separately for the text ATIS and the voice ATIS. The row for `{temp}` has a **Text** and a **Voice** column group, each with a **Style** and a **Suffix**.
+The Variable Format tab controls how the numeric variable is written. The row for `{temp}` has a **Text suffix**, a **Voice style** and a **Voice suffix**. There is no text style: the digits in the text ATIS are set by the format in the template, for example `{temp:##}` (see Customization above).
 
-**Style**<br/>
-* **Default** ... The built-in rendering (digits in the text ATIS, digit-by-digit words in the voice ATIS).
+**Voice style**<br/>
+* **Default** ... The built-in rendering (digit-by-digit words).
 * **Digits** ... Plain digits (e.g. 1013).
 * **Serial** ... Digit-by-digit words (e.g. ONE ZERO ONE THREE).
 * **Group** ... Words in groups (e.g. TEN THIRTEEN).
 
-**Suffix**<br/>
-Text appended to the value exactly as typed, so include a leading space if you need one (e.g. ` knots`).
+**Text suffix and Voice suffix**<br/>
+Text appended to the value in the text or voice ATIS, exactly as typed, so include a leading space if you need one (e.g. ` knots`).
 
 Every setting defaults to the previous behavior, so existing profiles are unchanged.

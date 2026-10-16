@@ -22,7 +22,7 @@ Each station chooses its own pack, and any number of stations can share the same
 {: .note-title }
 > Note
 >
-> Changing a station's voice type disconnects it from the network if it is currently connected, as with any other change on the **General** tab.
+> Saving a change to a station's voice type with **Save & Close** disconnects it from the network if it is currently connected, as with changes on the **Presets** and **Formatting** tabs.
 
 If a word in the ATIS has no clip in the pack, the voice ATIS is not built and the missing words are listed. Add the missing clips in the Voice Packs window (see below), or choose a different pack.
 
