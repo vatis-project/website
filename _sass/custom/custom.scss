@@ -27,3 +27,192 @@ body.lightbox-open {
     filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
   }
 }
+
+// Lists
+.main-content {
+  ul,
+  ol {
+    padding-left: 2.25em;
+  }
+
+  li {
+    margin-bottom: 0.4em;
+
+    > p {
+      margin-bottom: 0;
+    }
+  }
+
+  // Numbered steps as small filled badges
+  ol > li::before {
+    top: 0.15em;
+    left: -2.25em;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: rgba(1, 100, 173, 0.1);
+    color: #0164AD;
+    font-size: 0.75rem !important;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-align: center;
+  }
+
+  // Keep nested lettered lists plain
+  ol > li ol > li::before {
+    top: 0.2em;
+    left: -1.6em;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    color: #959396;
+    font-weight: normal;
+    line-height: inherit;
+  }
+
+  ul > li::before {
+    margin-left: -1.25em;
+    color: #0164AD;
+    font-weight: 700;
+  }
+
+  // Code blocks inside a list item sit under its text
+  li > .highlight {
+    margin: 0.5rem 0;
+  }
+}
+
+// Code blocks
+.main-content {
+  div.highlighter-rouge {
+    margin: 0.75rem 0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+
+    pre,
+    code,
+    .highlight {
+      margin: 0;
+      padding: 0;
+      line-height: 1.45;
+    }
+  }
+
+  // Inline code
+  :not(pre) > code {
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    font-size: 0.875em;
+  }
+}
+
+// Tables
+.main-content {
+  table {
+    th,
+    td {
+      padding: 0.6rem 0.9rem;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f5f6fa;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    tbody tr:nth-child(even) td {
+      background: #fafbfd;
+    }
+
+    tbody tr:hover td {
+      background: #f0f5fa;
+    }
+
+    // Keep property and variable names on one line
+    td:first-child code {
+      white-space: nowrap;
+    }
+  }
+}
+
+// Sidebar navigation
+.nav-list .nav-list-item {
+  .nav-list-link {
+    border-left: 3px solid transparent;
+    transition: background-color 0.15s, color 0.15s;
+
+    &:hover {
+      color: #0164AD;
+    }
+
+    &.active {
+      border-left-color: #0164AD;
+      color: #0164AD;
+      font-weight: 600;
+    }
+  }
+
+  // Nested pages sit under a faint guide line
+  > .nav-list {
+    margin-left: 1rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}
+
+// Links
+.main-content a:not([class]) {
+  text-decoration-color: rgba(1, 100, 173, 0.4);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+
+  &:hover {
+    text-decoration-color: #0164AD;
+    text-decoration-thickness: 2px;
+  }
+}
+
+// Plain blockquotes (callouts have their own classes)
+.main-content blockquote:not([class]) {
+  margin-left: 0;
+  padding: 0.5rem 1rem;
+  border-left: 4px solid rgba(1, 100, 173, 0.35);
+  border-radius: 0 4px 4px 0;
+  background: #f5f8fb;
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Callouts
+.main-content {
+  blockquote[class$="-title"],
+  blockquote[class^="warning"],
+  p.warning {
+    padding: 1rem 1.1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+
+  blockquote[class$="-title"] > p:first-child {
+    padding-bottom: 0.35rem;
+    font-size: 0.8em;
+    letter-spacing: 0.05em;
+  }
+}
+
+// Keyboard focus
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+.search-input:focus-visible {
+  outline: 2px solid #0164AD;
+  outline-offset: 2px;
+  border-radius: 2px;
+}

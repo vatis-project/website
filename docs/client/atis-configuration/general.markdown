@@ -52,12 +52,12 @@ By default, vATIS downloads METAR reports from the VATSIM METAR service. Some ai
 2. Open the Profile's JSON file in a text editor. Profiles are stored in the `Profiles` folder of the [vATIS App Data folder](/docs/faq/#where-is-the-vatis-app-data), and the file name is the profile ID. See [Finding the Profile ID](/docs/client/profiles/#finding-the-profile-id).
 3. Locate the station under `stations` and add (or edit) the `customMetarUrl` property:
 
-```json
-{
-    "identifier": "KLAX",
-    "customMetarUrl": "https://example.com/metar/{icao}"
-}
-```
+   ```json
+   {
+       "identifier": "KLAX",
+       "customMetarUrl": "https://example.com/metar/{icao}"
+   }
+   ```
 
 4. Save the file and reopen the Profile.
 
@@ -74,16 +74,16 @@ You can have the ATIS alternate between several text-to-speech voices, changing 
 2. Open the Profile's JSON file in a text editor. Profiles are stored in the `Profiles` folder of the [vATIS App Data folder](/docs/faq/#where-is-the-vatis-app-data), and the file name is the profile ID. See [Finding the Profile ID](/docs/client/profiles/#finding-the-profile-id).
 3. Locate the station under `stations` and add the `alternatingVoices` property to its `atisVoice` object:
 
-```json
-{
-    "identifier": "EBBR",
-    "atisVoice": {
-        "useTextToSpeech": true,
-        "voice": "Default",
-        "alternatingVoices": ["Voice A", "Voice B"]
-    }
-}
-```
+   ```json
+   {
+       "identifier": "EBBR",
+       "atisVoice": {
+           "useTextToSpeech": true,
+           "voice": "Default",
+           "alternatingVoices": ["Voice A", "Voice B"]
+       }
+   }
+   ```
 
 4. Save the file and reopen the Profile.
 
