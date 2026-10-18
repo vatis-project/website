@@ -41,7 +41,7 @@
     document.addEventListener('click', function (e) {
       var img = e.target;
       if (!img || img.tagName !== 'IMG' || !img.closest('.main-content')) return;
-      if (img.closest('a')) return; /* leave linked images alone */
+      if (!img.classList.contains('zoomable')) return; /* only images with a larger version to show */
       e.preventDefault();
       open(img.src, img.alt, img.getBoundingClientRect().width); /* src is the 2x file; currentSrc may be the 1x one */
     });
@@ -50,11 +50,25 @@
       if (e.key === 'Escape') close();
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
+    /* Only mark an image zoomable if enlarging it would actually show more: its real pixel size on this display */
+    /* (width / devicePixelRatio) must exceed the size it is shown at. Small images get no zoom cursor or lightbox. */
+    function markZoomable(img) {
+      if (img.closest('a') || !img.naturalWidth) return;
+      var dpr = window.devicePixelRatio || 1;
+      var larger = img.naturalWidth / dpr > img.getBoundingClientRect().width + 8;
+      img.classList.toggle('zoomable', larger);
+    }
+
+    function markAll() {
       var images = document.querySelectorAll('.main-content img');
       for (var i = 0; i < images.length; i++) {
-        if (!images[i].closest('a')) images[i].classList.add('zoomable');
+        var img = images[i];
+        if (img.complete) markZoomable(img);
+        else img.addEventListener('load', function () { markZoomable(this); });
       }
-    });
+    }
+
+    document.addEventListener('DOMContentLoaded', markAll);
+    window.addEventListener('resize', markAll);
   })();
 </script>
