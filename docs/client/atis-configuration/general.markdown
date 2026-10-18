@@ -100,15 +100,15 @@ A recorded voice ATIS can be disconnected automatically if it is not recorded so
 2. Open the Profile's JSON file in a text editor. Profiles are stored in the `Profiles` folder of the [vATIS App Data folder](/docs/faq/#where-is-the-vatis-app-data), and the file name is the profile ID. See [Finding the Profile ID](/docs/client/profiles/#finding-the-profile-id).
 3. Locate the station under `stations` and add the `disconnectIfUnrecorded` property to its `atisVoice` object:
 
-```json
-{
-    "identifier": "KSFO",
-    "atisVoice": {
-        "useTextToSpeech": false,
-        "disconnectIfUnrecorded": true
-    }
-}
-```
+   ```json
+   {
+       "identifier": "KSFO",
+       "atisVoice": {
+           "useTextToSpeech": false,
+           "disconnectIfUnrecorded": true
+       }
+   }
+   ```
 
 4. Save the file and reopen the Profile.
 
