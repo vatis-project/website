@@ -33,9 +33,9 @@ an [`atis`](#atis) message for each matching station.
 
 | Property | Description | Type | Notes |
 |-|-|-|-|
-| `id` | The unique ID of the station to get the ATIS for. | string |
+| `id` | The unique ID of the station to get the ATIS for. | string | |
 | `atisType` | The station type to return. This enables requesting the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) | Optional. Defaults to `Combined`. Only supported when the `station` property is set. |
-| `station` | The identifier of the station to get the ATIS for. | string |
+| `station` | The identifier of the station to get the ATIS for. | string | |
 
 {: .note-title }
 > Note
@@ -97,9 +97,9 @@ The following value properties are supported:
 
 | Property | Description | Type | Notes |
 |-|-|-|-|
-| `id` | The unique ID of the station to acknowledge. | string |
+| `id` | The unique ID of the station to acknowledge. | string | |
 | `atisType` | The station type to acknowledge. This enables acknowledging the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) | Optional. Defaults to `Combined`. Only supported when the `station` property is set. |
-| `station` | The identifier of the station to acknowledge. | string |
+| `station` | The identifier of the station to acknowledge. | string | |
 
 {: .note-title }
 > Note
@@ -267,9 +267,9 @@ The following value properties are supported:
 
 | Property | Description | Type | |
 | - | - | - | - |
-| `station` | The station identifier (e.g. `KMIA`) | `string` |
-| `id` | The unique station ID | `string` |
-| `atisType` | The ATIS type. | [AtisType](#atistype) |
+| `station` | The station identifier (e.g. `KMIA`) | `string` | |
+| `id` | The unique station ID | `string` | |
+| `atisType` | The ATIS type. | [AtisType](#atistype) | |
 | `preset` | The ATIS preset to load | `string` | Required |
 | `airportConditionsFreeText` | The free-text airport conditions | `string` | Optional |
 | `notamsFreeText` | The free-text NOTAMs | `string` | Optional |
@@ -423,8 +423,8 @@ Stepping past the end of the code range wraps around, the same as the letter but
 
 | Property | Description | Type | Notes |
 | - | - | - | - |
-| `id` | The unique station ID | `string` |
-| `station` | The station identifier (e.g. `KMIA`) | `string` |
+| `id` | The unique station ID | `string` | |
+| `station` | The station identifier (e.g. `KMIA`) | `string` | |
 | `atisType` | The ATIS type. | [AtisType](#atistype) | Optional. Defaults to `Combined`. Only used with `station`. |
 | `letter` | The letter to set (e.g. `C`). | `string` | A single letter within the station's code range. Lowercase is accepted and converted to uppercase. |
 | `step` | The direction to move the letter. | [AtisLetterStep](#atisletterstep) | |

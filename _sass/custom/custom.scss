@@ -106,3 +106,33 @@ body.lightbox-open {
     font-size: 0.875em;
   }
 }
+
+// Tables
+.main-content {
+  table {
+    th,
+    td {
+      padding: 0.6rem 0.9rem;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f5f6fa;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    tbody tr:nth-child(even) td {
+      background: #fafbfd;
+    }
+
+    tbody tr:hover td {
+      background: #f0f5fa;
+    }
+
+    // Keep property and variable names on one line
+    td:first-child code {
+      white-space: nowrap;
+    }
+  }
+}
