@@ -11,6 +11,15 @@ vATIS provides a websocket interface at `ws://127.0.0.1:49082/` to receive ATIS 
 
 For an example of using the WebSocket interface see the [Stream Deck actions for vATIS project](https://github.com/neilenns/streamdeck-vatis). TypeScript [type definitions for the messages](https://github.com/neilenns/streamdeck-vatis/blob/main/src/interfaces/messages.ts) are also available in that project.
 
+{::options toc_levels="2..3" /}
+
+<details open markdown="block">
+  <summary>Table of contents</summary>
+  {: .text-delta }
+* TOC
+{:toc}
+</details>
+
 ## Incoming messages
 
 The following messages can be sent to vATIS to trigger state changes or to request state information.
