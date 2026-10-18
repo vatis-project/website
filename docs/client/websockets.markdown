@@ -28,7 +28,10 @@ an [`atis`](#atis) message for each matching station.
 | `atisType` | The station type to return. This enables requesting the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) | Optional. Defaults to `Combined`. Only supported when the `station` property is set. |
 | `station` | The identifier of the station to get the ATIS for. | string |
 
-> **Note:** If `id` and `station` are omitted, the current ATIS for all stations in the loaded profile will be returned. If both `id` and `station` are provided, an [`error`](#error) message is returned.
+{: .note-title }
+> Note
+>
+> If `id` and `station` are omitted, the current ATIS for all stations in the loaded profile will be returned. If both `id` and `station` are provided, an [`error`](#error) message is returned.
 
 #### Example Messages
 
@@ -89,7 +92,10 @@ The following value properties are supported:
 | `atisType` | The station type to acknowledge. This enables acknowledging the specific `Departure` or `Arrival` ATIS for stations that publish separate ATIS information for arrivals and departures. | [atisType](#atistype) | Optional. Defaults to `Combined`. Only supported when the `station` property is set. |
 | `station` | The identifier of the station to acknowledge. | string |
 
-> **Note:** If `id` and `station` are omitted, all new ATISes in the loaded profile will be acknowledged. If both `id` and `station` are provided, an [`error`](#error) message is returned.
+{: .note-title }
+> Note
+>
+> If `id` and `station` are omitted, all new ATISes in the loaded profile will be acknowledged. If both `id` and `station` are provided, an [`error`](#error) message is returned.
 
 #### Example Messages
 
@@ -261,9 +267,11 @@ The following value properties are supported:
 | `syncAtisLetter` | Whether to keep syncing the ATIS letter to the real-world ATIS letter. See the notes below. | `boolean` | Optional. Defaults to `false`. |
 
 
-> **Notes:**  
+{: .note-title }
+> Notes
+>
 > - You must provide **either** `station` **or** `id`, but **not both**.
-> - `atisType` is required only when using `station` (not needed with `id`).  
+> - `atisType` is required only when using `station` (not needed with `id`).
 > - `airportConditionsFreeText` and `notamsFreeText` are optional. Any provided text will overwrite any text in the preset, but the changes will not be permanently saved.
 > - The ATIS letter is always fetched from the real-world ATIS once when the station is configured, whatever `syncAtisLetter` is. When `syncAtisLetter` is `true`, the letter is also synced again each time the station connects and each time a new METAR is received. Leaving it out sets it back to `false`.
 
@@ -316,7 +324,10 @@ To retrieve available stations, send a [`getStations`](#getstations) request.
 | `station` | The station identifier (e.g. `KMIA`) | `string` |
 | `atisType` | The ATIS type. | [AtisType](#atistype) |
 
-> **Note:** You must provide **either** `id` **or** `station` and `atisType`.  
+{: .note-title }
+> Note
+>
+> You must provide **either** `id` **or** `station` and `atisType`.
 
 #### Example Messages
 
@@ -361,7 +372,10 @@ To retrieve available stations, send a [`getStations`](#getstations) request.
 | `station` | The station identifier (e.g. `KMIA`) | `string` |
 | `atisType` | The ATIS type. | [AtisType](#atistype) |
 
-> **Note:**  You must provide **either** `id` **or** `station` and `atisType`.  
+{: .note-title }
+> Note
+>
+> You must provide **either** `id` **or** `station` and `atisType`.
 
 #### Example Messages
 
@@ -406,7 +420,9 @@ Stepping past the end of the code range wraps around, the same as the letter but
 | `letter` | The letter to set (e.g. `C`). | `string` | A single letter within the station's code range. Lowercase is accepted and converted to uppercase. |
 | `step` | The direction to move the letter. | [AtisLetterStep](#atisletterstep) | |
 
-> **Notes:**
+{: .note-title }
+> Notes
+>
 > - You must provide **either** `id` **or** `station`, but not both.
 > - You must provide **either** `letter` **or** `step`, but not both.
 > - If the request breaks either of these rules, or `letter` is not a single letter, an [`error`](#error) message is returned.
@@ -477,7 +493,9 @@ ATIS changes, including when the ATIS letter changes and when the network connec
 | `ceiling` | The current lowest cloud layer that is broken or overcast. If there is no ceiling then this property is not returned. | [Value](#value) | 
 | `prevailingVisibility` | The current visibility. | [Value](#value) |
 
-> **Notes:**
+{: .note-title }
+> Notes
+>
 > - When a station disconnects, the `atis` message has a `networkConnectionStatus` of `Disconnected`, `isNewAtis` is `false`, and `metar`, `wind` and `altimeter` are left out. `atisLetter`, `textAtis`, `pressure`, `ceiling` and `prevailingVisibility` can still hold the values from before the disconnect, so use `networkConnectionStatus` to tell whether the station is online.
 > - For a station that another controller is publishing, `networkConnectionStatus` is `Observer`, and the letter, METAR, wind, altimeter and text ATIS come from that controller's ATIS.
 
