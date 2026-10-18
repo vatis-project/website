@@ -136,3 +136,27 @@ body.lightbox-open {
     }
   }
 }
+
+// Sidebar navigation
+.nav-list .nav-list-item {
+  .nav-list-link {
+    border-left: 3px solid transparent;
+    transition: background-color 0.15s, color 0.15s;
+
+    &:hover {
+      color: #0164AD;
+    }
+
+    &.active {
+      border-left-color: #0164AD;
+      color: #0164AD;
+      font-weight: 600;
+    }
+  }
+
+  // Nested pages sit under a faint guide line
+  > .nav-list {
+    margin-left: 1rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}
