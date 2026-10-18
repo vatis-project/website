@@ -91,3 +91,28 @@ You can have the ATIS alternate between several text-to-speech voices, changing 
 * **Order**: Voices are used in the order listed, one per ATIS letter, starting with the first entry on the first letter of the station's code range. After the last entry, the list wraps back to the first.
 * **Overrides the selected voice**: When two or more voices are listed, `alternatingVoices` is used instead of the voice selected in the **Text to Speech** drop-down. If a name is not found, the default voice is used for that letter.
 * **Removing the override**: Delete the `alternatingVoices` property, or leave it empty or with a single entry.
+
+## Disconnect Unrecorded Voice ATIS
+
+A recorded voice ATIS can be disconnected automatically if it is not recorded soon after connecting, so a station that nobody records does not stay on the network. This is not exposed in the vATIS user interface, so it must be set by editing the Profile file manually.
+
+1. Close vATIS (or at least close the Profile).
+2. Open the Profile's JSON file in a text editor. Profiles are stored in the `Profiles` folder of the [vATIS App Data folder](/docs/faq/#where-is-the-vatis-app-data), and the file name is the profile ID. See [Finding the Profile ID](/docs/client/profiles/#finding-the-profile-id).
+3. Locate the station under `stations` and add the `disconnectIfUnrecorded` property to its `atisVoice` object:
+
+```json
+{
+    "identifier": "KSFO",
+    "atisVoice": {
+        "useTextToSpeech": false,
+        "disconnectIfUnrecorded": true
+    }
+}
+```
+
+4. Save the file and reopen the Profile.
+
+* **Time limit**: The station disconnects if it has not been recorded within 5 minutes of connecting to the network. The limit is fixed and cannot be changed.
+* **Recorded voice ATIS only**: This has no effect on stations that use text-to-speech or a voice pack.
+* **Notification**: vATIS shows a notification when it disconnects the station.
+* **Removing the option**: Delete the `disconnectIfUnrecorded` property, or set it to `false`.
