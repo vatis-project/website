@@ -50,7 +50,7 @@ gh_edit_view_mode: "tree"
 callouts:
   important:
     title: Important
-    color: blue
+    color: yellow
   note:
     title: Note
     color: blue

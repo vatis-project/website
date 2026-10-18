@@ -9,7 +9,7 @@ nav_order: 13
 
 Facilities can enable automatic profile updates for their users. To enable this functionality, you need to update the profile JSON before publishing it on your website.
 
-{: .note-title }
+{: .important-title }
 > Important
 >
 > Any local changes made to the profile will be overwritten when the profile is updated. The exceptions are the profile name and the voice pack choices: if a user renames the profile, the name they chose is kept, and stations keep their selected WAV voice pack.
