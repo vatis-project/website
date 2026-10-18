@@ -27,3 +27,58 @@ body.lightbox-open {
     filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
   }
 }
+
+// Lists
+.main-content {
+  ul,
+  ol {
+    padding-left: 2.25em;
+  }
+
+  li {
+    margin-bottom: 0.4em;
+
+    > p {
+      margin-bottom: 0;
+    }
+  }
+
+  // Numbered steps as small filled badges
+  ol > li::before {
+    top: 0.15em;
+    left: -2.25em;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: rgba(1, 100, 173, 0.1);
+    color: #0164AD;
+    font-size: 0.75rem !important;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-align: center;
+  }
+
+  // Keep nested lettered lists plain
+  ol > li ol > li::before {
+    top: 0.2em;
+    left: -1.6em;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    color: #959396;
+    font-weight: normal;
+    line-height: inherit;
+  }
+
+  ul > li::before {
+    margin-left: -1.25em;
+    color: #0164AD;
+    font-weight: 700;
+  }
+
+  // Code blocks inside a list item sit under its text
+  li > .highlight {
+    margin: 0.5rem 0;
+  }
+}
