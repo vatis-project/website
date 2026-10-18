@@ -206,3 +206,13 @@ body.lightbox-open {
     letter-spacing: 0.05em;
   }
 }
+
+// Keyboard focus
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+.search-input:focus-visible {
+  outline: 2px solid #0164AD;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
