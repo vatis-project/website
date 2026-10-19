@@ -9,7 +9,7 @@ nav_order: 3
 
 The User Settings window can be accessed through the vATIS Main Window by clicking the **User Settings** button.
 
-![General Settings](/assets/images/UserSettings.png){:width="50%"}
+![General Settings](/assets/images/UserSettings.png)
 
 - **Real Name**: your real name or CID to display to pilots and other controllers on the network
 - **VATSIM ID**: your VATSIM CID (digits only)
