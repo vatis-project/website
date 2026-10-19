@@ -17,7 +17,7 @@ The Mini-Window offers a streamlined display of the current ATIS letter for conn
 Right-click on the window to open the window controls context menu.
 
 * Click the **three-dots** icon to show or hide the weather data (observation time, altimeter, and wind) next to each station. The weather data is hidden by default, and your choice is remembered.
-* Click the **compass** icon to show the wind with magnetic variation applied. This only changes stations that have a magnetic variation configured on the [Wind](atis-configuration/formatting/wind) formatting tab.
+* Click the **compass** icon to show the wind with magnetic variation applied. This only changes stations that have a magnetic variation configured on the [Wind](atis-configuration/formatting/wind) formatting tab. The compass icon is only shown while the weather data is displayed, so click the **three-dots** icon first if you don't see it.
 * Click the **pin** icon to keep the window on top.
 * Click the **double arrow** icon to restore the full vATIS window. You can also double-click an empty part of the Mini-Window.
 
