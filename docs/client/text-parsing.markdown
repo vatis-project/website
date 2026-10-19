@@ -2,7 +2,7 @@
 layout: home
 title: Text Parsing
 parent: vATIS
-nav_order: 10
+nav_order: 11
 ---
 
 # Text Parsing
