@@ -40,6 +40,40 @@ If you prefer not to cycle through each letter to find the one you want, you can
 
 ![Type ATIS Letter](/assets/images/TypeAtisLetter.gif)
 
+## Override the METAR
+
+Sometimes the METAR received from the network is not what you want the ATIS to say. It may not be parsed correctly, or you may want to change what is transmitted, for example replacing `9999 NCD` with `CAVOK`. While an ATIS is connected, you can replace the METAR with your own.
+
+1. Right-click the METAR box and select **Override METAR...**.
+
+   ![Override METAR menu](/assets/images/MetarOverride_Menu.png)
+
+2. The METAR box becomes editable, with a blue border, and the current METAR is selected. Type the METAR you want to use.
+
+   ![Editing the METAR](/assets/images/MetarOverride_Editing.png)
+
+3. Press **Enter** to apply it, or **Escape** (or click anywhere else) to cancel.
+
+![Override METAR](/assets/images/MetarOverride.webp)
+
+Once applied, the ATIS is rebuilt from your METAR. The wind, altimeter, observation time, and every other part of the ATIS, including the text and voice ATIS and the data sent to websocket clients and the ATIS Hub, use the overridden METAR. The ATIS letter advances just as it does for a new METAR, and it blinks for a couple of seconds, without playing a notification sound, since you made the change yourself. If you press Enter without changing the METAR, nothing happens and the letter stays the same.
+
+While an override is active, the border of the METAR box is amber.
+
+![Overridden METAR](/assets/images/MetarOverride_Overridden.png)
+
+If the METAR cannot be parsed, the border turns red and the box stays open so you can correct it. A tooltip explains why it was rejected.
+
+![METAR error](/assets/images/MetarOverride_Error.png)
+
+To go back to the METAR received from the network, right-click the METAR box and select **Revert to Network METAR**.
+
+Things to know:
+
+- Overriding is available only while the ATIS is connected.
+- The override is temporary. It is removed when a new METAR is received from the network, so an outdated override cannot keep being broadcast, and when the ATIS is disconnected.
+- The override is not saved to the preset or profile.
+
 ## Fetch Real-World D-ATIS Letter
 
 If the **Automatically fetch ATIS letter** option is enabled in User Settings, vATIS will automatically retrieve the real-world D-ATIS letter for stations with an FAA digital ATIS when connecting to the network. This process loads only the ATIS letter and does not include any related messages, such as airport conditions or NOTAMs.
