@@ -105,4 +105,4 @@ Things it catches include:
 * Regex contractions are applied in the order they appear in the table, before `@` contractions.
 * They are not offered in the `@` autocomplete menu because they are matched automatically.
 * An invalid pattern or an unknown function name is rejected when you save it. A pattern that takes too long to run is ignored.
-* Regex contractions are not applied when vATIS converts a [D-ATIS](presets) into your template.
+* Regex contractions also apply to [D-ATIS](presets) text, so a pattern such as the RSC example works on a real-world D-ATIS without any reformatting.
