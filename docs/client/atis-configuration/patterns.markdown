@@ -45,8 +45,9 @@ Wrap a group in a function to change how it is spoken. Function names are not ca
 | `$spell($1)` | `A25` | A 2 5 |
 | `$phonetic($1)` | `ABC` | Alpha Bravo Charlie |
 | `$phonetic($1)` | `25` | Tango Whiskey Oscar Foxtrot India Victor Echo |
+| `$runway($1)` | `25L` | two five left |
 
-`$spell` keeps each character as it is, so digits stay digits and are read one at a time by the voice. `$phonetic` spells letters with the phonetic alphabet, and spells each digit as its word (2 is "two", read as Tango Whiskey Oscar). Use `$digits` to speak digits as plain words. Digits left in the voice text without a function are still read one at a time by the normal text-to-speech rules, so use `$group()` for quantities and `$spell()` or `$phonetic()` for letters.
+`$spell` keeps each character as it is, so digits stay digits and are read one at a time by the voice. `$phonetic` spells letters with the phonetic alphabet, and spells each digit as its word (2 is "two", read as Tango Whiskey Oscar). Use `$digits` to speak digits as plain words. `$runway` speaks a runway designator: `25L` is "two five left", `18C` is "one eight center", and `25L/07R` is "two five left/zero seven right". A single-digit runway such as `6L` is "six left", or "zero six left" for an ICAO station or when a zero is written (`06L`). Digits left in the voice text without a function are still read one at a time by the normal text-to-speech rules, so use `$group()` for quantities and `$spell()` or `$phonetic()` for letters.
 
 ### Examples
 
@@ -55,6 +56,7 @@ Wrap a group in a function to change how it is spoken. Function names are not ca
 | Approach suffix letter, speak it phonetically | `(ILS\|RNAV) ([XYZ])\b` | `$1 $2` | `$1 $phonetic($2)` |
 | Runway surface condition codes | `RSC (\d+) (\d)/(\d)/(\d)` | `RSC $1 $2/$3/$4` | `RSC $digits($1) $digits($2) $digits($3) $digits($4)` |
 | Number as a quantity | `(\d{4})FT` | `$1FT` | `$group($1) FEET` |
+| Runway in a sentence | `RWY (\d{1,2}[LRC]?)` | `RWY $1` | `RUNWAY $runway($1)` |
 | Keep the text, change only the voice | `\bPAPI\b` | `$0` | `P A P I` |
 
 With the first example, `ILS Z RWY 28R` stays as written in the text ATIS and has the letter spoken as "Zulu", so it is read "ILS Zulu RWY 28R".
