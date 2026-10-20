@@ -103,6 +103,6 @@ Things it catches include:
 ### Notes
 
 * Regex contractions are applied in the order they appear in the table, before `@` contractions.
-* They are not offered in the `@` autocomplete menu because they are matched automatically.
+* Regex contractions are applied automatically wherever the pattern matches, so you do not type `@` for them and they do not appear in the `@` autocomplete menu.
 * An invalid pattern or an unknown function name is rejected when you save it. A pattern that takes too long to run is ignored.
 * Regex contractions also apply to [D-ATIS](presets) text, so a pattern such as the RSC example works on a real-world D-ATIS without any reformatting.
