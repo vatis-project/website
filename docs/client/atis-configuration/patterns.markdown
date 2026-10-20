@@ -42,10 +42,11 @@ Wrap a group in a function to change how it is spoken. Function names are not ca
 |-|-|-|
 | `$group($1)` | `525` | five hundred and twenty-five |
 | `$digits($1)` | `525` | five two five |
-| `$spell($1)` | `ABC` | A B C |
+| `$spell($1)` | `A25` | A 2 5 |
 | `$phonetic($1)` | `ABC` | Alpha Bravo Charlie |
+| `$phonetic($1)` | `25` | Tango Whiskey Oscar Foxtrot India Victor Echo |
 
-Digits left in the voice text without a function are still read one at a time by the normal text-to-speech rules, so use `$group()` for quantities and `$spell()` or `$phonetic()` for letters.
+`$spell` keeps each character as it is, so digits stay digits and are read one at a time by the voice. `$phonetic` spells letters with the phonetic alphabet, and spells each digit as its word (2 is "two", read as Tango Whiskey Oscar). Use `$digits` to speak digits as plain words. Digits left in the voice text without a function are still read one at a time by the normal text-to-speech rules, so use `$group()` for quantities and `$spell()` or `$phonetic()` for letters.
 
 ### Examples
 
