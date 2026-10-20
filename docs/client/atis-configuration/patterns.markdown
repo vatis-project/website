@@ -16,7 +16,8 @@ The Patterns tab lets you match text with a regular expression (regex) and chang
 1. Click **New**.
 2. Enter the **Pattern**, a [.NET regular expression](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference). Wrap the parts that change in parentheses to capture them. The pattern is case-sensitive; start it with `(?i)` to ignore case.
 3. Enter the **Text** and **Voice** replacements, using the captured parts described below.
-4. Optionally check **Add to all ATIS stations in this profile** to add the pattern to every station in the current profile.
+4. Type some sample text in the **Preview** box, such as `ILS Z RWY 28R`, to see the **Text** and **Voice** results as you edit. If the pattern has a problem, or does not match the sample, the preview says so instead.
+5. Optionally check **Add to all ATIS stations in this profile** to add the pattern to every station in the current profile.
 
 ![New Pattern](/assets/images/NewPatternDialog.png)
 
