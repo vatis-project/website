@@ -28,6 +28,7 @@ Select a pattern in the table and click **Edit** to change it in the same dialog
 
 | Syntax | Meaning |
 |-|-|
+| `$0` | The whole text that matched. Use it to keep the original text and change only the voice |
 | `$1`, `$2`, ... | The text captured by the first, second, ... set of parentheses |
 | `${name}` | The text captured by a named group, written `(?<name>...)` in the pattern |
 | `$$` | A literal `$` |
@@ -52,6 +53,7 @@ Digits left in the voice text without a function are still read one at a time by
 | Approach suffix letter, speak it phonetically | `(ILS\|RNAV) ([XYZ])\b` | `$1 $2` | `$1 $phonetic($2)` |
 | Runway surface condition codes | `RSC (\d+) (\d)/(\d)/(\d)` | `RSC $1 $2/$3/$4` | `RSC $digits($1) $digits($2) $digits($3) $digits($4)` |
 | Number as a quantity | `(\d{4})FT` | `$1FT` | `$group($1) FEET` |
+| Keep the text, change only the voice | `\bPAPI\b` | `$0` | `P A P I` |
 
 With the first example, `ILS Z RWY 28R` stays as written in the text ATIS and has the letter spoken as "Zulu", so it is read "ILS Zulu RWY 28R".
 
