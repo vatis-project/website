@@ -42,4 +42,4 @@ To include a contraction, type the @ symbol, followed by the contraction variabl
 
 ## Matching Patterns
 
-A contraction replaces a single word that you insert with `@`. To match a format that repeats with different values, such as `RSC 23 5/5/5`, use a [Pattern](patterns) instead.
+A contraction replaces a single word. To match a format that repeats with different values, such as `RSC 23 5/5/5`, use a [Pattern](patterns) instead.

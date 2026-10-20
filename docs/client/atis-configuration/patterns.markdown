@@ -7,7 +7,7 @@ nav_order: 5
 
 # Patterns
 
-The Patterns tab lets you match text with a regular expression (regex) and change how it is written and spoken. A pattern is matched against the text of your ATIS template, Airport Conditions and NOTAMs, so you don't have to define a [contraction](contractions) for every possible value or type the `@` symbol. Use one when the same format repeats with different values, such as `RSC 23 5/5/5` or approach suffix letters like the `Z` in `ILS Z RWY 28R`. The written text can stay exactly as you typed it while the spoken version is spaced out or converted for the voice synthesizer.
+The Patterns tab lets you match text with a regular expression (regex) and change how it is written and spoken. A pattern is matched against the text of your ATIS template, Airport Conditions and NOTAMs, so you don't have to define a [contraction](contractions) for every possible value. Use one when the same format repeats with different values, such as `RSC 23 5/5/5` or approach suffix letters like the `Z` in `ILS Z RWY 28R`. The written text can stay exactly as you typed it while the spoken version is spaced out or converted for the voice synthesizer.
 
 ![Patterns](/assets/images/Patterns.png)
 
@@ -72,7 +72,7 @@ Things it catches include:
 
 ### Notes
 
-* Patterns are applied in the order they appear in the table, before `@` contractions are replaced.
-* A pattern is applied automatically wherever it matches, so you do not type `@` for it.
+* Patterns are applied in the order they appear in the table, before [contractions](contractions) are replaced.
+* A pattern is applied automatically wherever it matches, so you do not need to insert it anywhere.
 * An invalid pattern or an unknown function name is rejected when you save it. A pattern that takes too long to run is ignored.
 * Patterns also apply to [D-ATIS](presets) text, so a pattern such as the RSC example works on a real-world D-ATIS without any reformatting.
