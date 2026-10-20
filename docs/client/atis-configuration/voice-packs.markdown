@@ -2,7 +2,7 @@
 layout: home
 title: Voice Packs
 parent: ATIS Configuration
-nav_order: 6
+nav_order: 7
 ---
 
 # Voice Packs
