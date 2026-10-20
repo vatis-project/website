@@ -29,4 +29,4 @@ To parse airport identifiers into the airport name, prepend a plus sign (`+`) be
 To parse navaid identifiers into their names, prepend a plus sign (`+`) before the navaid identifier. For example, `+GBN` will be read as "Gila Bend" by the voice synthesizer.
 
 ### Contractions
-To include a contraction, type the `@` symbol, followed by the contraction variable name. As you type, an autocomplete popup menu will display the available contraction options, allowing you to quickly select the desired contraction. See the [Contractions](atis-configuration/contractions) section for details on adding a contraction.
+To include a contraction, type the `@` symbol, followed by the contraction variable name. As you type, an autocomplete popup menu will display the available contraction options, allowing you to quickly select the desired contraction. See the [Contractions](atis-configuration/contractions) section for details on adding a contraction. Contractions defined with a [regular expression](atis-configuration/contractions#regular-expression-contractions) are matched automatically and do not need the `@` symbol.
