@@ -47,10 +47,9 @@ A regular expression (regex) contraction is matched against the text of your ATI
 
 ![New Regex Contraction](/assets/images/NewContractionDialog_Regex.png)
 
-1. Click **New** and check **Match using a regular expression**.
-2. Enter the **Variable**. For a regex contraction this is only a label, but it must still be unique.
-3. Enter the **Pattern**, a [.NET regular expression](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference). Wrap the parts that change in parentheses to capture them. The pattern is case-sensitive; start it with `(?i)` to ignore case.
-4. Enter the **Text** and **Voice** replacements, using the captured parts described below.
+1. Click **New** and check **Match using a regular expression**. The **Variable** field is hidden, because a regex contraction is matched automatically and has no name.
+2. Enter the **Pattern**, a [.NET regular expression](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference). Wrap the parts that change in parentheses to capture them. The pattern is case-sensitive; start it with `(?i)` to ignore case.
+3. Enter the **Text** and **Voice** replacements, using the captured parts described below.
 
 To change a regex contraction later, select it and click **Edit**.
 
