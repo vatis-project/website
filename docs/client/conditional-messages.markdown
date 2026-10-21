@@ -22,7 +22,7 @@ The Airport Conditions and NOTAMs lists show each message's conditions under its
 
 ![Conditional messages in the list](/assets/images/AirportConditionsDialog_Conditions.png)
 
-A checked message that has a condition is only included in the ATIS while its condition is met, so a checked row in the list does not always mean the message is being broadcast.
+A checked message that has a condition is included in the ATIS only while its condition is met, so a checked row in the list does not always mean the message is being broadcast.
 
 ## Controllers Online
 
@@ -40,7 +40,8 @@ When you choose **When online** or **When offline**, enter one or more callsigns
 |-|-|
 | `EPWA_DEL` | Only `EPWA_DEL` |
 | `EPWA_APP, EPWA_F_APP` | Either callsign |
-| `EPWW_*_CTR` | `EPWW_CTR`, `EPWW_W_CTR`, `EPWW_E_CTR`, ... |
+| `EPWW_*_CTR` | `EPWW_W_CTR`, `EPWW_E_CTR`, ... (but not `EPWW_CTR`, which has only one underscore) |
+| `EPWW_*CTR` | `EPWW_CTR`, `EPWW_W_CTR`, `EPWW_E_CTR`, ... |
 | `EPWA_*` | Any `EPWA_` position, including Tower and Ground |
 
 Observers and ATIS connections are not counted as controllers.
@@ -67,7 +68,7 @@ vATIS reads the list of online controllers from the [VATSIM data feed](https://v
 
 Type a condition in the **Weather** box. The message is included while the METAR meets the condition. A message with an empty Weather box is not affected by the weather.
 
-A condition is made of comparisons, such as `ceiling < 200ft`, joined with `AND`, `OR` and `NOT` and grouped with parentheses:
+A condition is made of comparisons, such as `ceiling < 200ft`, joined with `AND` and `OR`, negated with `NOT`, and grouped with parentheses:
 
 `ceiling < 200ft AND (rvr < 550m OR visibility < 100m)`
 
@@ -79,7 +80,7 @@ vATIS suggests what can come next as you type: field names, comparisons, units a
 ![Entering a weather condition](/assets/images/WeatherCondition.webp)
 
 ### Comparisons with numbers
-Write a field, a comparison, and a number with an optional unit. Without a unit the first one listed for the field is used.
+Write a field, a comparison, and a number with an optional unit. Without a unit, the first one listed for the field is used.
 
 | Field | Also written | Compares | Units |
 |-|-|-|-|
@@ -95,7 +96,7 @@ Write a field, a comparison, and a number with an optional unit. Without a unit 
 | `qnh` | `pressure`, `altimeter` | The pressure setting, converted if the METAR uses the other unit | `hpa`, `inhg` |
 | `depth` | `runwaydepth` | The deepest deposit in the METAR's runway condition groups | `mm` |
 
-The comparisons are `<` (below), `<=` (at or below), `>` (above), `>=` (at or above) and `=` (equals). The number is converted from the unit you write, so `ceiling < 200ft` works whether the METAR is in feet or the station reports meters. Units can follow the number directly or after a space: `200ft` and `200 ft` are the same.
+The comparisons are `<` (below), `<=` (at or below), `>` (above), `>=` (at or above) and `=` (equals). The number is converted from the unit you write, so `ceiling < 200ft` works whether the METAR reports the ceiling in feet or in meters. Units can follow the number directly or after a space: `200ft` and `200 ft` are the same.
 
 ### Comparisons with codes
 `weather` and `cloudtype` check for codes in the METAR, using `INCLUDES` or `EXCLUDES`:
@@ -108,7 +109,7 @@ The comparisons are `<` (below), `<=` (at or below), `>` (above), `>=` (at or ab
 `weather INCLUDES TS` is met while a thunderstorm is reported. To look for more than one code, separate them with commas, `weather INCLUDES TS,FZRA`, or put them in quotes, `weather INCLUDES "TS FZRA"`. `INCLUDES` is met when *any* of the codes is found, and a code matches inside longer ones: `RA` matches `-RA`, `+RA` and `TSRA`. `EXCLUDES` is met when *none* of them is found.
 
 ### Conditions without a comparison
-`windshear` is met while windshear is reported, and `cavok` while the METAR reports CAVOK. Use `NOT` for the opposite, e.g. `NOT cavok`.
+`windshear` is met while wind shear is reported, and `cavok` while the METAR reports CAVOK. Use `NOT` for the opposite, e.g. `NOT cavok`.
 
 {: .note-title }
 > Note
@@ -148,7 +149,7 @@ Each row shows a different part of the condition language.
 | LOW VISIBILITY PROCEDURES IN OPERATION | `ceiling < 200ft AND (rvr < 550m OR visibility < 100m)` | Parentheses to group `OR` before `AND` |
 
 ## When Conditions Are Checked
-* When a station is connected, the ATIS is rebuilt as soon as a new METAR arrives, or when a controller logs on or off changes which messages apply. vATIS only rebuilds when the set of included messages actually changed.
+* When a station is connected, the ATIS is rebuilt as soon as a new METAR arrives, or when a controller logging on or off changes which messages apply. vATIS only rebuilds when the set of included messages actually changes.
 * The ATIS letter is **not** advanced by these changes. It advances for a new METAR in the usual way, but a controller logging on or off will update the ATIS text under the same letter.
 * The free-form text area in the main window lists the static messages that currently apply, so you can see what will be broadcast.
-* The [Sandbox](/docs/client/atis-configuration/sandbox) uses the METAR in its METAR field to evaluate the weather condition, and the current list of online controllers.
+* The [Sandbox](/docs/client/atis-configuration/sandbox) evaluates weather conditions against the METAR in its METAR field, and controller conditions against the current list of online controllers.
