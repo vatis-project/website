@@ -15,7 +15,7 @@ The Patterns tab lets you match text with a regular expression (regex) and chang
 
 1. Click **New**.
 2. Enter the **Pattern**, a [.NET regular expression](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference). Wrap the parts that change in parentheses to capture them. The pattern is case-sensitive; start it with `(?i)` to ignore case.
-3. Enter the **Text** and **Voice** replacements, using the captured parts described below.
+3. Enter the **Text** and **Voice** replacements, using the captured parts described below. Leave one empty to remove the matched text from the written ATIS or the voice; any doubled spaces or stray punctuation left behind are tidied up.
 4. The **Preview** box fills in a sample of text that matches your pattern, and shows the **Text** and **Voice** results as you edit. Click **Generate** for a different sample, or type your own, such as `ILS Z RWY 28R`, to test real text. If the pattern has a problem, or does not match the sample, the preview says so instead.
 5. Optionally check **Add to all ATIS stations in this profile** to add the pattern to every station in the current profile.
 
@@ -57,6 +57,7 @@ Wrap a group in a function to change how it is spoken. Function names are not ca
 | Runway surface condition codes | `RSC (\d+) (\d)/(\d)/(\d)` | `RSC $1 $2/$3/$4` | `RSC $digits($1) $digits($2) $digits($3) $digits($4)` |
 | Number as a quantity | `(\d{4})FT` | `$1FT` | `$group($1) FEET` |
 | Runway in a sentence | `RWY (\d{1,2}[LRC]?)` | `RWY $1` | `RUNWAY $runway($1)` |
+| Remove a sentence | `BIRD ACTIVITY[^.]*\.` | (empty) | (empty) |
 | Keep the text, change only the voice | `\bPAPI\b` | `$0` | `P A P I` |
 
 With the first example, `ILS Z RWY 28R` stays as written in the text ATIS and has the letter spoken as "Zulu", so it is read "ILS Zulu RWY 28R".
@@ -79,4 +80,4 @@ Things it catches include:
 * Patterns are applied in the order they appear in the table, before [contractions](contractions) are replaced.
 * A pattern is applied automatically wherever it matches, so you do not need to insert it anywhere.
 * An invalid pattern or an unknown function name is rejected when you save it. A pattern that takes too long to run is ignored.
-* Patterns also apply to [D-ATIS](presets) text, so a pattern such as the RSC example works on a real-world D-ATIS without any reformatting.
+* Patterns also apply to [D-ATIS](presets#d-atis) text, so a pattern such as the RSC example, or one that removes a sentence, works on a real-world D-ATIS without any reformatting. Use them to clean up the fetched D-ATIS.

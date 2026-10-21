@@ -82,15 +82,11 @@ Click **Test in Sandbox** to apply your changes and open this preset in the [San
 
 ![D-ATIS](/assets/images/AtisConfiguration_Presets_Datis.png)
 
-When the selected preset is named **D-ATIS** a **D-ATIS** sub-tab is shown next to the **Template** sub-tab. It controls how the real-world D-ATIS is adjusted before it is placed in the Airport Conditions and NOTAMs fields when [Automatically fetch D-ATIS](../user-settings) is enabled. The settings are saved per station.
+When the selected preset is named **D-ATIS** a **D-ATIS** sub-tab is shown next to the **Template** sub-tab. It controls the text added to the real-world D-ATIS before it is placed in the Airport Conditions and NOTAMs fields when [Automatically fetch D-ATIS](../user-settings) is enabled. The settings are saved per station.
 
 * **Prepend / Append Airport Conditions**: Text added before or after the fetched airport conditions.
 * **Prepend / Append NOTAMs**: Text added before or after the fetched NOTAMs.
-* **Text replacements**: A list of rules applied to the fetched text, in order from top to bottom.
-  * **Pattern**: The text to find.
-  * **Replacement**: The text to put in its place. Leave empty to remove the matched text.
-  * **Regex**: If checked, the pattern is a regular expression. A single trailing comma, period or semicolon after a regex match is removed with it.
 
-Use **New** to add a rule and **Delete** to remove the selected rule. Rules with an empty pattern are ignored, and an invalid regular expression is skipped.
+To change or remove text in the fetched D-ATIS, such as deleting a sentence you do not want, use a [Pattern](patterns). Patterns are applied to the fetched D-ATIS text like any other text.
 
 The [Sandbox](sandbox) also fetches the current real-world D-ATIS when the D-ATIS preset is selected, so you can use it to check the effect of these settings.
