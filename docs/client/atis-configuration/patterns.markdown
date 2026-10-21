@@ -7,7 +7,7 @@ nav_order: 5
 
 # Patterns
 
-The Patterns tab lets you match text with a regular expression (regex) and change how it is written and spoken. A pattern is matched against the text of your ATIS template, Airport Conditions and NOTAMs, so you don't have to define a [contraction](contractions) for every possible value. Use one when the same format repeats with different values, such as `RSC 23 5/5/5` or approach suffix letters like the `Z` in `ILS Z RWY 28R`. The written text can stay exactly as you typed it while the spoken version is spaced out or converted for the voice synthesizer.
+The Patterns tab lets you match text with a regular expression (regex) and change how it is written and spoken. A pattern is matched against the text of your ATIS template, Airport Conditions and NOTAMs, so you do not have to define a [contraction](contractions) for every possible value. Use one when the same format repeats with different values, such as `RSC 23 5/5/5` or approach suffix letters like the `Z` in `ILS Z RWY 28R`. The written text can stay exactly as you typed it while the spoken version is spaced out or converted for the voice synthesizer.
 
 ![Patterns](/assets/images/Patterns.png)
 
@@ -16,7 +16,7 @@ The Patterns tab lets you match text with a regular expression (regex) and chang
 1. Click **New**.
 2. Enter the **Pattern**, a [.NET regular expression](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference). Wrap the parts that change in parentheses to capture them. The pattern is case-sensitive; start it with `(?i)` to ignore case.
 3. Enter the **Text** and **Voice** replacements, using the captured parts described below. Leave one empty to remove the matched text from the written ATIS or the voice; any doubled spaces or stray punctuation left behind are tidied up.
-4. The **Preview** box fills in a sample of text that matches your pattern, and shows the **Text** and **Voice** results as you edit. Click **Generate** for a different sample, or type your own, such as `ILS Z RWY 28R`, to test real text. If the pattern has a problem, or does not match the sample, the preview says so instead.
+4. Use the **Preview** box to check the result. It fills in a sample of text that matches your pattern and shows the **Text** and **Voice** results as you edit. Click **Generate** for a different sample, or type your own, such as `ILS Z RWY 28R`, to test real text. If the pattern has a problem, or does not match the sample, the preview says so instead.
 5. Optionally check **Add to all ATIS stations in this profile** to add the pattern to every station in the current profile.
 
 ![New Pattern](/assets/images/NewPatternDialog.png)
@@ -25,7 +25,7 @@ The Patterns tab lets you match text with a regular expression (regex) and chang
 
 Select a pattern in the table and click **Edit** to change it in the same dialog, or **Delete** to remove it. The table cannot be edited directly.
 
-### Using captured groups
+## Using Captured Groups
 
 | Syntax | Meaning |
 |-|-|
@@ -34,7 +34,7 @@ Select a pattern in the table and click **Edit** to change it in the same dialog
 | `${name}` | The text captured by a named group, written `(?<name>...)` in the pattern |
 | `$$` | A literal `$` |
 
-### Functions
+## Functions
 
 Wrap a group in a function to change how it is spoken. Function names are not case-sensitive. When you type `$` in the **Text** or **Voice** of a pattern, a list of functions appears. Use the arrow keys and press **Enter** or **Tab** to insert one, or **Esc** to dismiss the list. The cursor is left inside the brackets, ready for the group number.
 
@@ -49,7 +49,7 @@ Wrap a group in a function to change how it is spoken. Function names are not ca
 
 `$spell` keeps each character as it is, so digits stay digits and are read one at a time by the voice. `$phonetic` spells letters with the phonetic alphabet, and spells each digit as its word (2 is "two", read as Tango Whiskey Oscar). Use `$digits` to speak digits as plain words. `$runway` speaks a runway designator: `25L` is "two five left", `18C` is "one eight center", and `25L/07R` is "two five left/zero seven right". A single-digit runway such as `6L` is "six left", or "zero six left" for an ICAO station or when a zero is written (`06L`). Digits left in the voice text without a function are still read one at a time by the normal text-to-speech rules, so use `$group()` for quantities and `$spell()` or `$phonetic()` for letters.
 
-### Examples
+## Examples
 
 | Purpose | Pattern | Text | Voice |
 |-|-|-|-|
@@ -60,11 +60,11 @@ Wrap a group in a function to change how it is spoken. Function names are not ca
 | Remove a sentence | `BIRD ACTIVITY[^.]*\.` | (empty) | (empty) |
 | Keep the text, change only the voice | `\bPAPI\b` | `$0` | `P A P I` |
 
-With the first example, `ILS Z RWY 28R` stays as written in the text ATIS and has the letter spoken as "Zulu", so it is read "ILS Zulu RWY 28R".
+With the first example, `ILS Z RWY 28R` stays as written in the text ATIS, and the voice speaks the letter as "Zulu" and reads "ILS Zulu RWY 28R".
 
-### Checking your pattern
+## Checking Your Pattern
 
-While you type, vATIS checks the pattern and the replacements and explains any problem under the box in plain language. The **OK** button will not close the dialog until the problems are fixed. The same checks apply when you edit a pattern.
+While you type, vATIS checks the pattern and the replacements and explains any problem under the relevant box in plain language. The **OK** button will not close the dialog until the problems are fixed. The same checks apply when you edit a pattern.
 
 ![Pattern error](/assets/images/NewPatternDialog_Error.png)
 
@@ -75,7 +75,7 @@ Things it catches include:
 * A replacement that refers to a group the pattern does not have, such as `$3` when the pattern only has two sets of parentheses
 * An unknown function name, or a function without a group, such as `$spell` instead of `$spell($1)`
 
-### Notes
+## Notes
 
 * Patterns are applied in the order they appear in the table, before [contractions](contractions) are replaced.
 * A pattern is applied automatically wherever it matches, so you do not need to insert it anywhere.

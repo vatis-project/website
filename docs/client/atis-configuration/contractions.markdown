@@ -32,7 +32,7 @@ The table cannot be edited directly. The **Edit** button is only available when 
 
 ## Deleting Contraction
 1. Select the contraction from the table.
-2. Click the **Delete** button to remove the contraction. This action is irreversable.
+2. Click the **Delete** button to remove the contraction. This action is irreversible.
 
 ## Using Contractions
 
