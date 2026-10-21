@@ -132,18 +132,19 @@ Each row shows a different part of the condition language.
 | Message | Weather condition | Shows |
 |-|-|-|
 | STRONG GUSTY WINDS | `gust >= 30kt` | A number field with a unit and `>=` |
-| CALM WIND | `windspeed = 0kt` | `=` |
+| CALM WIND | `windspeed = 0kt` | The `=` comparison |
 | LOW CLOUD IN THE VICINITY | `cloudbase < 500ft` | The lowest cloud layer of any coverage, unlike `ceiling` |
 | LOW PRESSURE, CHECK ALTIMETER SETTING | `qnh < 1000hpa` | A pressure setting and its unit |
 | STRONG WESTERLY WIND | `winddir >= 240deg AND winddir <= 300deg AND windspeed >= 20kt` | Wind direction, and `AND` with three comparisons |
-| RWY CONTAMINATED | `depth > 3mm` | Runway deposit depth |
+| RWY CONTAMINATED | `depth > 3mm` | Runway deposit depth in millimeters |
 | ICING POSSIBLE | `temperature <= 3c AND dewpoint >= -3c` | `<=`, `AND`, and a negative number |
 | FOG, EXPECT DELAYS | `wx INCLUDES FG AND vis < 800m` | The alternative field names `wx` and `vis` |
 | THUNDERSTORMS IN THE VICINITY | `weather INCLUDES TS OR cloudtype INCLUDES CB` | `INCLUDES` with `weather` and `cloudtype`, and `OR` |
 | DEICING NOT REQUIRED | `temperature > 3c AND weather EXCLUDES "FZRA FZDZ"` | `EXCLUDES` with more than one code in quotes |
-| BIRD ACTIVITY IN THE VICINITY | `visibility >= 5km AND NOT weather INCLUDES "TS RA"` | `NOT` |
 | WINDSHEAR REPORTED ON FINAL | `windshear` | A condition without a comparison |
 | VISUAL APPROACHES AVAILABLE | `cavok` | `cavok`, also without a comparison |
+| ILS APPROACHES IN USE | `NOT cavok` | `NOT` in front of a condition: the opposite of the row above |
+| NO WINDSHEAR OR CUMULONIMBUS REPORTED | `NOT (windshear OR cloudtype INCLUDES CB)` | `NOT` in front of a group in parentheses |
 | LOW VISIBILITY PROCEDURES IN OPERATION | `ceiling < 200ft AND (rvr < 550m OR visibility < 100m)` | Parentheses to group `OR` before `AND` |
 
 ## When Conditions Are Checked
