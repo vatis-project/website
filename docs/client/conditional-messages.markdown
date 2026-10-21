@@ -67,7 +67,7 @@ vATIS reads the list of online controllers from the [VATSIM data feed](https://v
 
 Type a condition in the **Weather** box. The message is included while the METAR meets the condition. A message with an empty Weather box is not affected by the weather.
 
-A condition is made of comparisons, such as `ceiling < 200ft`, joined with **AND**, **OR** and **NOT** and grouped with parentheses:
+A condition is made of comparisons, such as `ceiling < 200ft`, joined with `AND`, `OR` and `NOT` and grouped with parentheses:
 
 `ceiling < 200ft AND (rvr < 550m OR visibility < 100m)`
 
@@ -98,25 +98,25 @@ Write a field, a comparison, and a number with an optional unit. Without a unit 
 The comparisons are `<` (below), `<=` (at or below), `>` (above), `>=` (at or above) and `=` (equals). The number is converted from the unit you write, so `ceiling < 200ft` works whether the METAR is in feet or the station reports meters. Units can follow the number directly or after a space: `200ft` and `200 ft` are the same.
 
 ### Comparisons with codes
-`weather` and `cloudtype` check for codes in the METAR, using **INCLUDES** or **EXCLUDES**:
+`weather` and `cloudtype` check for codes in the METAR, using `INCLUDES` or `EXCLUDES`:
 
 | Field | Also written | Looks for |
 |-|-|-|
 | `weather` | `wx` | Present weather codes, e.g. `TS`, `FZRA`, `+SN`, `FG` |
 | `cloudtype` | | Cloud types `CB` and `TCU` |
 
-`weather INCLUDES TS` is met while a thunderstorm is reported. To look for more than one code, separate them with commas, `weather INCLUDES TS,FZRA`, or put them in quotes, `weather INCLUDES "TS FZRA"`. **INCLUDES** is met when *any* of the codes is found, and a code matches inside longer ones: `RA` matches `-RA`, `+RA` and `TSRA`. **EXCLUDES** is met when *none* of them is found.
+`weather INCLUDES TS` is met while a thunderstorm is reported. To look for more than one code, separate them with commas, `weather INCLUDES TS,FZRA`, or put them in quotes, `weather INCLUDES "TS FZRA"`. `INCLUDES` is met when *any* of the codes is found, and a code matches inside longer ones: `RA` matches `-RA`, `+RA` and `TSRA`. `EXCLUDES` is met when *none* of them is found.
 
 ### Conditions without a comparison
-`windshear` is met while windshear is reported, and `cavok` while the METAR reports CAVOK. Use **NOT** for the opposite, e.g. `NOT cavok`.
+`windshear` is met while windshear is reported, and `cavok` while the METAR reports CAVOK. Use `NOT` for the opposite, e.g. `NOT cavok`.
 
 {: .note-title }
 > Note
 >
-> A comparison is not met when the METAR does not report the value it needs. With no RVR reported, both `rvr < 550m` and `rvr > 550m` are false. Use `NOT` or **EXCLUDES** to test for something being absent. Before the first METAR has been received, no weather condition is met.
+> A comparison is not met when the METAR does not report the value it needs. With no RVR reported, both `rvr < 550m` and `rvr > 550m` are false. Use `NOT` or `EXCLUDES` to test for something being absent. Before the first METAR has been received, no weather condition is met.
 
 ### Combining comparisons
-**AND** is evaluated before **OR**, as in ordinary logic, so
+`AND` is evaluated before `OR`, as in ordinary logic, so
 
 `ceiling < 200ft AND rvr < 550m OR visibility < 100m`
 
@@ -124,7 +124,7 @@ means *(ceiling below 200 ft and RVR below 550 m) or visibility below 100 m*. Us
 
 `ceiling < 200ft AND (rvr < 550m OR visibility < 100m)`
 
-means *the ceiling is below 200 ft, and either the RVR is below 550 m or the visibility is below 100 m*. Parentheses can be nested, for example `((A OR B) AND C) OR D`. **NOT** applies to the condition or group that follows it: `NOT (windshear OR cloudtype INCLUDES CB)`.
+means *the ceiling is below 200 ft, and either the RVR is below 550 m or the visibility is below 100 m*. Parentheses can be nested, for example `((A OR B) AND C) OR D`. `NOT` applies to the condition or group that follows it: `NOT (windshear OR cloudtype INCLUDES CB)`.
 
 ### Examples
 
