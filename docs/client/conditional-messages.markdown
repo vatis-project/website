@@ -127,15 +127,24 @@ means *(ceiling below 200 ft and RVR below 550 m) or visibility below 100 m*. Us
 means *the ceiling is below 200 ft, and either the RVR is below 550 m or the visibility is below 100 m*. Parentheses can be nested, for example `((A OR B) AND C) OR D`. `NOT` applies to the condition or group that follows it: `NOT (windshear OR cloudtype INCLUDES CB)`.
 
 ### Examples
+Each row shows a different part of the condition language.
 
-| Message | Weather condition |
-|-|-|
-| LOW VISIBILITY PROCEDURES IN OPERATION | `ceiling < 200ft OR rvr < 550m` |
-| THUNDERSTORMS IN THE VICINITY | `weather INCLUDES TS OR cloudtype INCLUDES CB` |
-| BIRD ACTIVITY IN THE VICINITY | `visibility >= 5km AND NOT weather INCLUDES "TS RA"` |
-| STRONG GUSTY WINDS | `gust >= 30kt` |
-| RWY CONTAMINATED | `depth > 3mm` |
-| ICING POSSIBLE | `temperature <= 3c AND dewpoint >= -3c` |
+| Message | Weather condition | Shows |
+|-|-|-|
+| STRONG GUSTY WINDS | `gust >= 30kt` | A number field with a unit and `>=` |
+| CALM WIND | `windspeed = 0kt` | `=` |
+| LOW CLOUD IN THE VICINITY | `cloudbase < 500ft` | The lowest cloud layer of any coverage, unlike `ceiling` |
+| LOW PRESSURE, CHECK ALTIMETER SETTING | `qnh < 1000hpa` | A pressure setting and its unit |
+| STRONG WESTERLY WIND | `winddir >= 240deg AND winddir <= 300deg AND windspeed >= 20kt` | Wind direction, and `AND` with three comparisons |
+| RWY CONTAMINATED | `depth > 3mm` | Runway deposit depth |
+| ICING POSSIBLE | `temperature <= 3c AND dewpoint >= -3c` | `<=`, `AND`, and a negative number |
+| FOG, EXPECT DELAYS | `wx INCLUDES FG AND vis < 800m` | The alternative field names `wx` and `vis` |
+| THUNDERSTORMS IN THE VICINITY | `weather INCLUDES TS OR cloudtype INCLUDES CB` | `INCLUDES` with `weather` and `cloudtype`, and `OR` |
+| DEICING NOT REQUIRED | `temperature > 3c AND weather EXCLUDES "FZRA FZDZ"` | `EXCLUDES` with more than one code in quotes |
+| BIRD ACTIVITY IN THE VICINITY | `visibility >= 5km AND NOT weather INCLUDES "TS RA"` | `NOT` |
+| WINDSHEAR REPORTED ON FINAL | `windshear` | A condition without a comparison |
+| VISUAL APPROACHES AVAILABLE | `cavok` | `cavok`, also without a comparison |
+| LOW VISIBILITY PROCEDURES IN OPERATION | `ceiling < 200ft AND (rvr < 550m OR visibility < 100m)` | Parentheses to group `OR` before `AND` |
 
 ## When Conditions Are Checked
 * When a station is connected, the ATIS is rebuilt as soon as a new METAR arrives, or when a controller logs on or off changes which messages apply. vATIS only rebuilds when the set of included messages actually changed.
