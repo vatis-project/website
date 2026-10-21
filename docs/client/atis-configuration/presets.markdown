@@ -87,6 +87,6 @@ When the selected preset is named **D-ATIS** a **D-ATIS** sub-tab is shown next 
 * **Prepend / Append Airport Conditions**: Text added before or after the fetched airport conditions.
 * **Prepend / Append NOTAMs**: Text added before or after the fetched NOTAMs.
 
-To change or remove text in the fetched D-ATIS, such as deleting a sentence you do not want, use a [Pattern](patterns). Patterns are applied to the fetched D-ATIS text like any other text.
+To change or remove text in the fetched D-ATIS, such as deleting a sentence you do not want, add a regular expression on the [Patterns](patterns) tab. A note on the D-ATIS sub-tab points there. Patterns are applied to the fetched D-ATIS text like any other text.
 
 The [Sandbox](sandbox) also fetches the current real-world D-ATIS when the D-ATIS preset is selected, so you can use it to check the effect of these settings.
