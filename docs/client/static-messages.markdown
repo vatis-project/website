@@ -3,6 +3,11 @@ layout: home
 title: Static Messages
 parent: vATIS
 nav_order: 7
+redirect_from:
+  - /docs/client/airport-conditions
+  - /docs/client/airport-conditions.html
+  - /docs/client/notams
+  - /docs/client/notams.html
 ---
 
 # Static Messages

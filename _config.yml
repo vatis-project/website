@@ -32,6 +32,7 @@ color_scheme: light
 # Build settings
 theme: just-the-docs
 plugins:
+  - jekyll-redirect-from
   - jekyll-target-blank
 
 aux_links:
