@@ -14,7 +14,7 @@ This tab is specifically visible for non-FAA ATIS stations and allows you to set
 
 ![Transition Level](/assets/images/Formatting_TransitionLevel.png)
 
-In the Transitions Level table, you can define the minimum and maximum QNH values that are used to determine the transition level altitude. Both the low and high QNH values need to be specified.
+In the Transition Level table, you can define the minimum and maximum QNH values that are used to determine the transition level altitude. Both the low and high QNH values need to be specified.
 
 * To add a new transition level, click the **Add New** button.
 * To delete a transition level, select the level from the table and click the **Delete** button.

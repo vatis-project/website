@@ -19,4 +19,4 @@ If you make changes in other tabs of the ATIS configuration, click the **Apply**
 
 Each time the ATIS is refreshed, the Sandbox uses a random letter within the station's code range. If the selected preset uses an [external ATIS generator](presets#external-atis-generator), the Airport Conditions and NOTAMs boxes are replaced by a note, because the ATIS comes from the generator.
 
-Click **Refresh ATIS** to generate the text-based ATIS. This action will also generate voice-based ATIS audio if text-to-speech is enabled in your configuration. To listen to the ATIS audio, click the **Listen** button. The audio will play through your default audio device
+Click **Refresh ATIS** to generate the text-based ATIS. This action will also generate voice-based ATIS audio if text-to-speech is enabled in your configuration. To listen to the ATIS audio, click the **Listen** button. The audio will play through your default audio device.
