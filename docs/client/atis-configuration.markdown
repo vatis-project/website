@@ -2,7 +2,7 @@
 layout: home
 title: ATIS Configuration
 parent: vATIS
-nav_order: 11
+nav_order: 12
 ---
 
 # ATIS Configuration

@@ -24,6 +24,11 @@ When composing or modifying a message, you can insert contractions by typing the
 ### Include Before Free-form NOTAMs
 If enabled, the checked static messages will be included before the free-form NOTAMs text in the ATIS.
 
+### Conditional Messages
+A static message can be included only while certain VATSIM controllers are online or offline, or only when the METAR meets rules you set, such as a ceiling or RVR limit. See [Conditional Messages](/docs/client/conditional-messages).
+
+![Conditional message](/assets/images/StaticDefinitionEditorDialog_OnlineCondition.png)
+
 ### Separators
 When more than one message is checked, vATIS puts a separator between them in the ATIS. The separator is a period followed by a space unless you change it, so the checked messages read as separate sentences. Messages are used in the order they appear in the list.
 
