@@ -2,7 +2,7 @@
 layout: home
 title: WebSocket API
 parent: vATIS
-nav_order: 14
+nav_order: 12
 ---
 
 # WebSocket API

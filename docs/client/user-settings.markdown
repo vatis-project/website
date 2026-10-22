@@ -2,7 +2,7 @@
 layout: home
 title: User Settings
 parent: vATIS
-nav_order: 3
+nav_order: 4
 ---
 
 # User Settings
