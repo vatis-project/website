@@ -21,7 +21,7 @@ You can use the following variables in the ATIS template. If you want to use the
 |`[METAR]`|The complete, raw METAR as received (e.g. `KSFO 031856Z 28012KT 10SM FEW015 18/11 A3002`), without a leading "METAR" keyword|
 |`[OBS_TIME]`<br/>`[OBSTIME]`<br/>`[TIME]`|The observation time of the METAR|
 |`[WIND]`<br/>`[SURFACE_WIND]`|The reported surface wind|
-|`[RVR]`|The runway visibility range (if available)|
+|`[RVR]`|The runway visual range (if available)|
 |`[VIS]`<br/>`[PREVAILING_VISIBILITY]`|The prevailing visibility|
 |`[PRESENT_WX]`<br/>`[PRESENT_WEATHER]`|The present weather conditions (e.g., rain, snow, hail, etc.)|
 |`[CLOUDS]`|The reported cloud conditions|

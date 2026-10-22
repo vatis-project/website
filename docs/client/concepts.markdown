@@ -7,7 +7,7 @@ nav_order: 1
 
 # Terms & Concepts
 
-Before using vATIS, you should familiarize yourself with few key terms and concepts.
+Before using vATIS, you should familiarize yourself with a few key terms and concepts.
 
 ## Profile
 A **Profile** acts as a container for managing one or more ATIS Stations.

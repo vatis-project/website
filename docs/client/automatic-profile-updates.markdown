@@ -19,7 +19,7 @@ To enable the automatic update functionality, add the following two properties t
 ```json
 {
   "updateUrl": "https://example.com/vatis/profiles/vATIS-Profile.json",
-  "updateSerial": 2024121601,
+  "updateSerial": 2024121601
 }
 ```
 
@@ -36,7 +36,7 @@ The updated profile will look something like this:
 ```
 
 ### Update URL
-The `updateUrl` property specifies the location where the profile file is hosted. If user's profile includes this URL, vATIS will compare the locally installed version with the version available at the specified URL. The file must be publicly accessible in order for vATIS to download it.
+The `updateUrl` property specifies the location where the profile file is hosted. If a user's profile includes this URL, vATIS will compare the locally installed version with the version available at the specified URL. The file must be publicly accessible in order for vATIS to download it.
 
 {: .note-title }
 > Note

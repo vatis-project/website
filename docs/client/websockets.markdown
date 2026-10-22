@@ -261,7 +261,7 @@ You can retrieve available profile IDs by sending a [`getProfiles`](#getprofiles
 
 Configures the specified ATIS station in the currently loaded profile. If the station doesn't exist, the request is ignored, and no response is returned. If the preset doesn't exist, or both `id` and `station` are provided, an [`error`](#error) message is returned.
 
-You can retrieve available stations presets by sending a [`getStations`](#getstations) request.
+You can retrieve available station presets by sending a [`getStations`](#getstations) request.
 
 The following value properties are supported:
 
@@ -367,7 +367,7 @@ To retrieve available stations, send a [`getStations`](#getstations) request.
 
 ### `disconnectAtis`
 
-Disconnects the specified ATIS station to the network. If the station does not exist, the request is ignored, and no response is returned. The request is also ignored unless the station is connected; a station that is still connecting is not cancelled. If both `id` and `station` are provided, an [`error`](#error) message is returned.
+Disconnects the specified ATIS station from the network. If the station does not exist, the request is ignored, and no response is returned. The request is also ignored unless the station is connected; a station that is still connecting is not cancelled. If both `id` and `station` are provided, an [`error`](#error) message is returned.
 
 If the ATIS is successfully disconnected, an [`atis`](#atis) message response will be received.
 
@@ -634,7 +634,7 @@ Sent to the client that sent a [`getStations`](#getstations) message. The messag
 | Property | Description | Type |
 | - | - | - |
 | `id` | The unique ID for the station | `string` |
-| `name` | The name of the profile | `string` |
+| `name` | The name of the station | `string` |
 | `atisType` | The ATIS type | [AtisType](#atistype) |
 | `presets` | A collection of ATIS preset names | `string[]` (array of strings) |
 
