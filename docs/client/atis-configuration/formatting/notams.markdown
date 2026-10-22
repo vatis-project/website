@@ -9,7 +9,7 @@ nav_order: 10
 
 The NOTAMs section of the ATIS.
 
-* `{notams}` ... The NOTAM text (both [static](/docs/client/notams) and free-form text).
+* `{notams}` ... The NOTAM text (both [static](/docs/client/static-messages) and free-form text).
 
 ![NOTAMs](/assets/images/Formatting_Notams.png)
 

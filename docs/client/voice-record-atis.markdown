@@ -2,7 +2,7 @@
 layout: home
 title: Voice Record ATIS
 parent: vATIS
-nav_order: 10
+nav_order: 8
 ---
 
 # Voice Record ATIS
