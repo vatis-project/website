@@ -1,13 +1,13 @@
 ---
 layout: home
 title: Conditional Messages
-parent: vATIS
-nav_order: 9
+parent: Static Messages
+nav_order: 1
 ---
 
 # Conditional Messages
 
-A static [Airport Conditions](/docs/client/airport-conditions) or [NOTAMs](/docs/client/notams) message can be included in the ATIS only while certain things are true, instead of being switched on and off by hand. There are two kinds of condition, and a message can use both:
+A [static message](/docs/client/static-messages) in Airport Conditions or NOTAMs can be included in the ATIS only while certain things are true, instead of being switched on and off by hand. There are two kinds of condition, and a message can use both:
 
 * **Controllers online**: include the message only while specific VATSIM controllers are online, or only while they are offline.
 * **Weather**: include the message only when the METAR meets a condition you write, such as `ceiling < 200ft`.
