@@ -24,16 +24,22 @@ The Contractions tab allows you to define personalized contractions. If you spec
 After filling in the required information, save the contraction to make it available for use in your ATIS messages.
 
 ## Editing Existing Contraction
-1. Double-click on the text you want to change.
-2. A textbox will appear where you can make your edits.
-3. Press the **Enter** key on your keyboard to commit the changes.
+1. Select the contraction in the table.
+2. Click the **Edit** button. The same dialog used for new contractions opens with the current values filled in.
+3. Make your changes and click **OK** to save them, or **Cancel** to discard them.
+
+The table cannot be edited directly. The **Edit** button is only available when a contraction is selected.
 
 ## Deleting Contraction
 1. Select the contraction from the table.
-2. Click the **Delete** button to remove the contraction. This action is irreversable.
+2. Click the **Delete** button to remove the contraction. This action is irreversible.
 
 ## Using Contractions
 
 Contractions and speech tokens (such as numbers written in group format, e.g. `*5058`) are underlined in the ATIS template and Airport Conditions and NOTAMs editors. Hover over the underlined text to see how it will be spoken.
 
 To include a contraction, type the @ symbol, followed by the contraction variable name. As you type, an autocomplete popup menu will display the available contraction options, allowing you to quickly select the desired contraction.
+
+## Matching Patterns
+
+A contraction replaces a single word. To match a format that repeats with different values, such as `RSC 23 5/5/5`, use a [Pattern](patterns) instead.

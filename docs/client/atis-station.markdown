@@ -91,5 +91,5 @@ Things to know:
 - The real-world ATIS is matched to the station type: a Combined station uses the combined ATIS (or the departure ATIS if there is no combined one), while Arrival and Departure stations use the matching arrival or departure ATIS.
 - If no D-ATIS is available for the station, the Airport Conditions show **D-ATIS NOT AVBL.**
 - Text fetched automatically is not saved to the preset. Only your own edits to a D-ATIS preset are saved.
-- The opening sentences of the real-world ATIS (station, letter, and weather) are removed, as is the trailing "ADVS YOU HAVE..." text. Only the airport conditions and NOTAMs are kept, and your [contractions](atis-configuration/contractions) are applied to the text.
+- The opening sentences of the real-world ATIS (station, letter, and weather) are removed, as is the trailing "ADVS YOU HAVE..." text. Only the airport conditions and NOTAMs are kept, and your [contractions](atis-configuration/contractions) and [patterns](atis-configuration/patterns) are applied to the text.
 - To change how the real-world text is processed, see [D-ATIS](atis-configuration/presets#d-atis).
