@@ -18,7 +18,7 @@ vATIS offers the option to manually record an ATIS in cases where the real-world
 
 To manually record an ATIS, ensure that the ATIS Station is configured for voice recording. Refer to the [Configuration](atis-configuration/general) section for instructions on how to enable this option.
 
-The recording dialog shows the ATIS script to read. The airport identifier in the script is replaced with the airport name (for example "Los Angeles International" instead of "KLAX") so it is easier to read aloud.
+The recording dialog shows the ATIS script to read. The airport identifier in the script is replaced with the airport name (for example "Los Angeles International" instead of "KLAX") so it is easier to read aloud. Use the **Text / Voice** switch above the script to read the spoken version of the ATIS instead (for example "I-L-S" and "THREE ZERO LEFT"). The switch only appears when a voice version is available.
 
 1. **Connect the ATIS to the Network**
     * Click the **CONNECT** button to connect the ATIS.
