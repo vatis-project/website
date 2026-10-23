@@ -25,6 +25,7 @@ To create or manage static messages:
 1. Click the **AIRPORT CONDITIONS** or **NOTAMS** label above the free-form text box.
 2. A dialog window will appear, allowing you to add, edit, or delete messages.
 3. You can reorder messages by selecting one from the list and using the **Up** or **Down** buttons. Messages are displayed in the ATIS in the order they appear, but only if their checkboxes are selected.
+4. Click **Blank Line** to add an empty line below the selected message, or at the end of the list if none is selected. A blank line separates the messages around it with an empty line in the text ATIS. It has no text, so it can't be edited.
 
 When composing or modifying a message, you can insert contractions by typing the **@** symbol followed by the contraction variable name. As you type, an autocomplete menu will appear, showing available contraction options for quick selection. Contraction variables may optionally include the **@** symbol as a prefix. Once you choose a contraction from the autocomplete dropdown, the **@** symbol will be automatically removed.
 
