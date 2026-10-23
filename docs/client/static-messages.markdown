@@ -25,7 +25,8 @@ To create or manage static messages:
 1. Click the **AIRPORT CONDITIONS** or **NOTAMS** label above the free-form text box.
 2. A dialog window will appear, allowing you to add, edit, or delete messages.
 3. You can reorder messages by selecting one from the list and using the **Up** or **Down** buttons. Messages are displayed in the ATIS in the order they appear, but only if their checkboxes are selected.
-4. Click **Blank Line** to add an empty line below the selected message, or at the end of the list if none is selected. A blank line separates the messages around it with an empty line in the text ATIS. It has no text, so it can't be edited.
+4. Click **Spacer...** and choose **Blank Line** or **New Line** to add a spacer below the selected message, or at the end of the list if none is selected. A blank line puts an empty line between the messages around it in the text ATIS, and a new line puts a single line break there instead. Spacers have no text, so they can't be edited. They are ignored at the start and end of the list.
+5. To delete several messages at once, hold **Ctrl** or **Shift** while selecting them in the list, then click **Delete**.
 
 When composing or modifying a message, you can insert contractions by typing the **@** symbol followed by the contraction variable name. As you type, an autocomplete menu will appear, showing available contraction options for quick selection. Contraction variables may optionally include the **@** symbol as a prefix. Once you choose a contraction from the autocomplete dropdown, the **@** symbol will be automatically removed.
 
@@ -62,6 +63,9 @@ the ATIS reads:
 {: .note-title }
 > Note
 >
-> While every separator is the default, vATIS tidies up repeated punctuation, so a message that already ends with a period does not produce two. As soon as any separator is customized, vATIS stops tidying and uses exactly what you typed. In that case leave the final period off your messages and let the separators supply the punctuation.
+> While every separator is the default, vATIS tidies up repeated punctuation, so a message that already ends with a period does not produce two. As soon as any separator is customized, vATIS stops tidying and uses exactly what you typed. The one exception is a separator that starts with a period, such as `... ` or `.\n`: a message's own trailing period is dropped when a separator follows it, so it isn't doubled. For other custom separators, leave the final period off your messages and let the separators supply the punctuation.
 
 ![Separator after](/assets/images/StaticDefinitionEditorDialog.png)
+
+### Line Breaks
+Type `\n` in a separator to start a new line. For example, a default separator of `.\n` puts each checked message on its own line, ending with a period. Use `\n\n` for an empty line between messages, or add a **Spacer...** to the list for a one-off break between two messages. Nothing is added after the last message, so line breaks at the very end of the text are removed. If the last separator ends with a line break, the last message still keeps the punctuation before it (the period in `.\n`).
