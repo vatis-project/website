@@ -9,7 +9,7 @@ nav_order: 1
 
 A [static message](/docs/client/static-messages) in Airport Conditions or NOTAMs can be included in the ATIS only while certain things are true, instead of being switched on and off by hand. There are two kinds of condition, and a message can use both:
 
-* **Controllers online**: include the message only while specific VATSIM controllers are online or offline, such as `LAX_GND AND NOT LAX_DEL`.
+* **Controllers online**: include the message only while specific VATSIM controllers are online or offline, such as `LAX_GND AND NOT LAX_DEL`. The same box can also limit a message to certain hours in Zulu, such as `2200z-0600z`.
 * **Weather**: include the message only when the METAR meets a condition you write, such as `ceiling < 200ft`.
 
 Typical uses are a frequency NOTAM that depends on whether Delivery is staffed, and a *Low Visibility Procedures in operation* airport condition that follows the weather.
@@ -58,6 +58,22 @@ means *(Tower and Ground) or Delivery*. Use parentheses to change the order:
 `LAX_TWR AND (LAX_GND OR LAX_DEL)`
 
 `NOT` applies to the callsign or group that follows it: `NOT (LAX_N_TWR OR LAX_S_TWR)` is met while neither is online. If the condition is not valid, vATIS shows what is wrong and where, and will not save the message until it is fixed.
+
+### Time of day
+A condition can include a range of Zulu (UTC) time, written as a start and an end: `0700z-1400z`. The `z` is optional and spaces around the dash are allowed, so `0700 - 1400` works too. The range is met from the start time up to, but not including, the end time, so `0700z-1400z` is met at 1359Z and not at 1400Z.
+
+If the end is before the start, the range crosses midnight. `2200z-0600z` is met from 2200Z until 0559Z. Use `2400z` as an end time for a range that runs to midnight, such as `2000z-2400z`.
+
+A time range works like a callsign in an expression, so it can be combined with them:
+
+| Controllers | Met |
+|-|-|
+| `2200z-0600z` | Between 2200Z and 0600Z, whoever is online |
+| `LAX_TWR AND 0700z-1400z` | While LAX Tower is online, between 0700Z and 1400Z |
+| `0700z-1400z OR 2200z-2300z` | In either range |
+| `NOT 0700z-1400z` | Outside 0700Z to 1400Z |
+
+A message limited to certain hours, such as *Noise abatement procedures in effect* overnight, can use a time range alone. vATIS checks the time every 5 seconds, so a message can appear or disappear up to 5 seconds after the range starts or ends, and the ATIS is rebuilt when it does. The ATIS letter is not advanced by these changes.
 
 ### Suggestions
 As you type, vATIS suggests `AND`, `OR` and `NOT` where they can go: `NOT` where a callsign is expected, and all three after a callsign or a closing parenthesis. The list appears as you type a word, after a space and after an opening parenthesis. Choose a suggestion with the arrow keys and press **Enter** or **Tab**, or double-click it. Typing anything else just closes the list, so your own text is never replaced.
