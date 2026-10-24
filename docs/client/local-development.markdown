@@ -61,7 +61,7 @@ If you encounter the error shown below when starting the project, try restarting
 
 
 ## Development Server Web UI
-The Development Server Web UI provides tools to mock and force METAR updates for a connected vATIS client, making it easier to simulate and test ATIS generation.
+The Development Server Web UI provides tools to mock and force METAR updates for a connected vATIS client, and to choose which controllers are online, making it easier to simulate and test ATIS generation.
 
 ### Accessing the Web UI
 You can access the Development Server Web UI in any browser by navigating to: [`http://127.0.0.1:5500`](http://127.0.0.1:5500).
@@ -80,3 +80,13 @@ To modify and update a METAR:
 3. Click the "Update METAR" button.
 
 This action sends the modified METAR to the connected vATIS client, simulating a received METAR update and triggering an ATIS update.
+
+### Online Controllers
+The dev server also hosts a local copy of the VATSIM data feed at `http://127.0.0.1:5500/datafeed`. When vATIS runs in development mode it reads this feed instead of the real one, so you can test [Conditional Messages](/docs/client/conditional-messages) that depend on which controllers are online without anyone being logged on.
+
+1. Enter a callsign in the **Online Controllers** section of the Web UI and click **Add**. The facility is taken from the end of the callsign: `_DEL`, `_GND`, `_RMP`, `_TWR`, `_APP`, `_DEP`, `_CTR` or `_FSS`. A callsign that ends in anything else is treated as an observer.
+2. Click **Remove** next to a callsign to take that controller offline, or **Clear all** to take everyone offline.
+
+The feed starts empty, so nobody is online until you add someone. vATIS reads the feed every 3 seconds in development mode, so changes show up within a few seconds. Observers, which include callsigns that do not end in one of those suffixes, are ignored by vATIS, as they are on the real network.
+
+To use a different feed, such as a JSON file you serve yourself, set the `VATIS_DATA_URL` environment variable to its URL before starting vATIS. It works with or without development mode.

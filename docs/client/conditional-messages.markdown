@@ -9,7 +9,7 @@ nav_order: 1
 
 A [static message](/docs/client/static-messages) in Airport Conditions or NOTAMs can be included in the ATIS only while certain things are true, instead of being switched on and off by hand. There are two kinds of condition, and a message can use both:
 
-* **Controllers online**: include the message only while specific VATSIM controllers are online, or only while they are offline.
+* **Controllers online**: include the message only while specific VATSIM controllers are online or offline, such as `LAX_GND AND NOT LAX_DEL`.
 * **Weather**: include the message only when the METAR meets a condition you write, such as `ceiling < 200ft`.
 
 Typical uses are a frequency NOTAM that depends on whether Delivery is staffed, and a *Low Visibility Procedures in operation* airport condition that follows the weather.
@@ -28,39 +28,61 @@ A checked message that has a condition is included in the ATIS only while its co
 
 ![Include when a controller is online](/assets/images/StaticDefinitionEditorDialog_OnlineCondition.png)
 
-In the **Include** row, choose when the message applies:
+Type a condition in the **Controllers** box. The message is included while the condition is met. A message with an empty Controllers box is not affected by which controllers are online.
 
-* **Always**: The message has no controller condition.
-* **When online**: The message is included while at least one of the listed callsigns is online.
-* **When offline**: The message is included while none of the listed callsigns is online.
+The simplest condition is a callsign, such as `LAX_DEL`, which is met while that controller is online. Join callsigns with `AND` and `OR`, negate one with `NOT`, and group them with parentheses:
 
-When you choose **When online** or **When offline**, enter one or more callsigns, separated by commas or spaces. Callsigns are not case-sensitive, and the whole callsign must match. Use `*` as a wildcard for any run of characters:
+`LAX_GND AND NOT LAX_DEL`
+
+That is met while Ground is online and Delivery is not. Keywords are not case-sensitive, and the condition can be spread over several lines. Callsigns are not case-sensitive either, and the whole callsign must match. Use `*` as a wildcard for any run of characters:
 
 | Entry | Matches |
 |-|-|
-| `EPWA_DEL` | Only `EPWA_DEL` |
-| `EPWA_APP, EPWA_F_APP` | Either callsign |
-| `EPWW_*_CTR` | `EPWW_W_CTR`, `EPWW_E_CTR`, ... (but not `EPWW_CTR`, which has only one underscore) |
-| `EPWW_*CTR` | `EPWW_CTR`, `EPWW_W_CTR`, `EPWW_E_CTR`, ... |
-| `EPWA_*` | Any `EPWA_` position, including Tower and Ground |
+| `LAX_DEL` | Only `LAX_DEL` |
+| `LAX_N_TWR, LAX_S_TWR` | Either callsign |
+| `LAX_*_CTR` | `LAX_25_CTR`, `LAX_26_CTR`, ... (but not `LAX_CTR`, which has only one underscore) |
+| `LAX_*CTR` | `LAX_CTR`, `LAX_25_CTR`, `LAX_26_CTR`, ... |
+| `LAX_*` | Any `LAX_` position, including Tower and Ground |
 
-Observers and ATIS connections are not counted as controllers.
+A wildcard callsign is met while *any* controller matching it is online. Observers and ATIS connections are not counted as controllers.
+
+### Combining callsigns
+Callsigns written one after another, separated by commas or spaces, mean *any of them*, so `LAX_N_TWR, LAX_S_TWR` is the same as `LAX_N_TWR OR LAX_S_TWR`. A `NOT` straight after a callsign means `AND NOT`, so `LAX_GND NOT LAX_DEL` is the same as `LAX_GND AND NOT LAX_DEL`.
+
+`AND` is evaluated before `OR`, as in ordinary logic, so
+
+`LAX_TWR AND LAX_GND OR LAX_DEL`
+
+means *(Tower and Ground) or Delivery*. Use parentheses to change the order:
+
+`LAX_TWR AND (LAX_GND OR LAX_DEL)`
+
+`NOT` applies to the callsign or group that follows it: `NOT (LAX_N_TWR OR LAX_S_TWR)` is met while neither is online. If the condition is not valid, vATIS shows what is wrong and where, and will not save the message until it is fixed.
+
+### Suggestions
+As you type, vATIS suggests `AND`, `OR` and `NOT` where they can go: `NOT` where a callsign is expected, and all three after a callsign or a closing parenthesis. The list appears as you type a word, after a space and after an opening parenthesis. Choose a suggestion with the arrow keys and press **Enter** or **Tab**, or double-click it. Typing anything else just closes the list, so your own text is never replaced.
+
+{: .note-title }
+> Note
+>
+> Earlier versions had an **Include** drop-down with *Always*, *When online* and *When offline*. Existing messages are converted when the profile loads: *When online* with a list of callsigns becomes the same callsigns joined with `OR`, and *When offline* becomes `NOT` in front of them, for example `NOT (LAX_DEL OR LAX_GND)`. Messages that were *Always* have an empty Controllers box.
 
 ### Example: Frequencies that depend on who is staffed
-Some airports give different instructions depending on which positions are staffed. These NOTAMs are set on the same station, and in each pair only one is included at a time. The wording is only an example:
+Some airports give different instructions depending on which positions are staffed. These NOTAMs are set on the same station, and in each group only one is included at a time. The wording is only an example:
 
-| NOTAM | Include | Callsigns |
-|-|-|-|
-| REPORT READY FOR START UP ON DELIVERY 121 DECIMAL 605 | When online | `EPWA_DEL` |
-| REPORT READY FOR START UP ON TOWER 119 DECIMAL 980 | When offline | `EPWA_DEL` |
-| AFTER DEPARTURE CONTACT APPROACH 121 DECIMAL 075 | When online | `EPWA_APP` |
-| AFTER DEPARTURE CONTACT TOWER 119 DECIMAL 980 | When offline | `EPWA_APP` |
+| NOTAM | Controllers |
+|-|-|
+| CLEARANCE ON DELIVERY 121.65 | `LAX_DEL` |
+| CLEARANCE ON GROUND 121.75 | `LAX_GND AND NOT LAX_DEL` |
+| CLEARANCE ON TOWER 133.9 | `LAX_TWR AND NOT (LAX_DEL OR LAX_GND)` |
+| AFTER DEPARTURE CONTACT SOCAL APPROACH 124.3 | `SCT_APP` |
+| AFTER DEPARTURE CONTACT LOS ANGELES CENTER 128.5 | `NOT SCT_APP` |
 
 ### Where the online list comes from
 vATIS reads the list of online controllers from the [VATSIM data feed](https://vatsim.dev/api/data-api/get-network-data).
 
-* The feed is refreshed every 30 seconds, so a controller logging on or off can take up to 30 seconds to show up.
-* If the feed cannot be reached, vATIS keeps the last list it received. Until it has received one, nobody is considered online: **When offline** messages are included and **When online** messages are not.
+* The feed is refreshed every 15 seconds, so a controller logging on or off can take up to 15 seconds to show up.
+* If the feed cannot be reached, vATIS keeps the last list it received. Until it has received one, nobody is considered online: a condition such as `LAX_DEL` is not met, and `NOT LAX_DEL` is.
 
 ## Weather
 
@@ -75,7 +97,7 @@ A condition is made of comparisons, such as `ceiling < 200ft`, joined with `AND`
 Field names, units and keywords are not case-sensitive, and conditions can be spread over several lines. If the condition is not valid, vATIS shows what is wrong and where, and will not save the message until it is fixed.
 
 ### Suggestions
-vATIS suggests what can come next as you type: field names, comparisons, units and weather codes. The list appears as you type a word, after a space and after an opening parenthesis, and you can open it at any time with **Ctrl+Space**. Choose a suggestion with the arrow keys and press **Enter** or **Tab**, or double-click it. Typing anything else just closes the list, so your own text is never replaced.
+vATIS suggests what can come next as you type: field names, comparisons, units and weather codes. The list appears as you type a word, after a space and after an opening parenthesis. Choose a suggestion with the arrow keys and press **Enter** or **Tab**, or double-click it. Typing anything else just closes the list, so your own text is never replaced.
 
 ![Entering a weather condition](/assets/images/WeatherCondition.webp)
 
