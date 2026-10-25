@@ -7,6 +7,33 @@ nav_order: 5
 # Release Notes
 The latest changes in vATIS. The full history is in the [changelog on GitHub](https://github.com/vatis-project/vatis/blob/main/CHANGELOG.md).
 
+## v4.1.0-beta.21
+### Added
+- Added statute miles (`sm`) and fractions (e.g., `1/2sm`, `1 1/2sm`) to visibility in weather conditions for static airport conditions and NOTAMs.
+- Added a `$runway` function for regex patterns that speaks runway designators (e.g., `25L` as "two five left").
+- Added customizable text and voice templates for the trend forecast, allowing the spoken "TREND" prefix to be changed or removed.
+- Added "Blank Line" and "New Line" items to static airport conditions and NOTAMs to separate definitions with an empty line or a line break.
+- Added support for deleting multiple selected static airport conditions and NOTAMs at once.
+- Added support for `\n` line breaks in static airport conditions and NOTAMs separators.
+- Added Zulu time ranges to the "Controllers" condition of static airport conditions and NOTAMs (e.g., `LAX_TWR AND 2200z-0600z`), allowing entries to appear only during specific hours. Ranges can cross midnight.
+
+### Changed
+- Moved the D-ATIS sub-tab ahead of Template in the preset editor and hid it when the preset uses an external ATIS generator.
+- Changed D-ATIS replacements and prepend/append text to be held until Apply or OK is pressed, instead of being saved immediately.
+- Replaced the "Include" station dropdown for static airport conditions and NOTAMs with a single expression field that supports AND, OR, NOT, and parentheses (e.g., `LAS_E_GND NOT LAS_W_GND`). Existing conditions are converted automatically.
+- Reduced the refresh interval of the online controller list used by station conditions from 30 to 15 seconds.
+
+### Fixed
+- Fixed the `configureAtis` WebSocket message clearing airport conditions and NOTAMs, or requiring a preset, when those properties were omitted.
+- Fixed D-ATIS text replacements leaving stray punctuation behind and not removing trailing punctuation for plain-text patterns.
+- Fixed "Randomize ATIS letter on connect" leaving the letter at A for stations with no D-ATIS letter available when ATIS letter syncing was enabled.
+- Fixed the NOTAMs header being included in the ATIS when no NOTAMs are active, such as when all conditional NOTAMs are unmet.
+- Fixed `ceiling` weather conditions never being met when the METAR has no ceiling (e.g., CLR, SKC, NSC, CAVOK, or only few or scattered clouds). No ceiling is now treated as unlimited, so `ceiling > 1000ft` is met.
+- Fixed weather conditions ignoring variable runway visual range (e.g., `R25L/1800V3000FT`) and treating vertical visibility (`VV002`) as no ceiling.
+- Fixed wind speeds reported in kilometers per hour as `KMH` not being decoded from METARs.
+- Fixed a "Value cannot be null (Parameter 'key')" error when returning to the main window after exporting an ATIS station.
+- Fixed leading zeros being dropped from QNH values below 1000 hPa and from cloud altitudes in the text ATIS when using the Digits or Serial variable format styles.
+
 ## v4.1.0-beta.20
 ### Added
 - Added a JSON-only `disconnectIfUnrecorded` option to automatically disconnect a recorded voice ATIS if it hasn't been recorded within 5 minutes of connecting.
