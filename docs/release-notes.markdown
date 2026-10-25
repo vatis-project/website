@@ -7,6 +7,10 @@ nav_order: 5
 # Release Notes
 The latest changes in vATIS. The full history is in the [changelog on GitHub](https://github.com/vatis-project/vatis/blob/main/CHANGELOG.md).
 
+## v4.1.0-beta.22
+### Fixed
+- Fixed stations failing to load in the released app when a static airport condition or NOTAM used a "Controllers" condition.
+
 ## v4.1.0-beta.21
 ### Added
 - Added statute miles (`sm`) and fractions (e.g., `1/2sm`, `1 1/2sm`) to visibility in weather conditions for static airport conditions and NOTAMs.
