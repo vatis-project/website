@@ -106,10 +106,10 @@ Write a field, a comparison, and a number with an optional unit. Without a unit,
 
 | Field | Also written | Compares | Units |
 |-|-|-|-|
-| `ceiling` | | Height of the ceiling: the lowest cloud layer of the types set as ceiling in the [Clouds format](/docs/client/atis-configuration/formatting/clouds#ceiling) (broken and overcast by default) | `ft`, `m` |
+| `ceiling` | | Height of the ceiling: the lowest cloud layer of the types set as ceiling in the [Clouds format](/docs/client/atis-configuration/formatting/clouds#ceiling) (broken and overcast by default). Vertical visibility (`VV`) always counts as a ceiling. With no ceiling (clear skies, or only few or scattered clouds) the ceiling is unlimited, so `ceiling > 1000ft` is met and `ceiling < 1000ft` is not | `ft`, `m` |
 | `cloudbase` | | Height of the lowest cloud layer of any coverage | `ft`, `m` |
-| `rvr` | | The lowest runway visual range reported | `m`, `km`, `ft` |
-| `visibility` | `vis` | Prevailing visibility. CAVOK counts as 9999 m | `m`, `km`, `ft` |
+| `rvr` | | The lowest runway visual range reported. A variable RVR such as `1800V3000FT` counts as its lowest value | `m`, `km`, `ft` |
+| `visibility` | `vis` | Prevailing visibility. CAVOK counts as 9999 m | `m`, `km`, `ft`, `sm` |
 | `windspeed` | `wind` | Mean wind speed | `kt`, `kmh`, `mps` |
 | `gust` | `windgust` | Gust speed | `kt`, `kmh`, `mps` |
 | `winddir` | `winddirection` | Mean wind direction. Variable winds (VRB) never match | `deg` |
@@ -119,6 +119,8 @@ Write a field, a comparison, and a number with an optional unit. Without a unit,
 | `depth` | `runwaydepth` | The deepest deposit in the METAR's runway condition groups | `mm` |
 
 The comparisons are `<` (below), `<=` (at or below), `>` (above), `>=` (at or above) and `=` (equals). The number is converted from the unit you write, so `ceiling < 200ft` works whether the METAR reports the ceiling in feet or in meters. Units can follow the number directly or after a space: `200ft` and `200 ft` are the same.
+
+Both ICAO and US (FAA) METARs work with any unit. A `visibility` or `rvr` is converted to the unit you write, so `visibility < 3sm` is met by an ICAO METAR reporting `4000` as well as by a US METAR reporting `2SM`. For `visibility`, statute miles (`sm`) can be written as a decimal or a fraction: `visibility < 0.5sm`, `visibility < 1/2sm`, or a mixed number such as `visibility < 1 1/2sm`.
 
 ### Comparisons with codes
 `weather` and `cloudtype` check for codes in the METAR, using `INCLUDES` or `EXCLUDES`:
@@ -136,7 +138,7 @@ The comparisons are `<` (below), `<=` (at or below), `>` (above), `>=` (at or ab
 {: .note-title }
 > Note
 >
-> A comparison is not met when the METAR does not report the value it needs. With no RVR reported, both `rvr < 550m` and `rvr > 550m` are false. Use `NOT` or `EXCLUDES` to test for something being absent. Before the first METAR has been received, no weather condition is met.
+> A comparison is not met when the METAR does not report the value it needs. The exception is `ceiling`: a METAR with no ceiling layer (CLR, SKC, NSC, CAVOK, or only few and scattered clouds) has an unlimited ceiling. With no RVR reported, both `rvr < 550m` and `rvr > 550m` are false. Use `NOT` or `EXCLUDES` to test for something being absent. Before the first METAR has been received, no weather condition is met.
 
 ### Combining comparisons
 `AND` is evaluated before `OR`, as in ordinary logic, so
@@ -162,6 +164,7 @@ Each row shows a different part of the condition language.
 | RWY CONTAMINATED | `depth > 3mm` | Runway deposit depth in millimeters |
 | ICING POSSIBLE | `temperature <= 3c AND dewpoint >= -3c` | `<=`, `AND`, and a negative number |
 | FOG, EXPECT DELAYS | `wx INCLUDES FG AND vis < 800m` | The alternative field names `wx` and `vis` |
+| FOG, EXPECT DELAYS | `wx INCLUDES FG AND vis < 1/2sm` | Statute miles, with a fraction |
 | THUNDERSTORMS IN THE VICINITY | `weather INCLUDES TS OR cloudtype INCLUDES CB` | `INCLUDES` with `weather` and `cloudtype`, and `OR` |
 | DEICING NOT REQUIRED | `temperature > 3c AND weather EXCLUDES "FZRA FZDZ"` | `EXCLUDES` with more than one code in quotes |
 | WINDSHEAR REPORTED ON FINAL | `windshear` | A condition without a comparison |
