@@ -123,16 +123,16 @@ Write a field, a comparison, and a number with an optional unit. Without a unit,
 | Field | Also written | Compares | Units |
 |-|-|-|-|
 | `ceiling` | | Height of the ceiling: the lowest cloud layer of the types set as ceiling in the [Clouds format](/docs/client/atis-configuration/formatting/clouds#ceiling) (broken and overcast by default). Vertical visibility (`VV`) always counts as a ceiling. With no ceiling (clear skies, or only few or scattered clouds) the ceiling is unlimited, so `ceiling > 1000ft` is met and `ceiling < 1000ft` is not | `ft`, `m` |
-| `cloudbase` | | Height of the lowest cloud layer of any coverage | `ft`, `m` |
+| `cloudbase` | | Height of the lowest cloud layer of any coverage. Unlimited when the sky is clear | `ft`, `m` |
 | `rvr` | | The lowest runway visual range reported. A variable RVR such as `1800V3000FT` counts as its lowest value | `m`, `km`, `ft` |
 | `visibility` | `vis` | Prevailing visibility. CAVOK counts as 9999 m | `m`, `km`, `ft`, `sm` |
 | `windspeed` | `wind` | Mean wind speed | `kt`, `kmh`, `mps` |
-| `gust` | `windgust` | Gust speed | `kt`, `kmh`, `mps` |
+| `gust` | `windgust` | Gust speed. Zero when no gust is reported | `kt`, `kmh`, `mps` |
 | `winddir` | `winddirection` | Mean wind direction. Variable winds (VRB) never match | `deg` |
 | `temperature` | `temp` | Air temperature | `c`, `f` |
 | `dewpoint` | `dew` | Dewpoint | `c`, `f` |
 | `qnh` | `pressure`, `altimeter` | The pressure setting, converted if the METAR uses the other unit | `hpa`, `inhg` |
-| `depth` | `runwaydepth` | The deepest deposit in the METAR's runway condition groups | `mm` |
+| `depth` | `runwaydepth` | The deepest deposit in the METAR's runway condition groups. Zero when none is reported | `mm` |
 
 The comparisons are `<` (below), `<=` (at or below), `>` (above), `>=` (at or above) and `=` (equals). The number is converted from the unit you write, so `ceiling < 200ft` works whether the METAR reports the ceiling in feet or in meters. Units can follow the number directly or after a space: `200ft` and `200 ft` are the same.
 
@@ -154,7 +154,7 @@ Both ICAO and US (FAA) METARs work with any unit. A `visibility` or `rvr` is con
 {: .note-title }
 > Note
 >
-> A comparison is not met when the METAR does not report the value it needs. The exception is `ceiling`: a METAR with no ceiling layer (CLR, SKC, NSC, CAVOK, or only few and scattered clouds) has an unlimited ceiling. With no RVR reported, both `rvr < 550m` and `rvr > 550m` are false. Use `NOT` or `EXCLUDES` to test for something being absent. Before the first METAR has been received, no weather condition is met.
+> A comparison is not met when the METAR does not report the value it needs. The exceptions are fields where a missing value means nothing is limiting. A METAR with no ceiling layer (CLR, SKC, NSC, CAVOK, or only few and scattered clouds) has an unlimited `ceiling`, and with clear skies `cloudbase` is unlimited too. With no RVR reported, `rvr` is unlimited, so `rvr > 550m` is met and `rvr < 550m` is not. With no gust group, `gust` is zero, and with no runway deposit reported, `depth` is zero. Use `NOT` or `EXCLUDES` to test for something being absent. Before the first METAR has been received, no weather condition is met.
 
 ### Combining comparisons
 `AND` is evaluated before `OR`, as in ordinary logic, so
