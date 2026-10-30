@@ -40,6 +40,19 @@ A static message can be included only while certain VATSIM controllers are onlin
 
 ![Conditional message](/assets/images/StaticDefinitionEditorDialog_WeatherRules.png)
 
+### Quick Overrides
+Sometimes you need a message on or off for a little while, without opening the dialog or editing its conditions. Right-click the **Airport Conditions** or **NOTAMs** text box in the main window and use the items below **Save Airport Conditions** (or **Save NOTAMs**):
+
+* **Static Messages**: lists the messages that have no condition. A check mark means the message is in the ATIS. Click a message to turn it off for now, and click it again to turn it back on.
+* **Conditional Messages**: lists the messages that have a [condition](conditional-messages). Click a message to force it into the ATIS even though its condition is not met, so you don't have to remove the condition. Click it again to let the condition decide.
+* **Display Order**: lists the messages that are in the ATIS right now, in the order they are read. Use the ▲ and ▼ buttons to move a message up or down. The menu stays open so you can move several messages.
+
+![Static Messages, Conditional Messages and Display Order in the NOTAMs menu](/assets/images/ConditionalMessages.webp)
+
+The ATIS is rebuilt as soon as you click, and the ATIS letter does not advance.
+
+Overrides are temporary. They are not saved to the profile or the message list, and they are cleared when you close vATIS. Reordering messages in the dialog also clears any order you set with **Display Order**. Only enabled messages appear in these menus.
+
 ### Separators
 When more than one message is checked, vATIS puts a separator between them in the ATIS. The separator is a period followed by a space unless you change it, so the checked messages read as separate sentences. Messages are used in the order they appear in the list.
 

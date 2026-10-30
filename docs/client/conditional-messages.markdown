@@ -193,4 +193,5 @@ Each row shows a different part of the condition language.
 * When a station is connected, the ATIS is rebuilt as soon as a new METAR arrives, or when a controller logging on or off changes which messages apply. vATIS only rebuilds when the set of included messages actually changes.
 * The ATIS letter is **not** advanced by these changes. It advances for a new METAR in the usual way, but a controller logging on or off will update the ATIS text under the same letter.
 * The free-form text area in the main window lists the static messages that currently apply, so you can see what will be broadcast.
+* To force a conditional message into the ATIS without removing its condition, right-click the Airport Conditions or NOTAMs text box and use [Quick Overrides](static-messages#quick-overrides). The override lasts until vATIS is closed.
 * The [Sandbox](/docs/client/atis-configuration/sandbox) evaluates weather conditions against the METAR in its METAR field, and controller conditions against the current list of online controllers.
