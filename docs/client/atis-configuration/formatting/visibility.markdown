@@ -16,9 +16,12 @@ The Visibility element represents the visibility value obtained from the METAR r
 <hr/>
 
 ## ICAO Formatting
+
+![Visibility ICAO Formatting](/assets/images/Formatting_Visibility_ICAO.png)
+
 This tab (non-FAA stations) sets how a visibility in meters is written in the text ATIS and spoken in the voice ATIS, for example to show `7000` as `7 KM` and speak it as "seven kilometers".
 
-Each row has a **At or above (m)** value, a **Text** format and a **Voice** format. The row with the highest At or above value that does not exceed the visibility is used. Use **Add New** and **Delete** to manage the rows. A preview below the table shows how sample visibilities are written and spoken with the current rows.
+Each row has an **At or above (m)** value, a **Text** format and a **Voice** format. A row applies from its At or above value up to the next row, so the row with the highest value that does not exceed the visibility is used. Edit a cell by double-clicking it, or select a cell and use the **{raw}**, **{m}** and **{km}** buttons under the table to insert a token. Use **Add New** and **Delete** to manage the rows. The **Preview** list below shows how sample visibilities are written in the text ATIS and spoken in the voice ATIS with the current rows.
 
 Text tokens:
 
@@ -39,7 +42,7 @@ The default rows are:
 | 5000 | `{raw}` | `{km} kilometers` |
 | 9999 | `10KM` | `10 kilometers or more` |
 
-This shows the METAR value in the text ATIS, speaks meters below 5000 and kilometers from 5000, and reports a visibility of 9999 as 10 kilometers or more. To switch at a different point, change the At or above value of the second row. The 9999 row sets what is shown and spoken when the METAR reports 9999, so there is no separate 9999 setting. Remove the unit words from the Voice column to speak the visibility without a unit. To show `7000` as `7 KM` in the text ATIS, set the Text of the second row to `{km} KM`.
+This shows the METAR value in the text ATIS, speaks meters below 5000 and kilometers from 5000, and reports a visibility of 9999 as 10 kilometers or more. To switch at a different point, change the At or above value of the second row. The 9999 row sets what is shown and spoken when the METAR reports 9999. Remove the unit words from the Voice column to speak the visibility without a unit. To show `7000` as `7 KM` in the text ATIS, set the Text of the second row to `{km} KM`.
 
 For example, with the rows below, `0800` is shown as `800 M` and spoken as "eight hundred meters", and `7000` is shown as `7 KM` and spoken as "7 kilometers":
 
@@ -51,13 +54,14 @@ For example, with the rows below, `0800` is shown as `800 M` and spoken as "eigh
 
 Visibilities below the lowest row are shown as reported in the METAR and spoken in meters.
 
-When the METAR reports a directional minimum (e.g. `7000 4000E`), each value is formatted with the rules. The direction comes from the **Direction** tab (e.g. `7 KM 4000 M E` in the text ATIS). The minimum is spoken in group form (e.g. "twelve hundred"). The CAVOK settings are used before these rules.
+When the METAR reports a directional minimum (e.g. `7000 4000E`), each value is formatted with the rules. The direction comes from the **Direction** tab (e.g. `7 KM 4000 M E` in the text ATIS). The minimum is spoken in group form (e.g. "twelve hundred"). The CAVOK row is used before these rules.
 
 The **CAVOK** row below the table sets what is shown in the text ATIS and spoken in the voice ATIS when the METAR reports CAVOK. The default for both is "CAVOK". This row is always present and cannot be deleted.
 
-Profiles created before this tab existed are updated automatically, so the voice ATIS is spoken as before. The previous **Include visibility unit suffix**, **Meters Cutoff**, **Unit Words** and **9999** settings are replaced by the rows in this table. A previous 9999 text or voice that included the words around the visibility in the template (e.g. `VIS 10KM` with the template `VIS {visibility}`) is migrated without them (`10KM`).
-
 ## Direction
+
+![Visibility Direction](/assets/images/Formatting_Visibility_Direction.png)
+
 This tab (non-FAA stations) sets the wording used for the direction of a lower visibility. A METAR can report a lower visibility in one direction, for example `7000 4000E` means 7000 meters overall and 4000 meters to the east.
 
 Each row is a METAR direction code (`N`, `NE`, `E`, `SE`, `S`, `SW`, `W`, `NW`) with two columns:
@@ -67,9 +71,8 @@ Each row is a METAR direction code (`N`, `NE`, `E`, `SE`, `S`, `SW`, `W`, `NW`) 
 
 ## Fractions (Voice)
 
-
 ![Visibility Fractions](/assets/images/Formatting_Visibility_Fractions.png)
 
-This tab (FAA stations) sets the spoken text for fractional visibility values such as `1/2SM` or `1 1/2SM`. Each row is the METAR value and the text spoken in the voice ATIS. The defaults match the previous wording.
+This tab (FAA stations) sets the spoken text for fractional visibility values such as `1/2SM` or `1 1/2SM`. Each row is the METAR value and the text spoken in the voice ATIS.
 
 The text ATIS continues to show the METAR value as received.
