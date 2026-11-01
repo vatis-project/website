@@ -31,6 +31,7 @@ The Variable Format tab controls how each numeric variable is written, separatel
 * **Digits** ... Plain digits (e.g. 1013).
 * **Serial** ... Digit-by-digit words (e.g. ONE ZERO ONE THREE).
 * **Group** ... Words in groups (e.g. TEN THIRTEEN).
+* **NoDecimal** ... Drops the decimal point, mainly for `{altimeter|inhg}`. The text ATIS shows plain digits (e.g. 2997) and the voice ATIS reads digit-by-digit words without "point" (e.g. TWO NINER NINER SEVEN).
 
 **Suffix**<br/>
 Text appended to the value exactly as typed, so include a leading space if you need one (e.g. ` knots`).
