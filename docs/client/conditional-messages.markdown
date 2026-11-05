@@ -113,7 +113,7 @@ A condition is made of comparisons, such as `ceiling < 200ft`, joined with `AND`
 Field names, units and keywords are not case-sensitive, and conditions can be spread over several lines. If the condition is not valid, vATIS shows what is wrong and where, and will not save the message until it is fixed.
 
 ### Suggestions
-vATIS suggests what can come next as you type: field names, comparisons, units and weather codes. The list appears as you type a word, after a space and after an opening parenthesis. Choose a suggestion with the arrow keys and press **Enter** or **Tab**, or double-click it. Typing anything else just closes the list, so your own text is never replaced.
+vATIS suggests what can come next as you type: field names, comparisons, units and weather codes. The list appears as you type a word, after a space and after an opening parenthesis. Choose a suggestion with the arrow keys and press **Enter** or **Tab**, or double-click it. Typing anything else just closes the list, so your own text is never replaced. Typing `trend`, `tempo` or `becmg` lists the fields that can be read from a [trend](#trend-and-recent-weather).
 
 ![Entering a weather condition](/assets/images/WeatherCondition.webp)
 
@@ -139,14 +139,49 @@ The comparisons are `<` (below), `<=` (at or below), `>` (above), `>=` (at or ab
 Both ICAO and US (FAA) METARs work with any unit. A `visibility` or `rvr` is converted to the unit you write, so `visibility < 3sm` is met by an ICAO METAR reporting `4000` as well as by a US METAR reporting `2SM`. For `visibility`, statute miles (`sm`) can be written as a decimal or a fraction: `visibility < 0.5sm`, `visibility < 1/2sm`, or a mixed number such as `visibility < 1 1/2sm`.
 
 ### Comparisons with codes
-`weather` and `cloudtype` check for codes in the METAR, using `INCLUDES` or `EXCLUDES`:
+`weather`, `recentweather`, `trendtype` and `cloudtype` check for codes in the METAR, using `INCLUDES` or `EXCLUDES`:
 
 | Field | Also written | Looks for |
 |-|-|-|
-| `weather` | `wx` | Present weather codes, e.g. `TS`, `FZRA`, `+SN`, `FG` |
+| `weather` | `wx` | Present weather codes for the current conditions, e.g. `TS`, `FZRA`, `+SN`, `FG` |
+| `recentweather` | `recentwx` | Recent weather codes, e.g. `RERA`, `RETSRA`. See [Trend and recent weather](#trend-and-recent-weather) |
+| `trendtype` | | The type of the trend: `TEMPO`, `BECMG` or `NOSIG`. See [Trend and recent weather](#trend-and-recent-weather) |
 | `cloudtype` | | Cloud types `CB` and `TCU` |
 
 `weather INCLUDES TS` is met while a thunderstorm is reported. To look for more than one code, separate them with commas, `weather INCLUDES TS,FZRA`, or put them in quotes, `weather INCLUDES "TS FZRA"`. `INCLUDES` is met when *any* of the codes is found, and a code matches inside longer ones: `RA` matches `-RA`, `+RA` and `TSRA`. `EXCLUDES` is met when *none* of them is found.
+
+### Trend and recent weather
+`weather` only looks at the current conditions in the METAR. The trend at the end of a METAR, such as `TEMPO SHRA` or `BECMG 5000`, and the recent weather, such as `RERA`, have their own fields so that a condition says exactly which one it means.
+
+**Trend.** Put `trend`, `tempo` or `becmg` in front of a field name to read the trend instead of the METAR:
+
+| Prefix | Reads |
+|-|-|
+| `trend` | Any trend group in the METAR, whether `TEMPO` or `BECMG` |
+| `tempo` | Only `TEMPO` groups |
+| `becmg` | Only `BECMG` groups |
+
+These fields can be read from a trend, and they work with the same units, comparisons and codes as the METAR field they are named after:
+
+| Field | Also written | Compares or looks for |
+|-|-|-|
+| `ceiling` | | Ceiling in the trend's clouds, e.g. `tempoceiling < 1000ft` |
+| `cloudbase` | | The lowest cloud layer in the trend |
+| `visibility` | `vis` | Visibility in the trend, e.g. `tempovisibility < 800m` |
+| `windspeed` | `wind` | Mean wind speed in the trend |
+| `gust` | `windgust` | Gust speed in the trend |
+| `winddir` | `winddirection` | Mean wind direction in the trend |
+| `weather` | `wx` | Weather codes in the trend, e.g. `trendweather INCLUDES SHRA` |
+| `cloudtype` | | `CB` and `TCU` in the trend's clouds, e.g. `becmgcloudtype INCLUDES CB` |
+| `cavok` | | Whether the trend reports CAVOK |
+
+`rvr`, `temperature`, `dewpoint`, `qnh`, `depth` and `windshear` are not part of a trend, so they have no trend version.
+
+`trendtype` matches the type of the trend itself, e.g. `trendtype INCLUDES TEMPO`. To check the type and what the trend says together, use the prefixes instead, `tempoweather INCLUDES RA`: a METAR can have both a `TEMPO` and a `BECMG` group, and `trendweather INCLUDES RA AND trendtype INCLUDES TEMPO` is met when rain is in one group and a `TEMPO` is in the other.
+
+A METAR can have up to two trend groups. A condition is met if *any* group it applies to meets it, but `EXCLUDES` is met only if *none* of them contains the code. If the METAR has no trend of that kind, or only `NOSIG`, a comparison is not met, and `EXCLUDES` is met.
+
+**Recent weather.** `recentweather` looks for the recent weather group of the METAR, which starts with `RE`. The `RE` is optional, so `recentweather INCLUDES RA` and `recentweather INCLUDES RERA` both match `RERA`. As with `weather`, a code matches inside longer ones, so `RA` also matches `RESHRA`.
 
 ### Conditions without a comparison
 `windshear` is met while wind shear is reported, and `cavok` while the METAR reports CAVOK. Use `NOT` for the opposite, e.g. `NOT cavok`.
@@ -155,6 +190,8 @@ Both ICAO and US (FAA) METARs work with any unit. A `visibility` or `rvr` is con
 > Note
 >
 > A comparison is not met when the METAR does not report the value it needs. The exception is `ceiling`: a METAR with no ceiling layer (CLR, SKC, NSC, CAVOK, or only few and scattered clouds) has an unlimited ceiling. With no RVR reported, both `rvr < 550m` and `rvr > 550m` are false. Use `NOT` or `EXCLUDES` to test for something being absent. Before the first METAR has been received, no weather condition is met.
+>
+> A trend's visibility is only read when it is written as four digits in meters, such as `TEMPO 4000`.
 
 ### Combining comparisons
 `AND` is evaluated before `OR`, as in ordinary logic, so
@@ -183,6 +220,11 @@ Each row shows a different part of the condition language.
 | FOG, EXPECT DELAYS | `wx INCLUDES FG AND vis < 1/2sm` | Statute miles, with a fraction |
 | THUNDERSTORMS IN THE VICINITY | `weather INCLUDES TS OR cloudtype INCLUDES CB` | `INCLUDES` with `weather` and `cloudtype`, and `OR` |
 | DEICING NOT REQUIRED | `temperature > 3c AND weather EXCLUDES "FZRA FZDZ"` | `EXCLUDES` with more than one code in quotes |
+| SHOWERS POSSIBLE | `weather INCLUDES SHRA OR trendweather INCLUDES SHRA` | The current weather or any trend |
+| TEMPORARY LOW VISIBILITY, EXPECT DELAYS | `tempovisibility < 800m` | A number field read from `TEMPO` groups only |
+| CUMULONIMBUS EXPECTED | `becmgcloudtype INCLUDES CB` | A code field read from `BECMG` groups only |
+| NO SIGNIFICANT CHANGE EXPECTED | `trendtype INCLUDES NOSIG` | The type of the trend |
+| RUNWAY MAY BE WET | `recentweather INCLUDES RA` | Recent weather, with the optional `RE` left out |
 | WINDSHEAR REPORTED ON FINAL | `windshear` | A condition without a comparison |
 | VISUAL APPROACHES AVAILABLE | `cavok` | `cavok`, also without a comparison |
 | ILS APPROACHES IN USE | `NOT cavok` | `NOT` in front of a condition: the opposite of the row above |
