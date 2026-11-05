@@ -30,15 +30,29 @@ See [Text Parsing](text-parsing) for all of the rules. Text that is not underlin
 
 ## New ATIS Update
 
-When a new ATIS update is ready, the ATIS letter for the corresponding ATIS Station will blink. If you have enabled notification sounds, you will also hear a notification sound. To acknowledge the ATIS update, select the respective ATIS Station tab and left-click the ATIS letter once.
+When a new ATIS update is ready, the ATIS letter for the corresponding ATIS Station will blink. If you have enabled notification sounds, you will also hear a notification sound. To acknowledge the ATIS update, select the respective ATIS Station tab and left-click the ATIS letter once. To acknowledge it from the keyboard, press **Tab** to move to the ATIS letter and press **Enter** or **Space**.
 
 ![Acknowledge Update](/assets/images/AcknowledgeUpdate.gif)
 
 ## Manually Enter ATIS Letter
 
-If you prefer not to cycle through each letter to find the one you want, you can manually enter the ATIS letter. To enter the ATIS letter edit mode, **Shift + Left Double-Click** on the ATIS letter box. The cursor will change to a blinking I-beam, indicating that you can start typing. Type the desired letter and press Enter to confirm it. Press ESC (Escape) to cancel the action.
+If you prefer not to cycle through each letter to find the one you want, you can manually enter the ATIS letter. To enter the ATIS letter edit mode, **Shift + Left Double-Click** on the ATIS letter box. The cursor will change to a blinking I-beam, indicating that you can start typing. Type the desired letter and press Enter to confirm it. Press ESC (Escape) to cancel the action. To enter edit mode from the keyboard, move to the ATIS letter with **Tab** and press **F2**. When you confirm or cancel, focus returns to the ATIS letter.
 
 ![Type ATIS Letter](/assets/images/TypeAtisLetter.gif)
+
+## ATIS Letter Keyboard Controls
+
+The ATIS letter can be changed without a mouse. Press **Tab** to move to the ATIS letter box (it shows a white border when it has focus), then:
+
+| Key | Action | Same as |
+| --- | --- | --- |
+| **Enter**, **Space**, **Up** or **Right** | Acknowledge a new ATIS update. If there is nothing to acknowledge, advance to the next letter. | Left-click |
+| **Down** or **Left** | Go back to the previous letter. | Right-click |
+| **F2** | Type the letter directly. | **Shift + Left Double-Click** |
+
+The letter wraps around within the ATIS station's code range, so advancing past the last letter returns to the first and going back from the first letter goes to the last.
+
+For a station that another controller is publishing, **Enter** and **Space** only acknowledge a new ATIS, and the other keys do nothing.
 
 ## Override the METAR
 
