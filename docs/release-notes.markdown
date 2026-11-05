@@ -7,6 +7,42 @@ nav_order: 5
 # Release Notes
 The latest changes in vATIS. The full history is in the [changelog on GitHub](https://github.com/vatis-project/vatis/blob/main/CHANGELOG.md).
 
+## v4.1.0-beta.23
+### Added
+- Added a `recentweather` field to weather conditions for static airport conditions and NOTAMs, matching recent weather codes (e.g., `RERA`).
+- Added `trend`, `tempo` and `becmg` prefixes for weather conditions to read the trend forecast instead of the METAR (e.g., `trendweather INCLUDES SHRA`, `tempoceiling < 1000ft`, `becmgcloudtype INCLUDES CB`). `trend` reads any trend group, while `tempo` and `becmg` read only that kind. Supported for ceiling, cloud base, visibility, wind speed, gust, wind direction, weather, cloud type, and CAVOK.
+- Added a `trendtype` field to weather conditions to match the trend type (`TEMPO`, `BECMG` or `NOSIG`).
+- Added a table on the visibility ICAO Formatting tab for non-FAA stations to choose how metric visibility is written in the text ATIS and spoken in the voice ATIS, with rows that switch format from a given number of meters (e.g., `7000` as `7 KM` / "seven kilometers", `800` as `800 M` / "eight hundred meters").
+- Added "Static Messages", "Conditional Messages" and "Display Order" items to the airport conditions and NOTAMs context menus. They turn a message off, include a conditional message even when its conditions are not met, and move messages up or down in the ATIS. These only last until the app is restarted.
+- Added a `NoDecimal` style for the altimeter variable formats that drops the decimal point from inHg values (e.g., `2997` in the text ATIS and "two niner niner seven" in the voice ATIS).
+- Added a prompt for the field elevation when clicking the `{qfe|ELEVATION_FT}` variable on the altimeter Template tab, which inserts the variable with the elevation (e.g., `{qfe|328}`).
+
+### Changed
+- Normalized the volume of the clips in a WAV voice pack so every clip plays at the same level.
+- Combined the visibility direction spoken text and the Direction (Text) tab into a single Direction tab with a Text and a Voice column.
+- Changed the visibility meters cutoff, unit suffix, unit words and 9999 settings into the rows of the table on the visibility ICAO Formatting tab. Existing profiles are migrated automatically and sound the same.
+- Improved keyboard accessibility throughout the app, including tab order, focus indicators, and keyboard controls for the ATIS letter, lists, and dialogs.
+- Changed the help for the controllers and weather conditions in the static airport condition and NOTAM editor to open from an info icon next to each label instead of a tooltip over the text box, which could flicker.
+- Changed the "Online:" label under static airport conditions and NOTAMs in the message lists to "Controllers:", "Time:" or "Controllers and time:", depending on what the condition checks.
+- Updated the window control buttons and the mini window menu buttons to a flat style with new icons.
+- Improved the description on the Variable Format tabs to explain the text and voice styles and the suffix.
+- Redesigned the layout of the Formatting tab.
+- Changed the unsaved changes prompt when switching stations in the ATIS configuration window to offer saving the changes first, with a Cancel button.
+
+### Fixed
+- Fixed the airport conditions and NOTAMs separator not being applied between the free text and the selectable messages. A period at the end of the free text is no longer needed and is dropped when the separator already supplies one.
+- Fixed "ATIS Hub Unavailable" errors when connecting a station while the hub connection was still being re-established.
+- Fixed the D-ATIS not splitting into airport conditions and NOTAMs when the NOTAMs header had a different number of periods (e.g., `NOTAMS....`) or had no NOTAMs after it.
+- Fixed weather conditions never being met when the METAR omitted the value being compared (e.g., rvr > 125m with no RVR, or cloudbase > 1000ft with clear skies). A missing gust group or runway deposit now counts as zero, so gust < 25kt and depth < 3mm are met.
+- Fixed a crash when receiving a radio message with a malformed frequency field.
+- Fixed the `{altitude:N}` variable overlapping the `{altitude}` variable in the Cloud Types template variables popup.
+- Fixed a freeze and crash when selecting text on the second line of a long condition in the static airport condition and NOTAM editor.
+- Fixed the mini window growing off the right edge of the screen when the recording-expired dot appeared. On the right half of the screen it now expands to the left.
+- Fixed the sandbox ATIS continuing to play after the ATIS configuration window was closed.
+- Fixed a plus or minus sign from an external ATIS generator not being read as "plus" or "minus" when it was in a separate bracket from the digits (e.g., `+[3,]` or `-[3,]`), which caused a "missing clips" error with WAV voice packs.
+- Fixed the cloud height option on the Formatting tab saying "hundreds of feet" when it shows the height in feet.
+- Fixed the Text ATIS and Voice ATIS headers being hidden above the undetermined height fields on the Clouds Options tab, and listed the Text field first.
+
 ## v4.1.0-beta.22
 ### Fixed
 - Fixed stations failing to load in the released app when a static airport condition or NOTAM used a "Controllers" condition.
