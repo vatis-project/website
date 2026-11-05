@@ -13,7 +13,8 @@ The altimeter element from the METAR.
 * `{altimeter|inhg}` ... The numeric altimeter value converted to inches of mercury (inHg)
 * `{altimeter|hpa}` ... The numeric altimeter value converted to hectopascals (hPa)
 * `{altimeter|text}` ... The altimeter value translated to words (e.g. TWO NINER NINER TWO)
-* `{qfe|ELEVATION_FT}` ... Aerodrome atmospheric pressure. Replace `ELEVATION_FT` with the field elevation in feet. Only available for non-FAA stations.
+* `{altimeter|ICAO}` ... The altimeter value from the METAR of another airport, where `ICAO` is its four letter code (e.g. `{altimeter|EGKK}`). The value is shown as that METAR reports it. If the METAR cannot be found, the variable is left as typed.
+* `{qfe|ELEVATION_FT}` ... Aerodrome atmospheric pressure. Replace `ELEVATION_FT` with the field elevation in feet (e.g. `{qfe|328}`). Clicking the variable button asks for the elevation and inserts it for you. The button is only shown for non-FAA stations, but the variable can be typed into the template of any station.
 
 ![Altimeter](/assets/images/Formatting_Altimeter.png)
 
@@ -27,14 +28,14 @@ The altimeter element from the METAR.
 The Variable Format tab controls how each numeric variable is written, separately for the text ATIS and the voice ATIS. Rows are available for `{altimeter}`, `{altimeter|text}`, `{altimeter|inhg}`, `{altimeter|hpa}` and `{qfe}`. Every row is one variable and has a **Text** and a **Voice** column group, each with a **Style** and a **Suffix**.
 
 **Style**<br/>
-* **Default** ... The built-in rendering (digits in the text ATIS, digit-by-digit words in the voice ATIS).
-* **Digits** ... Plain digits (e.g. 1013).
-* **Serial** ... Digit-by-digit words (e.g. ONE ZERO ONE THREE).
-* **Group** ... Words in groups (e.g. TEN THIRTEEN).
-* **NoDecimal** ... Drops the decimal point, mainly for `{altimeter|inhg}`. The text ATIS shows plain digits (e.g. 2997) and the voice ATIS reads digit-by-digit words without "point" (e.g. TWO NINER NINER SEVEN).
+* **Default** ... Digits in the text ATIS and digit by digit in the voice ATIS. `{altimeter|text}` is always digit by digit.
+* **Digits** ... Plain digits (e.g. 1013 or 29.92).
+* **Serial** ... Each digit read on its own (e.g. ONE ZERO ONE THREE).
+* **Group** ... A whole number read in words (e.g. ONE THOUSAND AND THIRTEEN). A decimal value such as inHg falls back to digit by digit.
+* **NoDecimal** ... Drops the decimal point from inHg values, mainly for `{altimeter|inhg}`: `2992` in the text ATIS and TWO NINER NINER TWO in the voice ATIS.
 
 **Suffix**<br/>
-Text appended to the value exactly as typed, so include a leading space if you need one (e.g. ` knots`).
+Text appended to the value exactly as typed, so include a leading space if you need one (for example, a space followed by `hPa`).
 
 Every setting defaults to the previous behavior, so existing profiles are unchanged.
 

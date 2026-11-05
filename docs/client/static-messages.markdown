@@ -30,7 +30,7 @@ To create or manage static messages:
 
 When composing or modifying a message, you can insert contractions by typing the **@** symbol followed by the contraction variable name. As you type, an autocomplete menu will appear, showing available contraction options for quick selection. Contraction variables may optionally include the **@** symbol as a prefix. Once you choose a contraction from the autocomplete dropdown, the **@** symbol will be automatically removed.
 
-![Contraction search](/assets/images/AirportConditions_ContractionSearch.gif)
+![Contraction search](/assets/images/AirportConditions_ContractionSearch.webp)
 
 ### Include Before Free-form Text
 If enabled, the checked static messages will be included before the free-form Airport Conditions or NOTAMs text in the ATIS.

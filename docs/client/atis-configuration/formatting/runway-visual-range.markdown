@@ -9,19 +9,19 @@ nav_order: 3.5
 
 The Runway Visual Range (RVR) element represents the RVR groups from the METAR report. To include this element in the Preset ATIS template, use the `[RVR]` variable.
 
-## Spoken
-**Spoken text**<br/>
+## Voice
+The Voice tab sets how runway visual range is spoken in the voice ATIS.
+
+![RVR Voice](/assets/images/Formatting_RunwayVisualRange_Phrases.png)
+
+**Runway Visual Range**<br/>
 The text spoken to announce runway visual range (default "R-V-R"). Leave blank to omit the label.
 
-**Tendencies (Spoken)**<br/>
+**Tendencies**<br/>
 The text spoken for the neutral (N), going up (U) and going down (D) tendencies.
 
-## Phrases (Voice)
-
-
-![RVR Phrases](/assets/images/Formatting_RunwayVisualRange_Phrases.png)
-
-Edit the phrases used to read RVR values in the voice ATIS. Use `{value}` for a single distance and `{min}` and `{max}` for variable ranges. The defaults match the previous wording.
+**Phrases**<br/>
+Edit the phrases used to read RVR values. Use `{value}` for a single distance and `{min}` and `{max}` for variable ranges. The defaults match the previous wording.
 
 |Phrase|Default|
 |---|---|
@@ -33,5 +33,7 @@ Edit the phrases used to read RVR values in the voice ATIS. Use `{value}` for a 
 |Variable, less than to greater than|`variable from less than {min} to greater than {max}`|
 
 ## Text
-**Tendencies (Text)**<br/>
-The text shown in the text ATIS for each tendency code (N, U, D), independent of the spoken text. By default the METAR code is shown.
+The Text tab sets what is shown in the text ATIS.
+
+**Tendencies**<br/>
+The text shown for each tendency code (N, U, D), independent of the spoken text on the Voice tab. By default the METAR code is shown.
