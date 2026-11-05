@@ -66,8 +66,10 @@ This works for `{wind_spd}`, `{wind_gust}` and their unit variants, for example 
 The Variable Format tab lets you set the number style and a suffix for each wind variable (`{wind_dir}`, `{wind_spd}`, `{wind_gust}`, `{wind_vmin}` and `{wind_vmax}`) independently for the text and voice ATIS. Unit variants such as `{wind_spd|kt}` and `{wind_spd|mps}` share the setting of the base variable.
 
 **Style**<br/>
-* **Default** ... The built-in rendering (digits in the text ATIS, digit-by-digit words in the voice ATIS).
-* **Digits**, **Serial**, **Group** ... Plain digits, digit-by-digit words, or words in groups.
+* **Default** ... Digits in the text ATIS and digit by digit in the voice ATIS. The speed is read as a whole number if **Speak wind speed in group format** is on.
+* **Digits** ... Plain digits (e.g. 25).
+* **Serial** ... Each digit read on its own (e.g. TWO FIVE).
+* **Group** ... A whole number read in words (e.g. TWENTY-FIVE).
 
 **Suffix**<br/>
-Text appended to the value exactly as typed, so include a leading space if needed (e.g. ` knots`).
+Text appended to the value exactly as typed, so include a leading space if you need one (for example, a space followed by `knots`).
