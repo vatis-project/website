@@ -26,7 +26,7 @@ Each row of the table starts at the value in **At or above (m)** and applies to 
 * `{m}` ... The visibility in meters. Shown as digits in the text ATIS (e.g. 800) and spoken in words in the voice ATIS (e.g. eight hundred).
 * `{km}` ... The visibility in kilometers (e.g. 7 or 6.5). In the voice ATIS each digit is read on its own and a decimal is spoken as "point", so 7.5 is "seven point five" and 10 is "one zero". If **Use "decimal" terminology in spoken text** is enabled in the [General Configuration](/docs/client/atis-configuration/general), it is spoken as "decimal" instead.
 
-Select a cell and click a variable button to insert it there. Use **Add New** to add a row and **Delete** to remove the selected row. If no row matches a visibility, the text ATIS shows the METAR value and the voice ATIS speaks the visibility in meters.
+Edit a cell by double-clicking it, or select a cell and click a variable button to insert it there. Use **Add New** to add a row and **Delete** to remove the selected row. If no row matches a visibility, the text ATIS shows the METAR value and the voice ATIS speaks the visibility in meters.
 
 The default rows write visibilities below 5000 meters in meters, 5000 and above in kilometers, and report 9999 as 10 kilometers or more:
 
@@ -36,7 +36,19 @@ The default rows write visibilities below 5000 meters in meters, 5000 and above 
 |5000|`{raw}`|`{km} kilometers`|
 |9999|`10KM`|`10 kilometers or more`|
 
+To switch to kilometers at a different point, change the **At or above (m)** value of the second row. Remove the unit words from the Voice column to speak the visibility without a unit.
+
+For example, with the rows below, `0800` is shown as `800 M` and spoken as "eight hundred meters", and `7000` is shown as `7 KM` and spoken as "seven kilometers":
+
+|At or above (m)|Text|Voice|
+|---|---|---|
+|0|`{m} M`|`{m} meters`|
+|5000|`{km} KM`|`{km} kilometers`|
+|9999|`10KM+`|`10 kilometers or more`|
+
 The preview below the table shows how a few sample visibilities and CAVOK come out in the text and voice ATIS, so you can check your rows as you edit them. Profiles from earlier versions are migrated to these rows automatically and sound the same.
+
+When the METAR reports a directional minimum (e.g. `7000 4000E`), each value is formatted with the rows, and the direction comes from the **Direction** tab. With the rows above, the text ATIS shows `7 KM 4000 M E`. The minimum is spoken in group form (e.g. "twelve hundred"). CAVOK is checked first, so these rows are not used when the METAR reports CAVOK.
 
 **CAVOK (Text ATIS)**<br/>
 The text displayed in the text ATIS when the METAR reports CAVOK. The default is "CAVOK".
@@ -59,9 +71,8 @@ How the direction is spoken in the voice ATIS. The defaults are "to the north", 
 
 ## Fractions (Voice)
 
-
 ![Visibility Fractions](/assets/images/Formatting_Visibility_Fractions.png)
 
-This tab (FAA stations) sets the spoken text for fractional visibility values such as `1/2SM` or `1 1/2SM`. Each row is the METAR value and the text spoken in the voice ATIS. The defaults match the previous wording.
+This tab (FAA stations) sets the spoken text for fractional visibility values such as `1/2SM` or `1 1/2SM`. Each row is the METAR value and the text spoken in the voice ATIS.
 
 The text ATIS continues to show the METAR value as received.

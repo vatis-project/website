@@ -32,7 +32,7 @@ The Variable Format tab controls how each numeric variable is written, separatel
 * **Digits** ... Plain digits (e.g. 1013 or 29.92).
 * **Serial** ... Each digit read on its own (e.g. ONE ZERO ONE THREE).
 * **Group** ... A whole number read in words (e.g. ONE THOUSAND AND THIRTEEN). A decimal value such as inHg falls back to digit by digit.
-* **NoDecimal** ... Drops the decimal point from inHg values: `2992` in the text ATIS and TWO NINER NINER TWO in the voice ATIS.
+* **NoDecimal** ... Drops the decimal point from inHg values, mainly for `{altimeter|inhg}`: `2992` in the text ATIS and TWO NINER NINER TWO in the voice ATIS.
 
 **Suffix**<br/>
 Text appended to the value exactly as typed, so include a leading space if you need one (for example, a space followed by `hPa`).
