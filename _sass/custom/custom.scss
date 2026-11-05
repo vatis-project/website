@@ -139,26 +139,123 @@ body.lightbox-open {
 
 // Sidebar navigation
 .nav-list .nav-list-item {
+  // The hovered and active pages get a rounded tint, inset from the sides of the sidebar. It is drawn behind the link
+  // text, so the link is its own stacking context.
   .nav-list-link {
-    border-left: 3px solid transparent;
-    transition: background-color 0.15s, color 0.15s;
+    position: relative;
+    z-index: 0;
+    transition: color 0.15s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 1px;
+      right: 0.5rem;
+      bottom: 1px;
+      left: 0.5rem;
+      z-index: -1;
+      border-radius: 6px;
+      background: transparent;
+      transition: background-color 0.15s;
+    }
+
+    &:hover,
+    &.active {
+      background-image: none;
+    }
 
     &:hover {
       color: #0164AD;
+
+      &::after {
+        background: rgba(1, 100, 173, 0.06);
+      }
     }
 
     &.active {
-      border-left-color: #0164AD;
-      color: #0164AD;
-      font-weight: 600;
+      color: #014f8a;
+      font-weight: 700;
+
+      &::after {
+        background: rgba(1, 100, 173, 0.2);
+        box-shadow: inset 0 0 0 1px rgba(1, 100, 173, 0.35);
+      }
     }
   }
 
-  // Nested pages sit under a faint guide line
-  > .nav-list {
-    margin-left: 1rem;
-    border-left: 1px solid rgba(0, 0, 0, 0.08);
+  // The expander is moved in by the inset of the highlight, so the caret has some padding inside it.
+  .nav-list-expander {
+    right: 0.5rem;
+    z-index: 1;
+    border-radius: 6px;
+
+    &:hover {
+      background-image: none;
+      background-color: rgba(1, 100, 173, 0.1);
+    }
   }
+
+  // Nested lists are not indented themselves. Each level is indented with the padding of its links instead, so
+  // every link spans the full width of the sidebar and the active marker and hover highlight line up at its left edge.
+  > .nav-list {
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+$nav-indent: 0.75rem;
+
+@mixin nav-link-indent($levels) {
+  padding-left: $gutter-spacing-sm + $nav-indent * $levels;
+
+  @include mq(md) {
+    padding-left: $gutter-spacing + $nav-indent * $levels;
+  }
+}
+
+.nav-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list-link {
+  @include nav-link-indent(1);
+}
+
+.nav-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list-link {
+  @include nav-link-indent(2);
+}
+
+.nav-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list-link {
+  @include nav-link-indent(3);
+}
+
+// A guide line for each open nested list: one continuous line, placed under the text of its parent link.
+@mixin nav-guide-line($levels) {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0.2rem;
+    bottom: 0.2rem;
+    left: calc(#{$gutter-spacing-sm + $nav-indent * $levels} + 0.4rem);
+    z-index: 1;
+    width: 1px;
+    background: rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+
+    @include mq(md) {
+      left: calc(#{$gutter-spacing + $nav-indent * $levels} + 0.4rem);
+    }
+  }
+}
+
+.nav-list > .nav-list-item > .nav-list {
+  @include nav-guide-line(0);
+}
+
+.nav-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list {
+  @include nav-guide-line(1);
+}
+
+.nav-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list {
+  @include nav-guide-line(2);
 }
 
 // Links
