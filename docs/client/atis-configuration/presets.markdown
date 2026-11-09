@@ -35,6 +35,7 @@ You can use the following variables in the ATIS template. If you want to use the
 |`[WS]`|The wind shear information from the METAR (see [Wind Shear](formatting/wind-shear))|
 |`[RWY_COND]`<br/>`[RUNWAY_CONDITION]`|The runway conditions (runway state) reported in the METAR (see [Runway Condition](formatting/runway-condition))|
 |`[RMK_WIND]`|The wind reported in the METAR remarks (see [Remark Wind](formatting/remark-wind))|
+|`[DENSITY_ALT]`|The density altitude reported in the METAR remarks (see [Density Altitude](formatting/density-altitude))|
 |`[AUTO]`|Inserts the Automatic Observation text, only when the METAR is flagged AUTO (see [Automatic Observation](formatting/automatic-observation))|
 |`[ARPT_COND]`<br/>`[ARRDEP]`|Inserts the Airport Conditions: the free-form text and the selected static messages. The static messages come first when **Include before free-form** is checked, and the two parts are joined with a space.|
 |`[NOTAMS]`|Inserts the NOTAMs: the free-form text and the selected static messages, in the same way, with the two parts joined with a period. The result is placed in the NOTAMs template on the Formatting tab.|
