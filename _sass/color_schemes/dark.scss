@@ -1,0 +1,20 @@
+// Overrides the just-the-docs dark scheme with the vATIS blue, lightened so it reads on a dark background.
+// Built into assets/css/just-the-docs-dark.css, which the theme toggle (see _includes/head_custom.html) switches to.
+$color-scheme: dark;
+$body-background-color: #1c1e22;
+$body-heading-color: #f2f3f5;
+$body-text-color: #d4d6db;
+$link-color: #5aa9e6;
+$nav-child-link-color: #a3a6ad;
+$sidebar-color: #17191c;
+$base-button-color: #2a2d33;
+$btn-primary-color: #0164AD;
+$code-background-color: #2a2d33;
+$code-linenumber-color: #dee2f7;
+$feedback-color: darken($sidebar-color, 3%);
+$table-background-color: #22252a;
+$search-background-color: #22252a;
+$search-result-preview-color: #a3a6ad;
+$border-color: #33363d;
+
+@import "./vendor/OneDarkJekyll/syntax"; // one-dark-vivid syntax theme
