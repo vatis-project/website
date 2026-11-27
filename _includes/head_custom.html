@@ -1,1 +1,49 @@
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "712a1eae70a74d2da632b91a7e4c9d4d"}'></script><!-- End Cloudflare Web Analytics -->
+<script>
+  /* Light/dark theme. The saved choice wins, otherwise the system setting is followed. This runs in the page head so the */
+  /* right stylesheet is in place before the page is drawn. The toggle is in _includes/header_custom.html. */
+  (function () {
+    var base = '{{ "/assets/css/just-the-docs-" | relative_url }}';
+    var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+    function saved() {
+      try { return localStorage.getItem('theme'); } catch (e) { return null; }
+    }
+
+    function current() {
+      var s = saved();
+      if (s === 'dark' || s === 'light') return s;
+      return media && media.matches ? 'dark' : 'light';
+    }
+
+    function apply(theme) {
+      var link = document.querySelector('link[rel="stylesheet"][href*="just-the-docs-"]:not(#jtd-head-nav-stylesheet)');
+      if (link) link.setAttribute('href', base + theme + '.css');
+      document.documentElement.setAttribute('data-theme', theme);
+      var btn = document.getElementById('theme-toggle');
+      if (btn) {
+        var next = theme === 'dark' ? 'light' : 'dark';
+        btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
+        btn.setAttribute('title', 'Switch to ' + next + ' mode');
+      }
+    }
+
+    window.vatisTheme = {
+      current: current,
+      apply: apply,
+      toggle: function () {
+        var next = current() === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        apply(next);
+      }
+    };
+
+    apply(current());
+
+    if (media) {
+      var onChange = function () { if (!saved()) apply(current()); };
+      if (media.addEventListener) media.addEventListener('change', onChange);
+      else if (media.addListener) media.addListener(onChange);
+    }
+  })();
+</script>
