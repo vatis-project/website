@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap");
 
 :root {
-  --bg: #272c2e;
-  --bg-soft: #2f3438;
+  /* Matches $body-background-color in _sass/color_schemes/dark.scss, so the homepage and the dark docs share a background. */
+  --bg: #1c1e22;
   --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.78);
   --border: rgba(255, 255, 255, 0.16);
@@ -35,7 +35,7 @@ body {
   overflow-x: hidden;
   color: var(--text);
   font-family: "Source Sans 3", "Segoe UI", sans-serif;
-  background: linear-gradient(180deg, #2b3034 0%, var(--bg) 100%);
+  background: var(--bg);
 }
 
 a {
